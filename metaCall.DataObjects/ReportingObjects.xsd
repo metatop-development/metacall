@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReportingObjects" targetNamespace="http://metatop/Applications/metaCall/DataObjects/ReportingObjects.xsd" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://metatop/Applications/metaCall/DataObjects/ReportingObjects.xsd" xmlns:clr="http://microsoft.com/wsdl/types/" xmlns:mstns="http://metatop/Applications/metaCall/DataObjects/ReportingObjects.xsd" version="1.0">
+  <xs:import schemaLocation="Guid.xsd" namespace="http://microsoft.com/wsdl/types/" />
+  <xs:complexType name="WorkTimeReportResults">
+    <xs:sequence>
+      <xs:element name="UserName" type="xs:string" />
+      <xs:element name="Center" type="xs:string" />
+      <xs:element name="Team" type="xs:string" />
+      <xs:element name="Project" type="xs:string" />
+      <xs:element name="Day" type="xs:string" />
+      <xs:element name="Start" type="xs:string" />
+      <xs:element name="Stop" type="xs:string" />
+      <xs:element name="WorkTime" type="xs:double" />
+      <xs:element name="PauseTime" type="xs:double" />
+      <xs:element name="PresentTime" type="xs:double" />
+      <xs:element name="TrainingTimeConfirmed" type="xs:double" />
+      <xs:element name="TrainingTimeNotConfirmed" type="xs:double" />
+      <xs:element name="SecondaryTime" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkTimeReportResults" type="WorkTimeReportResults">
+  </xs:element>
+  <xs:complexType name="UserCallJobActivityResults">
+    <xs:sequence>
+      <xs:element name="UserName" type="xs:string" />
+      <xs:element name="Center" type="xs:string" />
+      <xs:element name="Team" type="xs:string" />
+      <xs:element name="Project" type="xs:string" />
+      <xs:element name="Day" type="xs:dateTime" />
+      <xs:element name="Start" type="xs:string" />
+      <xs:element name="Stop" type="xs:string" />
+      <xs:element name="WorkTime" type="xs:string" />
+      <xs:element name="PauseTime" type="xs:string" />
+      <xs:element name="AveragePauseTime" type="xs:string" />
+      <xs:element name="PhoneTime" type="xs:string" />
+      <xs:element name="AveragePhoneTime" type="xs:string" />
+      <xs:element name="PostEditingTime" type="xs:string" />
+      <xs:element name="AveragePostEditingTime" type="xs:string" />
+      <xs:element name="TotalCalls" type="xs:int" />
+      <xs:element name="Successfull" type="xs:int" />
+      <xs:element name="UnSuccessfull" type="xs:int" />
+      <xs:element name="UnCommitted" type="xs:int" />
+      <xs:element name="Misc" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserCallJobActivityResults" type="UserCallJobActivityResults">
+  </xs:element>
+  <xs:complexType name="ContactReport">
+    <xs:sequence>
+      <xs:element name="AdressenPoolNummer" type="xs:int" />
+      <xs:element name="Anrede" type="xs:string" />
+      <xs:element name="Titel" type="xs:string" />
+      <xs:element name="Nachname" type="xs:string" />
+      <xs:element name="Vorname" type="xs:string" />
+      <xs:element name="Text1" type="xs:string" />
+      <xs:element name="Text2" type="xs:string" />
+      <xs:element name="Strasse" type="xs:string" />
+      <xs:element name="Land" type="xs:string" />
+      <xs:element name="PLZ" type="xs:string" />
+      <xs:element name="Ort" type="xs:string" />
+      <xs:element name="Telefon" type="xs:string" />
+      <xs:element name="Fax" type="xs:string" />
+      <xs:element name="Mobil" type="xs:string" />
+      <xs:element name="Projekt" type="xs:string" />
+      <xs:element name="Projektnummer" type="xs:int" />
+      <xs:element name="Center" type="xs:string" />
+      <xs:element name="Start" type="xs:dateTime" />
+      <xs:element name="Stop" type="xs:dateTime" />
+      <xs:element name="AgentNachname" type="xs:string" />
+      <xs:element name="AgentVorname" type="xs:string" />
+      <xs:element name="Kontaktart" type="xs:string" />
+      <xs:element name="Antwort" type="xs:string" />
+      <xs:element name="AbsageArt" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactReport" type="ContactReport">
+  </xs:element>
+  <xs:complexType name="ProjectReport">
+    <xs:sequence>
+      <xs:element name="Art" type="xs:string" />
+      <xs:element name="Projekt" type="xs:string" />
+      <xs:element name="Projektnummer" type="xs:int" />
+      <xs:element name="CountCallJobs" type="xs:int" />
+      <xs:element name="DisplayName" type="xs:string" />
+      <xs:element name="CountCallJobStates" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectReport" type="ProjectReport">
+  </xs:element>
+  <xs:complexType name="PhoneTimesReport">
+    <xs:sequence>
+      <xs:element name="Agent" type="xs:string" />
+      <xs:element name="Start" type="xs:dateTime" />
+      <xs:element name="GewerteteArbeitszeit" type="xs:double" />
+      <xs:element name="Telefonzeit" type="xs:double" />
+      <xs:element name="AnteilTelefonzeit" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhoneTimesReport" type="PhoneTimesReport">
+  </xs:element>  
+  <xs:complexType name="SponsoringOrdersDistribution">
+    <xs:sequence>
+      <xs:element name="Hour" type="xs:string" />
+      <xs:element name="Count" type="xs:double" />
+      <xs:element name="CountOrder" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SponsoringOrdersDistribution" type="SponsoringOrdersDistribution">
+  </xs:element>
+  <xs:complexType name="ProjectReportDetailSummen">
+    <xs:sequence>
+      <xs:element name="Projekt" type="xs:string" />
+      <xs:element name="ReminderDateMax" type="xs:dateTime" />
+      <xs:element name="DatumAkquisaAnfang" type="xs:dateTime" />
+      <xs:element name="Sorter" type="xs:int" />
+      <xs:element name="Agent" type="xs:string" />
+      <xs:element name="Stunden" type="xs:float" />
+      <xs:element name="Umsatz" type="xs:float" />
+      <xs:element name="PaketeGesamt" type="xs:float" />
+      <xs:element name="PaketeBezahlt" type="xs:float" />
+      <xs:element name="PaketeGeozone" type="xs:float" />
+      <xs:element name="PaketeSponsoren" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectReportDetailSummen" type="ProjectReportDetailSummen">
+  </xs:element>
+  <xs:complexType name="ProjectReportDetailDaten">
+    <xs:sequence>
+      <xs:element name="Art" type="xs:string" />
+      <xs:element name="SubArt" type="xs:string" />
+      <xs:element name="Sorter" type="xs:int" />
+      <xs:element name="Agent" type="xs:string" />
+      <xs:element name="DisplayName" type="xs:string" />
+      <xs:element name="Wert" type="xs:float" />
+      <xs:element name="Prozent" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectReportDetailDaten" type="ProjectReportDetailDaten">
+  </xs:element>
+  <xs:complexType name="ProjectReportGeozonen">
+    <xs:sequence>
+      <xs:element name="Ergebnis" type="xs:string" />
+      <xs:element name="AdressenInZonen" type="xs:int" />
+      <xs:element name="Auftraege" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectReportGeoZonen" type="ProjectReportGeozonen">
+  </xs:element>
+</xs:schema>

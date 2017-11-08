@@ -1,0 +1,27 @@
+<Dictionary>
+      <Words>
+         <Unrecognized>
+         </Unrecognized>
+         <Recognized>
+           <Word>metatop</Word>
+           <Word>Applications</Word>
+           <Word>App</Word>
+           <Word>Call</Word>
+           <Word>Forms</Word>
+           <Word>Win</Word>
+           <Word>Helpers</Word>
+           <Word>Splash</Word>
+            <Word>metaCall</Word>
+            <Word>stylesheet</Word>
+         </Recognized>
+         <Deprecated>
+            <Term PreferredAlternate="EnterpriseServices">ComPlus</Term>
+         </Deprecated>
+      </Words>
+      <Acronyms>
+         <CasingExceptions>
+            <Acronym>CJK</Acronym>
+            <Acronym>Pi</Acronym>
+         </CasingExceptions>
+      </Acronyms>
+   </Dictionary>

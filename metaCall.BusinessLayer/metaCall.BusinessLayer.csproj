@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3AB35F31-66A6-4FA6-98A9-030FA1CAF560}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>metatop.Applications.metaCall.BusinessLayer</RootNamespace>
+    <AssemblyName>metaCall.BusinessLayer</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugOnlineData|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugOnlineData\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Beta|AnyCPU' ">
+    <OutputPath>bin\Beta\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>
+    </DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MaDaNet.Common.AppFrameWork, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\MaDaNet.Common.AppFrameWork.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\temp\metacall.root.FW4.0\metaCall.3rdParty\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Vbe.Interop, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\Microsoft.Vbe.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="OFFICE, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\temp\metacall.root.FW4.0\metaCall.3rdParty\OFFICE.DLL</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tapi2Lib, Version=1.2.3831.18170, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\Tapi2Lib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ActiveFaxAdapter.cs" />
+    <Compile Include="Activities\Activities.cs" />
+    <Compile Include="Activities\ATListener.cs" />
+    <Compile Include="Activities\DialTListener.cs" />
+    <Compile Include="Activities\DTListener.cs" />
+    <Compile Include="Activities\SecondaryTListener.cs" />
+    <Compile Include="Activities\TrainingListener.cs" />
+    <Compile Include="Activities\metaCallLogger.cs" />
+    <Compile Include="Activities\MetawareWorkTimeListener.cs" />
+    <Compile Include="Activities\PausenListener.cs" />
+    <Compile Include="Activities\PTListener.cs" />
+    <Compile Include="Activities\TTListener.cs" />
+    <Compile Include="Activities\UTListener.cs" />
+    <Compile Include="Activities\WTListener.cs" />
+    <Compile Include="AddressBusiness.cs" />
+    <Compile Include="BranchBusiness.cs" />
+    <Compile Include="BranchGroupBusiness.cs" />
+    <Compile Include="CallJobBusiness.cs" />
+    <Compile Include="CallJobGroupBusiness.cs" />
+    <Compile Include="CallJobGroupFactory.cs" />
+    <Compile Include="CallJobInfoBusiness.cs" />
+    <Compile Include="CallJobNotFoundException.cs" />
+    <Compile Include="CallJobPhoneEventBusiness.cs" />
+    <Compile Include="CallJobReminderBusiness.cs" />
+    <Compile Include="CallJobResultBusiness.cs" />
+    <Compile Include="CallJobs\CallJobInfoUnsuitableBusiness.cs" />
+    <Compile Include="CallJobs\SponsoringCallManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CallJobs\SponsoringCallManager.designer.cs">
+      <DependentUpon>SponsoringCallManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CannotReceiveCallException.cs" />
+    <Compile Include="CenterBusiness.cs" />
+    <Compile Include="BranchGroupTimeListBusiness.cs" />
+    <Compile Include="ContactTypeBusiness.cs" />
+    <Compile Include="ContactTypesParticipationBusiness.cs" />
+    <Compile Include="ContactTypesParticipationCancellationBusiness.cs" />
+    <Compile Include="ContactTypesParticipationUnsuitableBusiness.cs" />
+    <Compile Include="DataFieldManager.cs" />
+    <Compile Include="DataFieldMethodAttribute.cs" />
+    <Compile Include="DataFieldMethodNotFoundException.cs" />
+    <Compile Include="DataFieldMethodParameter.cs" />
+    <Compile Include="DataFieldMethods.cs" />
+    <Compile Include="DialerBusiness.cs" />
+    <Compile Include="DialModeDescription.cs" />
+    <Compile Include="DocumentHistoryBusiness.cs" />
+    <Compile Include="DurringChangedEventArgs.cs" />
+    <Compile Include="DurringInfoChangedEventArgs.cs" />
+    <Compile Include="DurringLevelInfoChangedEventArgs.cs" />
+    <Compile Include="ContactReportBusiness.cs" />
+    <Compile Include="CountryPhoneNumberBusiness.cs" />
+    <Compile Include="PhoneTimesReportBusiness.cs" />
+    <Compile Include="ProjectReportBusiness.cs" />
+    <Compile Include="StringEncryption.cs" />
+    <Compile Include="TrainingGrundBusiness.cs" />
+    <Compile Include="mwProjektBusiness.cs" />
+    <Compile Include="RecoveriesBusiness.cs" />
+    <Compile Include="LogOnFailedException.cs" />
+    <Compile Include="metaCallBusiness.cs" />
+    <Compile Include="MetaCallIdentity.cs" />
+    <Compile Include="MetaCallPrincipal.cs" />
+    <Compile Include="MSWordAdapter.cs" />
+    <Compile Include="mwProjekt_ProjektOrderHistorieBusiness.cs" />
+    <Compile Include="mwProjekt_SponsorOrderHistorieBusiness.cs" />
+    <Compile Include="mwProjekt_SponsorPacketBusiness.cs" />
+    <Compile Include="NoMetaWareProjectException.cs" />
+    <Compile Include="NoMetawareUserException.cs" />
+    <Compile Include="NoProjectLoggedOnException.cs" />
+    <Compile Include="NoUserLoggedOnException.cs" />
+    <Compile Include="PassWordChangeException.cs" />
+    <Compile Include="ProjectBusiness.cs" />
+    <Compile Include="ProjectChangedEventArgs.cs" />
+    <Compile Include="ProjectDocumentBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SecurityGroupBusiness.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SettingBusiness.cs" />
+    <Compile Include="TeamBusiness.cs" />
+    <Compile Include="TeamProjectAssign.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ThankingsFormsProjectBusiness.cs" />
+    <Compile Include="UnknownCallJobResultCategoryException.cs" />
+    <Compile Include="UnknownContactTypeException.cs" />
+    <Compile Include="UnknownContactTypeParticipationException.cs" />
+    <Compile Include="UserBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\metaCall.ServiceAccessLayer\metaCall.ServiceAccessLayer.csproj">
+      <Project>{AB6FD9BF-B5DA-4D97-8C95-0BC7F69D1989}</Project>
+      <Name>metaCall.ServiceAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\metaCall.DataObjects\metaCall.DataObjects.csproj">
+      <Project>{EA7FBC1D-2807-40E6-AADA-E83769E8B697}</Project>
+      <Name>metaCall.DataObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

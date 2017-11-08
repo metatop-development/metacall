@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C08DCB26-67C6-44C7-A1D2-66A4027A57A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>metatop.Applications.metaCall.WinForms.Modules</RootNamespace>
+    <AssemblyName>metaCall.Modules</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <DebugSymbols>true</DebugSymbols>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugOnlineData|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugOnlineData\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Beta|AnyCPU' ">
+    <OutputPath>bin\Beta\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>
+    </DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DefineConstants>TRACE;BETA</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MaDaNet.Common.AppFrameWork, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\MaDaNet.Common.AppFrameWork.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Arbeitszeitverwaltung\Arbeitszeitverwaltung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Arbeitszeitverwaltung\Arbeitszeitverwaltung.designer.cs">
+      <DependentUpon>Arbeitszeitverwaltung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Arbeitszeitverwaltung\UserWorkTimeAdditionEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Arbeitszeitverwaltung\UserWorkTimeAdditionEdit.Designer.cs">
+      <DependentUpon>UserWorkTimeAdditionEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Arbeitszeitverwaltung\UserWorkTimeAdditionInfoView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Arbeitszeitverwaltung\UserWorkTimeAdditionInfoView.designer.cs">
+      <DependentUpon>UserWorkTimeAdditionInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectUnsuitableAddresses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectUnsuitableAddresses.Designer.cs">
+      <DependentUpon>ProjectUnsuitableAddresses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectionPeriod.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectionPeriod.Designer.cs">
+      <DependentUpon>SelectionPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoFocusPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\Benutzerverwaltung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\Benutzerverwaltung.designer.cs">
+      <DependentUpon>Benutzerverwaltung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\EnterPasswordForNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\EnterPasswordForNewUser.Designer.cs">
+      <DependentUpon>EnterPasswordForNewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\UserInfoView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\UserInfoView.designer.cs">
+      <DependentUpon>UserInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\UserEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\UserEdit.Designer.cs">
+      <DependentUpon>UserEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\CenterEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Benutzerverwaltung\CenterEdit.Designer.cs">
+      <DependentUpon>CenterEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teamverwaltung\Teamverwaltung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Teamverwaltung\Teamverwaltung.designer.cs">
+      <DependentUpon>Teamverwaltung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teamverwaltung\TeamEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teamverwaltung\TeamEdit.Designer.cs">
+      <DependentUpon>TeamEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectDocumentEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectDocumentEdit.Designer.cs">
+      <DependentUpon>ProjectDocumentEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\AddressTransferManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\AppendNewSponsors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\AppendNewSponsors.Designer.cs">
+      <DependentUpon>AppendNewSponsors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stammdaten\Stammdatenverwaltung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Stammdaten\Stammdatenverwaltung.designer.cs">
+      <DependentUpon>Stammdatenverwaltung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CallJobSearchPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CallJobSearchPanel.Designer.cs">
+      <DependentUpon>CallJobSearchPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateDurringClosure.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateDurringClosure.Designer.cs">
+      <DependentUpon>CreateDurringClosure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminderUnsuitable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminderUnsuitable.Designer.cs">
+      <DependentUpon>CreateReminderUnsuitable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\Dialing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telefonie\Dialing.Designer.cs">
+      <DependentUpon>Dialing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\CallJobEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\CallJobEdit.Designer.cs">
+      <DependentUpon>CallJobEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\CreateProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\CreateProject.Designer.cs">
+      <DependentUpon>CreateProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DateTimePickerExt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DateTimePickerExt.Designer.cs">
+      <DependentUpon>DateTimePickerExt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mitarbeiterstatistik.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Mitarbeiterstatistik.Designer.cs">
+      <DependentUpon>Mitarbeiterstatistik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectCreatedView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectCreatedView.Designer.cs">
+      <DependentUpon>ProjectCreatedView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectTeamAssign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectTeamAssign.Designer.cs">
+      <DependentUpon>ProjectTeamAssign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectViewBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectViewBase.Designer.cs">
+      <DependentUpon>ProjectViewBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectViewInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectViewInfo.Designer.cs">
+      <DependentUpon>ProjectViewInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\ProjectViewInfoSelectedEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\CallJobGroupEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\CallJobGroupEdit.Designer.cs">
+      <DependentUpon>CallJobGroupEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\ContactTypeChangedEventArgs.cs" />
+    <Compile Include="Telefonie\CreateCallNotice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateCallNotice.Designer.cs">
+      <DependentUpon>CreateCallNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateContactTypeReminder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateContactTypeReminder.Designer.cs">
+      <DependentUpon>CreateContactTypeReminder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminder.Designer.cs">
+      <DependentUpon>CreateReminder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminderQuestion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminderQuestion.Designer.cs">
+      <DependentUpon>CreateReminderQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CustomerInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CustomerInfo.Designer.cs">
+      <DependentUpon>CustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\DurringInfoPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\DurringInfoPanel.Designer.cs">
+      <DependentUpon>DurringInfoPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\HistorieInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\HistorieInfo.Designer.cs">
+      <DependentUpon>HistorieInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\IInitializeCall.cs" />
+    <Compile Include="Telefonie\IInitializeCustomer.cs" />
+    <Compile Include="Telefonie\CreateContactTypeDurringReminder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateContactTypeDurringReminder.Designer.cs">
+      <DependentUpon>CreateContactTypeDurringReminder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateCallDurringNotice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateCallDurringNotice.Designer.cs">
+      <DependentUpon>CreateCallDurringNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\InvoiceInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\InvoiceInfo.Designer.cs">
+      <DependentUpon>InvoiceInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminderDurringQuestion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminderDurringQuestion.Designer.cs">
+      <DependentUpon>CreateReminderDurringQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminderDurring.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateReminderDurring.Designer.cs">
+      <DependentUpon>CreateReminderDurring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\ReminderQuestionDurringChangeEventArgs.cs" />
+    <Compile Include="Telefonie\MainView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\mwProjectInfoAdditiveInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telefonie\mwProjectInfoAdditiveInfo.Designer.cs">
+      <DependentUpon>mwProjectInfoAdditiveInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\PhoneNumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Telefonie\PhoneView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\PhoneView.Designer.cs">
+      <DependentUpon>PhoneView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\mwProjectInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\mwProjectInfo.Designer.cs">
+      <DependentUpon>mwProjectInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\Projektanmeldung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\Projektanmeldung.Designer.cs">
+      <DependentUpon>Projektanmeldung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\ReminderQuestionChangeEventArgs.cs" />
+    <Compile Include="Telefonie\SendFaxDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telefonie\SendFaxDialog.Designer.cs">
+      <DependentUpon>SendFaxDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\SponsorEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telefonie\SponsorEdit.Designer.cs">
+      <DependentUpon>SponsorEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\SponsorInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\SponsorInfo.Designer.cs">
+      <DependentUpon>SponsorInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\TelefonieMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\TelefonieMain.Designer.cs">
+      <DependentUpon>TelefonieMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\CreateCallPossibleReminder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\CreateCallPossibleReminder.Designer.cs">
+      <DependentUpon>CreateCallPossibleReminder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\UserInfoPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\UserInfoPanel.Designer.cs">
+      <DependentUpon>UserInfoPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telefonie\Zeituebersicht.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Telefonie\Zeituebersicht.Designer.cs">
+      <DependentUpon>Zeituebersicht.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Projektverwaltung\Projektverwaltung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Projektverwaltung\Projektverwaltung.Designer.cs">
+      <DependentUpon>Projektverwaltung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wiedervorlage\ReminderViewInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wiedervorlage\ReminderViewInfo.designer.cs">
+      <DependentUpon>ReminderViewInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wiedervorlage\ReminderEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wiedervorlage\ReminderEdit.Designer.cs">
+      <DependentUpon>ReminderEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wiedervorlage\Wiedervorlageverwaltung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Wiedervorlage\Wiedervorlageverwaltung.designer.cs">
+      <DependentUpon>Wiedervorlageverwaltung.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\metaCall.WinForms.Common\metaCall.WinForms.Common.csproj">
+      <Project>{2F036641-E299-41D9-8000-3BBC6A0FF0CB}</Project>
+      <Name>metaCall.WinForms.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\metaCall.BusinessLayer\metaCall.BusinessLayer.csproj">
+      <Project>{3AB35F31-66A6-4FA6-98A9-030FA1CAF560}</Project>
+      <Name>metaCall.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\metaCall.DataObjects\metaCall.DataObjects.csproj">
+      <Project>{EA7FBC1D-2807-40E6-AADA-E83769E8B697}</Project>
+      <Name>metaCall.DataObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Arbeitszeitverwaltung\Arbeitszeitverwaltung.resx">
+      <DependentUpon>Arbeitszeitverwaltung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Arbeitszeitverwaltung\UserWorkTimeAdditionEdit.resx">
+      <DependentUpon>UserWorkTimeAdditionEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Arbeitszeitverwaltung\UserWorkTimeAdditionInfoView.resx">
+      <DependentUpon>UserWorkTimeAdditionInfoView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\ProjectUnsuitableAddresses.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectUnsuitableAddresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectionPeriod.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SelectionPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Benutzerverwaltung\Benutzerverwaltung.resx">
+      <DependentUpon>Benutzerverwaltung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Benutzerverwaltung\CenterEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CenterEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Benutzerverwaltung\EnterPasswordForNewUser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EnterPasswordForNewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Benutzerverwaltung\UserInfoView.resx">
+      <DependentUpon>UserInfoView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Benutzerverwaltung\UserEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teamverwaltung\Teamverwaltung.resx">
+      <DependentUpon>Teamverwaltung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teamverwaltung\TeamEdit.resx">
+      <DependentUpon>TeamEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\AppendNewSponsors.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AppendNewSponsors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\ProjectDocumentEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectDocumentEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stammdaten\Stammdatenverwaltung.resx">
+      <DependentUpon>Stammdatenverwaltung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CallJobSearchPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CallJobSearchPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateDurringClosure.resx">
+      <DependentUpon>CreateDurringClosure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateReminderUnsuitable.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreateReminderUnsuitable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\Dialing.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Dialing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\CallJobEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CallJobEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\CreateProject.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreateProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DateTimePickerExt.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DateTimePickerExt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mitarbeiterstatistik.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Mitarbeiterstatistik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\ProjectCreatedView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectCreatedView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\ProjectTeamAssign.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectTeamAssign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\ProjectViewBase.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectViewBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\ProjectViewInfo.resx">
+      <DependentUpon>ProjectViewInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\CallJobGroupEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CallJobGroupEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateCallNotice.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreateCallNotice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateCallPossibleReminder.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreateCallPossibleReminder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateContactTypeReminder.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreateContactTypeReminder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateReminder.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreateReminder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateReminderQuestion.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CreateReminderQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CustomerInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\DurringInfoPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DurringInfoPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\HistorieInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>HistorieInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateContactTypeDurringReminder.resx">
+      <DependentUpon>CreateContactTypeDurringReminder.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateCallDurringNotice.resx">
+      <DependentUpon>CreateCallDurringNotice.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\InvoiceInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>InvoiceInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateReminderDurringQuestion.resx">
+      <DependentUpon>CreateReminderDurringQuestion.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\CreateReminderDurring.resx">
+      <DependentUpon>CreateReminderDurring.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\mwProjectInfoAdditiveInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>mwProjectInfoAdditiveInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\PhoneView.resx">
+      <DependentUpon>PhoneView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\mwProjectInfo.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>mwProjectInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\Projektanmeldung.resx">
+      <DependentUpon>Projektanmeldung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\SendFaxDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SendFaxDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\SponsorEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SponsorEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\SponsorInfo.resx">
+      <DependentUpon>SponsorInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\TelefonieMain.resx">
+      <DependentUpon>TelefonieMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\UserInfoPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UserInfoPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telefonie\Zeituebersicht.resx">
+      <DependentUpon>Zeituebersicht.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Projektverwaltung\Projektverwaltung.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Projektverwaltung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wiedervorlage\ReminderViewInfo.resx">
+      <DependentUpon>ReminderViewInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wiedervorlage\ReminderEdit.resx">
+      <DependentUpon>ReminderEdit.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wiedervorlage\Wiedervorlageverwaltung.resx">
+      <DependentUpon>Wiedervorlageverwaltung.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6b.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\testData.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Resources\794.ico" />
+    <None Include="Resources\document-print.png" />
+    <None Include="Resources\document-open.png" />
+    <None Include="Resources\document-print-preview.png" />
+    <Content Include="Resources\icon_PhoneLine.jpg" />
+    <None Include="Resources\UserEdit.png" />
+    <None Include="Resources\UserEdit.jpg" />
+    <None Include="Resources\ReminderStateCannCalled.ico" />
+    <None Include="Resources\ReminderStateInTime.ico" />
+    <None Include="Resources\ReminderStateOutOfTime.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)metaCall.WinForms.App\$(OutDir)$(TargetFileName)
+
+copy $(TargetName).pdb $(SolutionDir)metaCall.WinForms.App\$(OutDir)$(TargetName).pdb</PostBuildEvent>
+  </PropertyGroup>
+</Project>

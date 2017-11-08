@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="ReleaseNotes.xslt" type="text/xsl"?>
+<Application name="metaCall" 
+             LastChanged="$Modtime: 5.02.07 18:17 $"
+             xmlns="http://madanet.de/ReleaseNotes/" 
+             >
+  <Version VersionNumber="1.2.1.x" entwicklungsstand="Entwicklungsphase">
+    <Feature name="zuweisen von CallJobs zu einzelnen Mitarbeitern">
+      Ein CallJob soll einem Mitarbeiter zugeordnet werden können.
+      Dazu sollen in der Projektverwaltung in der Liste der Anrufaufträge im Kontextmenü alle Mitarbeiter
+      erscheinen. Durch Auswahl eines Mitarbeiters werden die markierten Anrufaufträge dem Mitarbeiter zugeordnet.
+      Die zugeordneten Anrufaufträge werden für den Mitarbeiter reserviert.
+      Scheidet ein Mitarbeiter aus, ist aufgrund der Teamzugehörigkeit nicht mehr für das Projekt freigegeben,
+      so werden die für Ihn reservierten Anrufe ebenfalls freigegeben, sofern sie noch nicht abtelefoniert sind.
+    </Feature>
+    <Feature name="in der CallJob-Statistik Benutzerbezogene Anrufe angezeigt werden" status="Testphase" implementedAt="15.11.2006">
+      Sind bei einem Projekt nicht alle Anrufgruppen auf einen Benutzer zugelassen,
+      so kann es sein, dass in der Projektstatistik mehr offene Anrufe erscheinen,
+      als in der Liste der Anrufgruppen angegeben ist.
+    </Feature>
+    <Feature name="Wiedervorlagen sollen bei den Agents erscheinen, auch wenn das Projekt bereits abgeschlossen ist" status="Testphase" implementedAt="16.11.2006">
+      Die Wiedervorlagen für abgeschlossene Projekte, erscheinen  momentan nicht bei den Agents zum telefonieren.
+      Damit keine "uralten" Wiedervorlagen aufkommen, werden die bestehenden Wiedervorlagen für die abgeschlossenen
+      Projekte einmalig auf beendet gesetzt.
+    </Feature>
+    <Feature name="Austragungsort umbenennen in Zusatzinfo" status="Testphase" implementedAt="14.11.2006" >
+      Das zus. Feld Austragungsort soll umbenannt werden in Zusatzinfo und enthält künftig weitere
+      Informationen. Dazu muss die Textlänge erweitert werden (4000 Zeichen) und
+      die Anzeige in der Telefoniemaske muss angepasst werden.
+    </Feature>
+    <Bug name="Projektanmeldung muss korrekt initialisiert werden" implementedAt="4.11.2006">
+      Nachdem eine Projektanmeldung erfolgt ist und ein Benutzer den bereich wechselt (Bsp. Projektverwaltung)
+      wird bei erneutem wechseln in Telefonie die Projektanmeldung nicht mehr korrekt initialisiert.
+      Der Benutzer hat keine Möglichkeit mehr sich von dem Projekt abzumelden oder das Projekt zu wechseln.
+    </Bug>
+  </Version>
+  <Version VersionNumber="1.2.0.x" entwicklungsstand="Releasephase">
+    <Feature name="Erweiterung der Anrufstatistiken" status="Releasephase" implementedAt="3.11.2006">
+      In den Anrufstatisiken soll der zweite Zahl abgeändert werden.
+      Es soll angezeigt werden wieviele Anrufe noch durchzuführen sind. Dies beinhaltet
+      auch Anrufe deren Status auf 'Weiterer Anruf' gesetzt ist, und deren Anrufzähler noch nicht den
+      Wert des Projekt-Anrufzähler erreicht hat. Wiedervorlagenanrufe werden nicht mitgezählt.
+    </Feature>
+    <Bug name="Anzeige der Projektstatistik muss in Intervallen aktualisiert werden" implementedAt="2.11.2006">
+      In der Telefoniemaske müssen dei Projektstatistiken aktualisiert werden.
+      Momentan werden die Werte in der Liste nicht aktuell gehalten.
+    </Bug>
+    <Feature name="zus. Branche 'Branche unbekannt'" implementedAt="2.11.2006" status="Releasephase">
+      In die Liste der Branchen und Branchengruppen in der Telefoniemaske soll die Möglichkeit aufgenommen werden,
+      eine unbekannte Branche zu wählen. Der entsprechende Listeneintrag soll am Ende der Liste erscheinen.
+      In der Liste soll weiterhin kein Defaultwert gesetzt sein, damit die Agents einen Eintrag wählen müssen.
+    </Feature>
+    <Feature name="Hinweis bei unvollständigen Sponsorinformationen wenn ein Auftrag zustande kommt" implementedAt="31.10.2006" status="Releasephase">
+      Wird über die Telefoniemaske ein Auftrag erstellt, so soll eine Überprüfung der Vollständigkeit
+      der Sponsoreninformationen erfolgen. Fehlen erforderliche Informationen, so muss der Agent darauf hingewiesen werden.
+      Der Dialog zum bearbeiten soll automatisch auf dem Bildschirm erscheinen.
+      Nach Eingabe der Stückzahl soll die Überprüfung der Adresse stattfinden
+      und bei Unvollständigkeit die Sponsorenmaske aufgehen.
+    </Feature>
+    <Feature name="erweiterte Informationen bei Vorjahressponsoren" implementedAt="2.11.2006" status="Releasephase">
+      Bei Sponsoren, die bereits bei einem Projekt tätig waren, sollen weitere Informationen in der Auftragshistorie angezeigt werden.
+      Die Informationen sollen entsprechend der Projekt-Adressenpoolliste in metware ergänzt werden
+    </Feature>
+    <Bug name="Menüauswahl funktioniert nicht mehr nach Neuanmeldung / Aktuelle Auswahl wird nicht gespeichert" implementedAt="31.10.2006">
+      Meldet sich ein Benutzer von der Anwendung ab und wieder , so muss er zunächst ein anderes Menü wählen, um wieder in das
+      ursprüngliche Fenster zu wechseln. Steht dem Benutzer kein weiteres Menü zur Verfügung, so kann er nur die Anwendung neu starten.
+      &lt;br&gt;
+      Die aktuelle Menüauswahl wird nicht gespeichert, wenn sich ein Benutzer abmeldet.
+      Diese muss neu initialisiert werden wenn sich ein Benutzer anmeldet.
+      &lt;br&gt;
+      Wurde behoben indem bei erneutem Klick auf den Menüpunkt das Modul neu angezeigt wird, sofern es nicht bereits
+      angezeigt wird.
+    </Bug>
+    <Feature name="Neue Kontaktart 'Adresse nicht geeignet'" status="Entwicklungsphase">
+      Es soll eine neue Kontaktart "Adresse nicht geeignet" hinzugefügt werden.
+      Wird diese Kontaktart ausgewählt, so muss ein Grund angegeben werden.
+      Die Auswahl hierfür soll von der Administration bereitgestellt werden können.
+      Beispiele hierfür sind: &lt;br&gt;
+      Spricht kein deutsch &lt;br&gt;
+      Kirchliche Organisation &lt;br&gt;
+      Anrufe die mit der Kontaktart "Adresse nicht geeignet" gespeichert werden, erhalten einen neuen Status
+      (CallJobState) -> "Adresse nicht geeignet" und werden nicht weiter telefoniert.
+    </Feature>
+    <Feature name="Zweitanruf bei Gespräch möglich" status="Releasephase" implementedAt="31.10.2006">
+      Nachdem der Agent bei einem Anruf die Option Gespräch möglich mit Angabe des Grundes
+      gewählt hat, soll über eine weitere Option abgefragt werden, ob ein Zweitanruf
+      gewünscht ist. Ist diese Option gewählt wird der Anrufauftrag in die Anrufgruppe
+      "Zweitanruf" verschoben. Diese Gruppe wird automatisch bei Projektübernahme erstellt.
+      Bereits vorhandene Projekte erhalten bei der Implementierung des Features die Anrufgruppe.
+    </Feature>
+    <Feature name="eindeutige Anzeige der Auswahl bei Wiedervorlagen" status="Releasephase" implementedAt="30.10.2006">
+      In dem Auswahl-Element für neue Wiedervorlagen (Zeitvorgabe) soll eindeutig gekennzeichnet werden
+      was vom Benutzer ausgewählt wurde.
+    </Feature>
+    <Feature name="Automatische Abmeldung nach x Minuten inaktiver Zeit" status="Releasephase" implementedAt="25.10.2006">
+      Sobald sich ein Agent anmeldet, wird eine Zeitüberprüfung für die durchgeführten
+      Aktivitäten gestartet. Findet nach x Minuten keine Aktivität statt, so wird ein Dialogfeld eingeblendet,
+      welches vom Benutzer innerhalb von 20 sec quittiert werden muss. Wird das Dialogfeld nicht quittiert,
+      so beendet sich die metacall-Anwendung selbsttätig.
+      Befindet sich die Anwendung im Pause-Zustand ist die "Automatische Abmeldung" deaktiviert.
+      Die Automatische Abmeldung wird nicht aktiv, wenn der angemeldete Benutzer Mitglied einer adminitrativen Anwendungsrolle
+      (Administrator oder Centeradministrator ) ist.
+    </Feature>
+    <Feature name="Arbeitszeiten / Projektzeiten nach metaware übertragen"  implementedAt="25.10.2006" status="Releasephase">
+      Die Projektzeiten aus metacall sollen nach metaware zur Abrechnung übertragen werden.
+      Hierbei wird die "normale Vorgehensweise" aus metaware übernommen.
+      Zunächst gilt die Projektan-/abmeldung als Projektzeit. Wird während des Telefonierens ein
+      Anruf aus einem anderen Projekt gezogen (Wiedervorlage), so wird die Projektanmeldung
+      auf das andere Projekt umgeleitet und die anfallende Zeit entsprechend auf das andere Projekt
+      geschrieben. Hierdurch entstehen evtl. mehr allerdings auch genauere Abrechnungsdaten in metaware.
+      Die MIS-Auswertungen sollten durch diese Erweiterung nicht beeinflusst werden udn wie gewohnt weiterarbeiten.
+      Ab dem Zeitpunkt ab dem dieses Feature umgesetzt ist, können die Agents Ihre Arbeitszeiten für die
+      jeweiligen Projekte nicht mehr in metaware im Centerassistenten einpflegen, da hier ein Mechanismus greift, der
+      sich überschneidende Zeiten verhindert. Müssen Schulungen, Krankheit oder Urlaub eingetragen werden, so wird dies
+      zentral vom Centeradministrator durchgeführt.
+    </Feature>
+  </Version>
+  <Version VersionNumber="1.1.7.x" entwicklungsstand="Releasephase">
+    <Feature name="Alphabetische Sortierung der Projektliste in der Projektverwaltung" status="Releasephase" implementedAt="24.10.2006">
+      Die Liste der Projekte wird innerhalb der Projektstati alphabetisch sortiert.
+    </Feature>
+    <Feature name="Anzeige Calljob-Anzahl in Projektverwaltung" status="Releasephase" implementedAt="23.10.2006">
+      In der Übersicht der Projektverwaltung wird die Bezeichnung des Projekts um die Anzeige der Gesamten und noch nicht telefonierten CallJobs erweitert.
+      Bsp.: Projekt XY (250/26)
+      Beim Projekt XY wurden insgesamt 250 Anrufe übernommen. Davon sind  26 Sponsoren noch nie angerufen worden.
+    </Feature>
+    <Feature name="Anzeige CallJob-Anzahl in Projektanmeldung" status="Releasephase" implementedAt="23.10.2006">
+      In der Maske Projektanmeldung werden die Bezeichnungen für Projekt und Anrufgruppen dahingehend erweitert, dass die
+      Anzahl der gesamten und der noch nie telefonierten Anrufe in Klammern hinter der bestehenden Bezeichnung angezeigt wird.
+    </Feature>
+    <Feature name="Erweiterung der Projektdaten um Zusatzinformationen (Austragungsort)" status="Releasephase" implementedAt="23.10.2006" >
+      Die Projektdaten sollen in metaCall um den Austragungsort erweitert werden. Dieses Feld kann in der Projektverwaltung
+      mit beliebigem Text (max 250 Zeichen) gefüllt werden und wird in der Projektübersicht in der Telefoniemaske mit angezeigt.
+      <![CDATA[<br>]]>
+      Zu einem späteren Zeitpunkt soll diese Information aus Vereinsmanagement oder metaware stammen.
+    </Feature>
+    <Feature name="weitere Adressen aus dem metawareAdressen-Pool für ein Projekt übernehmen" status="Releasephase" implementedAt="20.10.2006">
+      Für ein Projekt sollen weitere Adressen aus dem Adressenpool von metaware übernommen werden.
+      Vorraussetzung hierfür ist, dass die Adressen in metaware entsprechend vorbereitet wurden.
+      In der Projektverwaltung wird in der Strukturansicht ein neuer Befehl "Adressen hinzufügen" in das Kontextmenü integriert.
+      Beim klicken der Befehlsschaltfläche öffnet sich ein Dialog, der für die neu zu erstellenden Anrufaufträge
+      das Start und Ende-Dateum vom Benutzer abfragt. Nach klick auf die Befehlsschaltfläche "OK" werden für das gewählte
+      Projekt alle neuen Adressen aus metaware ausgelesen und dem Projekt hinzugefügt. Es werden alle Adressen analysiert und eine
+      zugehörige Anrufgruppe ermittelt. Im Anschluss werden für die neuen Adressen Anrufaufträge in metaCall erstellt.
+    </Feature>
+    <Feature name="Parallelisieren der Projekt-/Adressübernahme aus metaware" implementedAt="20.10.2006" status="Releasephase">
+      Es soll möglich sein, mehrere Projekte und Adressen paralell aus metaware zu übernehmen.
+      Hierzu wird die Ausführung der Adressübernahme asynchron durchgeführt. Der Fortschritt der
+      Adressübernahme wird durch einen Fortschrittsbalken in der Strukturansicht dargestellt.
+      Dieser Balken wird für die unterschiedlichen Schritte anders eingefärbt.
+      &lt;br&gt;&lt;br&gt;
+      Grau = Speichern der Adressen;
+      &lt;br&gt;
+      Gelb = Analysieren der Adressen für die Anrufgruppen;
+      &lt;br&gt;
+      Grün = Erstellung der Anrufaufträge in metaCall;
+      &lt;br&gt;&lt;br&gt;
+      Die Projektverwaltung kann erst verlassen werden, wenn alle asynchronen Aufgaben beendet wurden.
+    </Feature>
+    <Feature name="Anrufliste um weitere Spalten ergänzen" implementedAt="16.10.2006" status="Releasephase">
+      Die Anrufliste in der Projektverwaltung soll nach Benutzereingabe um weitere Spalten ergänzt werden können.
+      Hierzu wird beim Rechtsklick auf die Spaltenüberschriften ein Kontextmenü eingeblendet, welches die
+      möglichen Spalten beinhaltet. Durch anklicken einzelner Bezeichnungen wird die Spalte ein-/ausgeblendet.
+      Eingeblendete Spalten werden durch ein Häckchen markiert.
+    </Feature>
+    <Feature name="zuordnen diverser Anrufe zu einem Team/Agent" implementedAt="16.10.2006" status="Releasephase">
+      Es sollen mehrere Anrufe markiert und über das Kontextmenü einem Team oder einem einzelnen Agent zugeordnet werden können.
+      <![CDATA[<br>]]>
+      <![CDATA[<i>]]> !!! Es wurde festgelegt, dass diese funktionalität über manuelle Anrufgruppen z.T bereits verfügbar ist !!!<![CDATA[</i><br/>]]>
+      Lediglich die markierung mehrerer Anrufe und die zuordnung zu einer Anrufgruppe ist z.Z. nicht möglich und soll implementiert werden.
+    </Feature>
+    <Feature name="Branchengruppen einführen" status="Releasephase">
+      Jeder Branche soll eine Branchengruppe als übergeordnetes Element zugeordnet werden. Einer Branchengruppe sind wiederum ein oder
+      mehrere Zeitenabschnitte zugeordnet. Die Zeitabschnitte dienen in metaCall als Vorschlag, wann diese Sponsoren telefoniert werden.
+      <![CDATA[<br>]]>
+      Zur Ermittlung des nächsten Anruf's werden die Anrufzeiten zusammen mit dem Anrufzähler bewertet.
+      Liegt ein Anruf aufgrund seines Zeitfensters an, so hat dieser Vorrang vor einem Anruf mit gleichen oder
+      niedrigerem Anrufzähler.
+      Anrufe mit Zeitfenster werden nach Dauer, bis das Zeitfenster abläuft bewertet.
+      <![CDATA[<br>]]>
+      Die Pflege der Branchengruppen und den zugehörigen Anrufzeiten wird in metaware umgesetzt.
+    </Feature>
+    <Bug name="Anzeige der Pakete korrigieren" implementedAt="12.10.2006">
+      Die Anzeige der Pakete die der Sponsor bereits geordert hat muss mit dem Stückzahlfaktor verrechnet werden.
+    </Bug>
+    <Feature name="Filterung / Sortierung von Anrufen in der Projektverwaltung" status="Releasephase">
+      In der Anrufliste soll nach den eingeblendeten Spalten sortiert und gefiltert werden können.
+      Die Sortierung ist bereits möglich
+      <![CDATA[<br>]]>
+      Die Filterung wird über einzelnes Filterfeld erreicht, in welches der Benutzer einen Filter-Begriff eingeben kann.
+      In allen angezeigten Spalten wird nach diesem Begriff gesucht, wobei auch Teilbegriffe gefunden werden.
+    </Feature>
+  </Version>
+  <Version VersionNumber="1.1.6.x" entwicklungsstand="Releasephase">
+    <Bug name="gelöschten Benutzer wieder neu erstellen" implementedAt="05.10.2006">
+      Wenn über den Dialog "Benutzer/Neu" ein metaware-benutzer gewählt wird, der bereits angelegt war und gelöscht wurde,
+      so trat ein Fehler auf.
+    </Bug>
+    <Bug name="Benutzer mit Teamleiterfunktion aktualisieren" implementedAt="05.10.2006">
+      Wenn ein Benutzer, der gleichzeitig Teamleiter ist aktualisiert wurde, trat ein Fehler auf.
+    </Bug>
+    <Feature name="About-Dialog" status="Releasephase" implementedAt="10.10.2006">
+      Hinzufügen eines Dialogfeldes (zu erreichen über "?" im Hauptmenü) um dem Benutzer die aktuelle
+      Version und weitere Statusinformationen anzuzeigen.
+    </Feature>
+    <Feature name="Auswertung der Agent-Arbeitszeiten" status="Releasephase" implementedAt="12.10.2006">
+      Eine Auswertung soll aufzeigen welcher Agent wie lange gearbeitet hat.
+      Die genauere Spezifikation wird noch geliefert.
+    </Feature>
+    <Feature name="Projektstatus auf abgeschlossen setzen" status="Releasephase" implementedAt="12.10.2006">
+      Der Projektstatus soll für Projekte, die für die Telefonie freigegeben sind auf den Status "abgeschlossen" gesetzt werden können.
+      Hierzu wird in der Projektverwaltung für die Strukturansicht der Projekte ein Kontextmenü implementiert.
+      Das Kontextmenü öffnet sich wenn mit der rechten Maustaste auf ein Projekt mit Status "Für Telefonie freigegeben" geklickt wird".
+    </Feature>
+  </Version>
+  <Version VersionNumber="1.1.5.x" entwicklungsstand="Releasephase">
+    <Comment>
+      Diese Version wurde mit Version 1.1.6.x in der Testumgebung eingespielt.
+    </Comment>
+    <Feature name="Wählen über CAP-Server" implementedAt="04.10.2006" status="Releasephase">
+      Ermöglich das wählen über einen CAP-Server
+    </Feature>
+    <Feature name="entgegennehmen und speichern der Information 'Bankeinzugsermächtigung  vorhanden'" implementedAt="04.10.2006" status="Releasephase">
+      Über die Telefonie-Oberfläche soll es bei der Kontaktart "Gespräch möglich" / Teilnahme -> Ja
+      ein Häckchen mit Namen Bankeinzugsermächtigung vorhanden zu setzen.
+      Hierbei müssen die Bankdaten ausgefüllt werden. Die ermittelten Informationen werden in
+      der Datenbank gespeichert und können in metware zur weiteren Auftragsbearbeitung herangezogen werden.
+    </Feature>
+  </Version>
+  <!--Offene Punkte-->
+  <OpenIssues>
+    <Feature name="Punkte die in der Testphase festgestellt wurden.">
+        - Bei einem erfolgreichen Call --> Auftrag muss man das Zahlungsziel eingeben können. --> Herr Hinterkörner klärt ab ob überhaupt erwünscht.
+      </Feature>
+    <Feature name="Punkte die in der Testphase festgestellt wurden.">
+      - Fax-Nummer muss auf Sonderzeichen überprüft werden - oder /, diese dürfen nicht "mit"-gefaxt werden.
+    </Feature>
+    <Feature name="Punkte die in der Testphase festgestellt wurden.">
+      - Unterschrift erscheint Pixelig, bzw. punktiert. --> Vorlage ist nicht in Ordnung. Vorlage wie bei Hr. Hinterkörner kommt Ausdruck i.O.
+    </Feature>
+    <Feature name="Punkte die in der Testphase festgestellt wurden.">
+      - Wenn ein User gelöscht wurde, DELETE-Flag gesetzt, kann man ihn nicht mehr reaktivieren da er nirgends erscheint.
+    </Feature>
+    <Feature name="Punkte die in der Testphase festgestellt wurden.">
+      - Wenn in Faxvorlage nach der Unterschrift keine Größenparameter angegeben sind erscheint Fehlermeldung aber keine Meldung das diese Info fehlt, bzw. mit Orginalgrösse weitermachen.
+    </Feature>    
+    <Feature name="Agents sollen in Telefonieoberfläche die Möglichkeit haben in Adressen zu suchen." >
+      Dieses Feature soll für Agents freigeschaltet werden könne (Userprofile)&lt;br&gt;
+      Rückrufliste -> existiert nocht nicht.&lt;br&gt;
+      Wiedervorlagenliste -> bezogen auf den Agent &lt;br&gt;
+      alle Sponsoren -> bezogen auf die aktuelle Projektanmeldung&lt;br&gt;
+    </Feature>
+    <Feature name="Beim Teamwechsel eines Users keine Projektzuordnung">
+      Wenn ein User von einem Team zum nächsten geht muss er für alle Projekte die dieses Team hat deaktiviert sein.
+      Jedes Projekt muss für diesen User explizit freigeschaltet werden.
+    </Feature>
+    <Feature name="Fehlermeldung beim Teamwechsel eines Users">
+      laut Frau Müller erscheint beim Teamwechsel eines Users eine Fehlermeldung. Der Wechsel erfolgt aber trotzdem.
+    </Feature>
+  </OpenIssues>
+</Application>

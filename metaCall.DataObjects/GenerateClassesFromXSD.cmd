@@ -1,0 +1,1 @@
+xsd /c /enableDataBinding /namespace:metatop.Applications.metaCall.DataObjects DataObjects.xsd Guid.xsd ReportingObjects.xsd

@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobResultMessage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>CallJobResultMessage.Extension.cs</FileName>
+      <HashCode>AAAAQAACAAAAAAAAgAAAABAIgAAAAAIAAAAAAAAAACA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ContactPerson" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>ContactPerson.Extensions.cs</FileName>
+      <HashCode>AAACEAACIAAAAABAAAAAAAAAgAAAAAQAAAAQAgAYAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Customer">
+    <Position X="7.5" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Customer.Extensions.cs</FileName>
+      <HashCode>AAAAEAAAAAAAAAAAAAAQAAAAAAAAAACAEAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.User" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAACAAACAAAAABRBAIAAAQkAgAQAAAAEBUAAAwAIAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.UserInfo">
+    <Position X="6.5" Y="11.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAACAAACAAAAAABAAAAAAAgAgAAAAAAEBQAAAgAIAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.SecurityGroup" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEAAEAACAAACAAAAAIAAAAQAgAAAAAAAAAAAAAAAQAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.UserProfile" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACIAAAAAAABAAAAAAAgAAAAAAAAAAAQAAAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.WorkTimeItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEgRAAACQCgCAAAAAAAAAAACwAAAAAgAIAAAIAAAgAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Center" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>EAAAAAACQAAABAAAAAAAAAAAgAABAAAAAAAEQAIAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Team" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAgAAAACAAAAAQAAQAAAgAECgAAABACAAAAAQAAIARA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.TeamInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAAQAAAAAAgAACgAAABAAAAAAAQAAAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.TeamMitglied">
+    <Position X="6.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>EAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.AssignedProject">
+    <Position X="3.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>ACAgAAQAAAAAAAAAEAAAAAAAAAIAAACAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Project" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAEAAAACCCAAACIQAIAAAQAAhEAAIggBAAAAQAAiEFA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ProjectInfo">
+    <Position X="3.5" Y="10.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAAAIAAAAAAAAAhABAAAAAACAAQAAAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ProjectLogOnTimeItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEABAgACQCgCIAAAAAAACAgAgAAAAAgAIACAJAAAgAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Sponsor">
+    <Position X="10" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAEAEAAAAAAAAAAhAAAAAAIAAAAAgAEAAAAACAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.mwProjekt_SponsorPacket" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAAQAEAAAAAAAAgAAQAAAAAAAAQAAAgBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ThankingsFormsProject" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAgAAAAACAAQAChAEIAmAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.AddressBase">
+    <Position X="8.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>QAGCUAACJAAEAARABgASBAAAnIIAAAQwAggUggAaAAk=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJob" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAEBSAACCCAAEQAQEAAACAAAgAAACAgAEAgABEACIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobActivityTimeItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEAFAAACQCgKAgAAAAAAAIAAgAAAAAgAIAAAoAAAgAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobReminder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAABAEQCACAABAAAgAAQCFACwCIgAAgCEAAABCASIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobSponsoringOrder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAEAAACAAAAAAAAAAAAAAAAgAAAAAAAAAQIgAoAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobSponsoringCancellation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAIEAAACAAAQAQIAAAAAAAAIgAAAAAAABAAAwAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobSponsoringCancellationReason" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAACAAACAAAgAQIAAAAAAAAAgAAAAAAEAAAAEAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobResult">
+    <Position X="2.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>QAAFAAECQDAAAAQAAAEAQAGAgAAAIAgAIISAgAAAiAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobPossibleResult">
+    <Position X="3" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AQIAAAAAAAAAIAAAAAAAAAAAAEAAIAEAAABAAAAAAIE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ContactType" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEAAEAACAAAAEAAAAAAAAAAAgACAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ContactTypesParticipation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEgAEAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ContactTypesParticipationCancellation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEAAEAACAAAAAAAAAAAAACAAgAAAAAAAEAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.mwVerein" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAAAAAAgAAAAAAgAAAAAAAAAAQQAAAABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Call">
+    <Position X="0.5" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAEFAAECACAAEAAAAAAASAEAwAAAAggAAAgAhAAqAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ReminderCall">
+    <Position X="0.5" Y="15" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ReminderCallRequestMessage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAIBAAACAAAAEAAAAAAACQAAwAQACAgAAAAABAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.mwCenter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAAAAAAAQAAAQAAgABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.mwProject" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACBAABAEEACACACAEAgAMAAAAAAAAEQAACIBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.mwUser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>EAACAAACQAAAAABAAAEAAQAAoACAAAQAAAAAAgAIAEA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.AddressReleaseInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAEASAACAAAAASAAAAAACAAAhAAAAAAAAAgABkACBAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Branch" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAAAAAAAABAAAAoAAAAAAAAAAAQACEABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallRequestMessage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAgACAIAAAAAICAAECAAAgAAAAAAAAAAABAgAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobReminderResult">
+    <Position X="0.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.mwProjekt_ProjektOrderHistorie" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAGAQAgCAAAAAAAAAACAAAAAgAEQAAAAAAgAAAAAACE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.mwProjekt_SponsorOrderHistorie" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AACAAAAiACIAAAAAAICAAAAAgAEQCAAAQAAECAAAACE=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="metatop.Applications.metaCall.DataObjects.ProjectState" Collapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAAAAAQAAAAAAAgAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="metatop.Applications.metaCall.DataObjects.DialMode" Collapsed="true">
+    <Position X="21.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAgAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="metatop.Applications.metaCall.DataObjects.CallJobState" Collapsed="true">
+    <Position X="19.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>EAAAAAAAMCAAAAAAAAAggAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="metatop.Applications.metaCall.DataObjects.CallJobReminderTracking" Collapsed="true">
+    <Position X="16.25" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAQAAAAIAQAAAAAAAAAAAAAIAAAABAAAAAAAIAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="metatop.Applications.metaCall.DataObjects.CallJobReminderState" Collapsed="true">
+    <Position X="14.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="metatop.Applications.metaCall.DataObjects.CallJobReminderMode" Collapsed="true">
+    <Position X="12.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="metatop.Applications.metaCall.DataObjects.CallJobResultCategory" Collapsed="true">
+    <Position X="18" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAQAAAAAIAAAAgAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="metatop.Applications.metaCall.DataObjects.ProjectSponsorAssignState" Collapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAAAEAAAIAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

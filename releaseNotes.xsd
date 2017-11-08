@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://madanet.de/ReleaseNotes/" elementFormDefault="qualified" xmlns="http://madanet.de/ReleaseNotes/" xmlns:rn="http://madanet.de/ReleaseNotes/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:html="http://www.w3.org/1999/xhtml" version="1.0">
+  <xs:simpleType name="VersionNumber">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9].[0-9].[0-9].x" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VersionsStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Entwicklungsphase" />
+      <xs:enumeration value="Testphase" />
+      <xs:enumeration value="Releasephase" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Application">
+    <xs:complexType>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="Version" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Comment" type="xs:string" minOccurs="0" maxOccurs="1"/>
+              <xs:choice minOccurs="1" maxOccurs="unbounded">
+                <xs:element ref="Feature" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="Bug" minOccurs="0" maxOccurs="unbounded" />
+              </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="VersionNumber" type="VersionNumber" use="required" />
+            <xs:attribute name="entwicklungsstand" type="VersionsStatus" use="optional" default="Entwicklungsphase" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OpenIssues" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="Feature" minOccurs="0" />
+              <xs:element ref="Bug" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>        
+      </xs:sequence>
+      <xs:attribute name="name" use="required" />
+      <xs:attribute name="LastChanged" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Feature" type="Feature" />
+  <xs:element name="Bug" type="Bug" />
+  <xs:complexType name="Feature" mixed="true">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute name="implementedAt" type="xs:string" use="optional" />
+        <xs:attribute name="status" type="VersionsStatus" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="Bug">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute name="implementedAt" type="xs:string" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0C6CC9AD-A3C7-4EE1-A457-C2BC5C21CA4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MetaCall.AutoBuild</RootNamespace>
+    <AssemblyName>MetaCall.AutoBuild</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\AutoBuild\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Content Include="..\metaCall.3rdParty\ExceptionHandling.dll">
+      <Link>ExceptionHandling.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\MaDaNet.Common.AppFrameWork.dll">
+      <Link>MaDaNet.Common.AppFrameWork.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Exchange.WebServices.dll">
+      <Link>Microsoft.Exchange.WebServices.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Exchange.WebServices.xml">
+      <Link>Microsoft.Exchange.WebServices.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Office.Interop.Word.dll">
+      <Link>Microsoft.Office.Interop.Word.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.Common.dll">
+      <Link>Microsoft.Practices.EnterpriseLibrary.Common.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.Data.dll">
+      <Link>Microsoft.Practices.EnterpriseLibrary.Data.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll">
+      <Link>Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll">
+      <Link>Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll">
+      <Link>Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.Logging.dll">
+      <Link>Microsoft.Practices.EnterpriseLibrary.Logging.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Practices.ObjectBuilder.dll">
+      <Link>Microsoft.Practices.ObjectBuilder.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\OFFICE.DLL">
+      <Link>OFFICE.DLL</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Tapi2Lib.dll">
+      <Link>Tapi2Lib.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.Auswertungen\bin\Release\metaCall.Auswertungen.dll">
+      <Link>metaCall.Auswertungen.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.BusinessLayer\bin\Release\metaCall.BusinessLayer.dll">
+      <Link>metaCall.BusinessLayer.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.DataLayer\bin\Release\metaCall.DataAccessLayer.dll">
+      <Link>metaCall.DataAccessLayer.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.DataObjects\bin\Release\metaCall.DataObjects.dll">
+      <Link>metaCall.DataObjects.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.ServiceAccessLayer\bin\Release\metaCall.ServiceAccessLayer.dll">
+      <Link>metaCall.ServiceAccessLayer.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.WinForms.App\bin\Release\metaCall.Application.exe">
+      <Link>metaCall.Application.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.WinForms.Modules\bin\Release\metaCall.Modules.dll">
+      <Link>metaCall.Modules.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\metaCall.Auswertungen\CallJobActivities.rpt">
+      <Link>CallJobActivities.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CallJobActivities.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\metaCall.WinForms.App\bin\Release\metaCall.Application.exe.config">
+      <Link>metaCall.Application.exe.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.WinForms.App\bin\Release\metacallConnection.config">
+      <Link>metacallConnection.config</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\releaseNotes.xsd">
+      <Link>releaseNotes.xsd</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="..\releaseNotes.xsx">
+      <Link>releaseNotes.xsx</Link>
+      <DependentUpon>releaseNotes.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>del *.AutoBuild.*</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\metaCall.3rdParty\Interop.Microsoft.Office.Core.dll">
+      <Link>Interop.Microsoft.Office.Core.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.3rdParty\Microsoft.Vbe.Interop.dll">
+      <Link>Microsoft.Vbe.Interop.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.Auswertungen\bin\Release\metaCall.Auswertungen.pdb">
+      <Link>metaCall.Auswertungen.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.BusinessLayer\bin\Release\metaCall.BusinessLayer.pdb">
+      <Link>metaCall.BusinessLayer.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.DataLayer\bin\Release\metaCall.DataAccessLayer.pdb">
+      <Link>metaCall.DataAccessLayer.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.DataObjects\bin\Release\metaCall.DataObjects.pdb">
+      <Link>metaCall.DataObjects.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.ServiceAccessLayer\bin\Release\metaCall.ServiceAccessLayer.pdb">
+      <Link>metaCall.ServiceAccessLayer.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.Winforms.App\bin\Release\metaCall.Application.pdb">
+      <Link>metaCall.Application.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.WinForms.Common\bin\Release\metaCall.WinForms.Common.dll">
+      <Link>metaCall.WinForms.Common.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.WinForms.Common\bin\Release\metaCall.WinForms.Common.pdb">
+      <Link>metaCall.WinForms.Common.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.WinForms.Modules\bin\Release\metaCall.Modules.pdb">
+      <Link>metaCall.Modules.pdb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ReleaseNotes.xml">
+      <Link>ReleaseNotes.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\ReleaseNotes.xslt">
+      <Link>ReleaseNotes.xslt</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\metaCall.Auswertungen\Arbeitszeiten.rpt">
+      <Link>Arbeitszeiten.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Arbeitszeiten.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\metaCall.Auswertungen\Arbeitszeitübersicht.rpt">
+      <Link>Arbeitszeitübersicht.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Arbeitszeitübersicht.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.Auswertungen\ContactReport.rpt">
+      <Link>ContactReport.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ContactReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.Auswertungen\ProjectReport.rpt">
+      <Link>ProjectReport.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\metaCall.Auswertungen\SponsoringOrdersDistribution.rpt">
+      <Link>SponsoringOrdersDistribution.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SponsoringOrdersDistribution.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\metaCall.Auswertungen\ProjektReport02.rpt">
+      <Link>ProjektReport02.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjektReport02.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\metaCall.Auswertungen\ProjektReport02Sub.rpt">
+      <Link>ProjektReport02Sub.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjektReport02Sub.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\metaCall.Auswertungen\Arbeitszeiten.cs">
+      <Link>Arbeitszeiten.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Arbeitszeiten.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\metaCall.Auswertungen\Arbeitszeitübersicht.cs">
+      <Link>Arbeitszeitübersicht.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Arbeitszeitübersicht.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\metaCall.Auswertungen\CallJobActivities.cs">
+      <Link>CallJobActivities.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CallJobActivities.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\metaCall.Auswertungen\ContactReport.cs">
+      <Link>ContactReport.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\metaCall.Auswertungen\ProjectReport.cs">
+      <Link>ProjectReport.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\metaCall.Auswertungen\ProjektReport02.cs">
+      <Link>ProjektReport02.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjektReport02.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\metaCall.Auswertungen\ProjektReport02GeoZonen.cs">
+      <Link>ProjektReport02GeoZonen.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjektReport02GeoZonen.rpt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\metaCall.Auswertungen\ProjektReport02Sub.cs">
+      <Link>ProjektReport02Sub.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjektReport02Sub.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\metaCall.Auswertungen\SponsoringOrdersDistribution.cs">
+      <Link>SponsoringOrdersDistribution.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SponsoringOrdersDistribution.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\metaCall.Auswertungen\ProjektReport02GeoZonen.rpt">
+      <Link>ProjektReport02GeoZonen.rpt</Link>
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjektReport02GeoZonen.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+</Project>

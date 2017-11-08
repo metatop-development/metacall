@@ -1,0 +1,1227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataObjects" targetNamespace="http://metatop/Applications/metaCall/DataObjects/DataObjects.xsd" elementFormDefault="qualified" xmlns="http://metatop/Applications/metaCall/DataObjects/DataObjects.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:clr="http://microsoft.com/wsdl/types/" xmlns:NS="http://metatop/Applications/metaCall/DataObjects/DataObjects.xsd" version="1.0">
+  <xs:import schemaLocation="Guid.xsd" namespace="http://microsoft.com/wsdl/types/" />
+  <xs:complexType name="CountryPhoneNumber">
+    <xs:sequence>
+      <xs:element name="PhoneNumber" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="Land" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="CountryPhoneNumber" />
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element name="UserName" type="xs:string" />
+      <xs:element name="Vorname" type="xs:string" nillable="true" />
+      <xs:element name="Nachname" type="xs:string" />
+      <xs:element name="UserProfile" type="UserProfile" />
+      <xs:element name="Center" type="CenterInfo" />
+      <xs:element name="IsMetaWareUser" type="xs:boolean" />
+      <xs:element name="IsDeleted" type="xs:boolean" />
+      <xs:element name="SecurityGroups" type="SecurityGroup" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Teams" type="TeamAssignInfo" maxOccurs="unbounded" />
+      <xs:element name="mwUser" type="mwUser" />
+      <xs:element name="ReminderEditPermit" type="xs:boolean" />
+      <xs:element name="ProjectSearchPermit" type="xs:boolean" />
+      <xs:element name="WorkingTimeEditPermit" type="xs:boolean" />
+      <xs:element name="DialMode" type="DialMode" />
+      <xs:element name="Dunning" type="xs:boolean" />
+      <xs:element name="AnmeldungEmail" type="xs:string" />
+      <xs:element name="PasswordEmail" type="xs:string" />
+      <xs:element name="AdditionalInfo1" type="xs:string" />
+      <xs:element name="AdditionalInfo2" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="UserId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="User" type="User" />
+  <xs:complexType name="User_KeyData">
+    <xs:sequence>
+      <xs:element name="SumWorkTime" type="xs:double" />
+      <xs:element name="CountWorkDays" type="xs:int" />
+      <xs:element name="AverageTimePerWorkDay" type="xs:double" />
+      <xs:element name="CountOrders" type="xs:double" />
+      <xs:element name="SumPauseTime" type="xs:double" />
+      <xs:element name="SumPresentTime" type="xs:double" />
+      <xs:element name="SumSecondaryTime" type="xs:double" />
+      <xs:element name="SumTrainingTimeConfirmed" type="xs:double" />
+      <xs:element name="SumTrainingTimeNotConfirmed" type="xs:double" />
+      <xs:element name="SumHolidayIllness" type="xs:double" />
+      <xs:element name="SumPhoneTime" type="xs:double" />
+      <xs:element name="SumNumberOfCalls" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="User_KeyData" type="User_KeyData" />
+  <xs:complexType name="TrainingGrund">
+    <xs:sequence>
+      <xs:element name="TrainingGrundId" type="clr:guid" />
+      <xs:element name="TrainingGrundItem" type="xs:string" />
+      <xs:element name="Notice" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrainingGrund" type="TrainingGrund" />
+  <xs:complexType name="WorkDayList">
+    <xs:sequence>
+      <xs:element name="WorkDay" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkDayList" type="WorkDayList" />
+  <xs:complexType name="OrderHistory">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="xs:int" />
+      <xs:element name="OrderDate" type="xs:dateTime" />
+      <xs:element name="OrderCount" type="xs:double" />
+      <xs:element name="Sponsor" type="xs:string" />
+      <xs:element name="Customer" type="xs:string" />
+      <xs:element name="UserName" type="xs:string" />
+      <xs:element name="OrderState" type="xs:string" />
+      <xs:element name="Umsatz" type="xs:double" />
+      <xs:element name="SponsorOrder" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderHistory" type="OrderHistory" />
+  <xs:complexType name="ProjectCounts">
+    <xs:sequence>
+      <xs:element name="Projektnummer" type="xs:int" />
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="Projektjahr" type="xs:string" />
+      <xs:element name="Count" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectCounts" type="ProjectCounts" />
+  <xs:complexType name="ProjectOrders">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="xs:int" />
+      <xs:element name="OrderDate" type="xs:dateTime" />
+      <xs:element name="PaymentTarget" type="xs:date" nillable="true" />
+      <xs:element name="Sponsor" type="xs:string" />
+      <xs:element name="Count" type="xs:double" />
+      <xs:element name="State" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectOrders" type="ProjectOrders" />
+  <xs:complexType name="SalaryStatementNumbers">
+    <xs:sequence>
+      <xs:element name="SalaryStatementNumber" type="xs:int" />
+      <xs:element name="SalaryStatementDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SalaryStatementNumbers" type="SalaryStatementNumbers" />
+  <xs:complexType name="RecoveriesDetails">
+    <xs:sequence>
+      <xs:element name="InvoiceNumber" type="xs:int" />
+      <xs:element name="State" type="xs:string" />
+      <xs:element name="PaymentDate" type="xs:dateTime" nillable="true" />
+      <xs:element name="OrderDate" type="xs:dateTime" nillable="true" />
+      <xs:element name="Currency" type="xs:string" />
+      <xs:element name="Count" type="xs:double" />
+      <xs:element name="Value" type="xs:double" />
+      <xs:element name="Paid" type="xs:double" />
+      <xs:element name="Project" type="xs:string" />
+      <xs:element name="Sponsor" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecoveriesDetails" type="RecoveriesDetails" />
+  <xs:complexType name="RecoveriesSum">
+    <xs:sequence>
+      <xs:element name="AmountBrutto" type="xs:double" />
+      <xs:element name="Paid" type="xs:double" />
+      <xs:element name="Count" type="xs:double" />
+      <xs:element name="AmountBrutto_Canceled" type="xs:double" />
+      <xs:element name="Paid_Candeled" type="xs:double" />
+      <xs:element name="Count_Canceled" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecoveriesSum" type="RecoveriesSum" />
+  <xs:complexType name="UserInfo">
+    <xs:sequence>
+      <xs:element name="UserName" type="xs:string" />
+      <xs:element name="Vorname" type="xs:string" nillable="true" />
+      <xs:element name="Nachname" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="UserId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="UserInfo" type="UserInfo" />
+  <xs:complexType name="SecurityGroup">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string" />
+      <xs:element name="DisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="SecurityGroupId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="SecurityGroup" type="SecurityGroup" />
+  <xs:complexType name="UserProfile">
+    <xs:sequence>
+      <xs:element name="Bezeichnung" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="UserProfileId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="UserProfile" type="UserProfile" />
+  <xs:complexType name="WorkTimeItem">
+    <xs:sequence>
+      <xs:element name="User" type="UserInfo" />
+      <xs:element name="Start" type="xs:dateTime" />
+      <xs:element name="Stop" type="xs:dateTime" nillable="true" />
+      <xs:element name="Duration" type="xs:double" nillable="true" />
+      <xs:element name="WorkTimeItemType" type="xs:string" />
+      <xs:element name="StartActivityId" type="clr:guid" />
+      <xs:element name="StopActivityId" type="clr:guid" nillable="true" />
+    </xs:sequence>
+    <xs:attribute name="WorkTimeId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="WorkTimeItem" type="WorkTimeItem" />
+  <xs:complexType name="WorkTimes">
+    <xs:sequence>
+      <xs:element name="User" type="UserInfo" />
+      <xs:element name="WorkDate" type="xs:dateTime" />
+      <xs:element name="Start" type="xs:dateTime" nillable="true" />
+      <xs:element name="Stop" type="xs:dateTime" nillable="true" />
+      <xs:element name="Duration" type="xs:double" nillable="true" />
+      <xs:element name="UploadMetaWare" type="xs:boolean" />
+      <xs:element name="RowObject" type="xs:string" />
+      <xs:element name="RowDescription" type="xs:string" />
+      <xs:element name="WorkTimesId" type="clr:guid" nillable="true" />
+      <xs:element name="Notice" type="xs:string" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkTimes" type="WorkTimes" />
+  <xs:complexType name="WorkTimeAdditions">
+    <xs:sequence>
+      <xs:element name="User" type="UserInfo" />
+      <xs:element name="Start" type="xs:dateTime" nillable="true" />
+      <xs:element name="Stop" type="xs:dateTime" nillable="true" />
+      <xs:element name="Duration" type="xs:double" nillable="true" />
+      <xs:element name="Confirmed" type="xs:boolean" />
+      <xs:element name="WorkTimeAdditionItemType" type="clr:guid" />
+      <xs:element name="Notice" type="xs:string" nillable="true" />
+    </xs:sequence>
+    <xs:attribute name="WorkTimeAdditionId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="WorkTimeAdditions" type="WorkTimeAdditions" />
+  <xs:complexType name="WorkTimeAdditionItems">
+    <xs:sequence>
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="AllgemeineTaetigkeit" type="xs:boolean" />
+      <xs:element name="TaetigkeitArt" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute name="WorkTimeAdditionItemId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="WorkTimeAdditionItems" type="WorkTimeAdditionItems" />
+  <xs:complexType name="Center">
+    <xs:sequence>
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="mwCenter" type="mwCenter" />
+      <xs:element name="Administratoren" type="UserInfo" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="CenterId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="Center" type="Center" />
+  <xs:complexType name="Team">
+    <xs:sequence>
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="Beschreibung" type="xs:string" />
+      <!--
+        <xs:element minOccurs="0" maxOccurs="1" name="TeamLeiter" type="ArrayOfTeamMitglied" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Center" type="Center" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Projects" type="ArrayOfAssignedProject" />
+        -->
+      <xs:element name="TeamMitglieder" type="TeamMitglied" maxOccurs="unbounded" />
+      <xs:element name="Projects" type="ProjectInfo" minOccurs="0" maxOccurs="unbounded" />
+      <!--<xs:element name="ActiveProjects" type="AssignedProject" minOccurs="0" maxOccurs="unbounded"/>-->
+      <xs:element name="Center" type="CenterInfo" nillable="true" />
+      <xs:element name="IsDeleted" type="xs:boolean" />
+    </xs:sequence>
+    <xs:attribute name="TeamId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="Team" type="Team" />
+  <xs:complexType name="TeamInfo">
+    <xs:sequence>
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="Beschreibung" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="TeamId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="TeamInfo" type="TeamInfo" />
+  <xs:complexType name="TeamMitglied">
+    <xs:complexContent mixed="false">
+      <xs:extension base="UserInfo">
+        <xs:sequence>
+          <xs:element name="IsTeamLeiter" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TeamMitglied" type="TeamMitglied" />
+  <xs:complexType name="Project">
+    <xs:sequence>
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="mwProject" type="mwProject" />
+      <xs:element name="State" type="ProjectState" />
+      <xs:element name="isDeleted" type="xs:boolean" />
+      <xs:element name="IterationCounter" type="xs:int" />
+      <xs:element name="Sponsors" type="Sponsor" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Customer" type="Customer" />
+      <xs:element name="DialMode" type="DialMode" />
+      <xs:element name="Teams" type="TeamInfo" maxOccurs="unbounded" />
+      <xs:element name="CallJobGroups" type="CallJobGroup" maxOccurs="unbounded" />
+      <xs:element name="Language" type="xs:string" />
+      <xs:element name="Center" type="CenterInfo" />
+      <xs:element name="DialingPrefixNumber" type="xs:string" />
+      <xs:element name="Venue" type="xs:string" />
+      <xs:element name="ReminderDateMax" type="xs:dateTime" nillable="true" />
+      <xs:element name="AddressSafeActiv" type="xs:boolean" />
+      <xs:element name="BezeichnungRechnung" type="xs:string" />
+      <xs:element name="PraefixMailAttachment" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ProjectId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="Project" type="Project" />
+  <xs:complexType name="ProjectInfo">
+    <xs:sequence>
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="mwProjektNummer" type="xs:int" nillable="true" />
+      <xs:element name="IterationCounter" type="xs:int" />
+      <xs:element name="State" type="ProjectState" />
+      <xs:element name="DialMode" type="DialMode" />
+      <xs:element name="DialingPrefixNumber" type="xs:string" />
+      <xs:element name="Venue" type="xs:string" />
+      <xs:element name="CustomerAdressId" type="clr:guid" nillable="true" />
+      <xs:element name="ReminderDateMax" type="xs:dateTime" nillable="true" />
+      <xs:element name="BezeichnungRechnung" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ProjectId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="ProjectInfo" type="ProjectInfo" />
+  <xs:complexType name="CallJobStatistics">
+    <xs:sequence>
+      <xs:element name="Total" type="xs:int" />
+      <xs:element name="InWork" type="xs:int" />
+      <xs:element name="FirstCall" type="xs:int" />
+      <xs:element name="Waiting" type="xs:int" />
+      <xs:element name="Cancelled" type="xs:int" />
+      <xs:element name="Ordered" type="xs:int" />
+      <xs:element name="ReminderCallJob" type="xs:int" />
+      <xs:element name="FurtherCall" type="xs:int" />
+      <xs:element name="Unsuitable" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CallJobStatistics" type="CallJobStatistics" />
+  <xs:complexType name="ProjectLogOnTimeItem">
+    <xs:sequence>
+      <xs:element name="User" type="UserInfo" />
+      <xs:element name="Project" type="ProjectInfo" />
+      <xs:element name="Start" type="xs:dateTime" />
+      <xs:element name="Stop" type="xs:dateTime" nillable="true" />
+      <xs:element name="Duration" type="xs:double" nillable="true" />
+      <xs:element name="LogOnTimeItemType" type="xs:string" />
+      <xs:element name="StartActivityId" type="clr:guid" />
+      <xs:element name="StopActivityId" type="clr:guid" nillable="true" />
+      <xs:element name="UploadMetaWare" type="xs:byte" />
+    </xs:sequence>
+    <xs:attribute name="LogOnTimeId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="ProjectLogOnTimeItem" type="ProjectLogOnTimeItem" />
+  <xs:complexType name="Sponsor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AddressBase">
+        <xs:sequence>
+          <xs:element name="Branch" type="Branch" />
+          <xs:element name="BranchGroup" type="BranchGroup" />
+          <xs:element name="EinzugsermaechtigungAusgabe" type="xs:int" />
+          <xs:element name="Bank" type="xs:string" />
+          <xs:element name="AccountNumber" type="xs:string" />
+          <xs:element name="BankNumber" type="xs:string" />
+          <xs:element name="SponsorenUrkunde1" type="xs:string" />
+          <xs:element name="SponsorenUrkunde2" type="xs:string" />
+          <xs:element name="Additions" type="SponsorAdditions" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Sponsor" type="Sponsor" />
+  <xs:complexType name="mwProjekt_SponsorPacket">
+    <xs:sequence>
+      <xs:element name="ProjekteSponsorenpaketNummer" type="xs:int" />
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="BetragNetto" type="xs:decimal" />
+      <xs:element name="FaxText1_de" type="xs:string" />
+      <xs:element name="FaxText2_de" type="xs:string" />
+      <xs:element name="FaxText1_it" type="xs:string" />
+      <xs:element name="FaxText2_it" type="xs:string" />
+      <xs:element name="FaxText1_fr" type="xs:string" />
+      <xs:element name="FaxText2_fr" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mwProjekt_SponsorPacket" type="mwProjekt_SponsorPacket" />
+  <xs:complexType name="Customer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="AddressBase">
+        <xs:sequence>
+          <xs:element name="Vereinsnummer" type="xs:int" />
+          <xs:element name="Abteilung" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Customer" type="Customer" />
+  <xs:complexType name="ThankingsFormsProject">
+    <!--      
+    <xs:complexContent mixed="false">
+      <xs:extension base="Project">
+       -->
+    <xs:sequence>
+      <xs:element name="ID" type="xs:int" />
+      <xs:element name="BedankungsformDe" type="xs:string" />
+      <xs:element name="BedankungsformIt" type="xs:string" nillable="true" />
+      <xs:element name="BedankungsformFr" type="xs:string" nillable="true" />
+      <xs:element name="Projektnummer" type="xs:int" />
+    </xs:sequence>
+    <!--
+      </xs:extension>
+    </xs:complexContent>
+      -->
+  </xs:complexType>
+  <xs:element name="ThankingsFormsProject" type="ThankingsFormsProject" />
+  <xs:complexType name="AddressBase" abstract="true">
+    <xs:sequence>
+      <xs:element name="Anrede" type="xs:string" nillable="true" />
+      <xs:element name="Titel" type="xs:string" nillable="true" />
+      <xs:element name="Nachname" type="xs:string" />
+      <xs:element name="Vorname" type="xs:string" nillable="true" />
+      <xs:element name="Text1" type="xs:string" nillable="true" />
+      <xs:element name="Text2" type="xs:string" nillable="true" />
+      <xs:element name="Strasse" type="xs:string" nillable="true" />
+      <xs:element name="Land" type="xs:string" nillable="true" />
+      <xs:element name="PLZ" type="xs:string" nillable="true" />
+      <xs:element name="Ort" type="xs:string" nillable="true" />
+      <xs:element name="TelefonNummer" type="xs:string" nillable="true" />
+      <xs:element name="FaxNummer" type="xs:string" nillable="true" />
+      <xs:element name="MobilNummer" type="xs:string" nillable="true" />
+      <xs:element name="DateLastUsed" type="xs:dateTime" />
+      <xs:element name="DateCreated" type="xs:dateTime" />
+      <xs:element name="AdressenPoolNummer" type="xs:int" />
+      <xs:element name="ContactPerson" type="ContactPerson" />
+      <xs:element name="EMail" type="xs:string" />
+      <xs:element name="Zusatz" type="xs:string" />
+      <xs:element name="Webadresse" type="xs:string" />
+      <xs:element name="Telefon2" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="AddressId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="AddressBase" type="AddressBase" />
+  <xs:complexType name="CallJob" abstract="true">
+    <xs:sequence>
+      <xs:element name="Sponsor" type="Sponsor" />
+      <xs:element name="Project" type="ProjectInfo" />
+      <xs:element name="StartDate" type="xs:dateTime" />
+      <xs:element name="StopDate" type="xs:dateTime" />
+      <xs:element name="User" type="UserInfo" />
+      <xs:element name="Team" type="TeamInfo" />
+      <xs:element name="State" type="CallJobState" />
+      <xs:element name="IterationCounter" type="xs:int" />
+      <xs:element name="DialMode" type="DialMode" />
+      <xs:element name="CallJobGroup" type="CallJobGroupInfo" />
+      <xs:element name="AddressSafeActiv" type="xs:boolean" />
+    </xs:sequence>
+    <xs:attribute name="CallJobId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:complexType name="CallJobActivityTimeItem">
+    <xs:sequence>
+      <xs:element name="User" type="UserInfo" />
+      <xs:element name="CallJob" type="CallJob" />
+      <xs:element name="Start" type="xs:dateTime" />
+      <xs:element name="Stop" type="xs:dateTime" nillable="true" />
+      <xs:element name="Duration" type="xs:double" nillable="true" />
+      <xs:element name="ActivityTimeItemType" type="xs:string" />
+      <xs:element name="StartActivityId" type="clr:guid" />
+      <xs:element name="StopActivityId" type="clr:guid" nillable="true" />
+      <xs:element name="UploadMetaWare" type="xs:byte" />
+    </xs:sequence>
+    <xs:attribute name="ActivityTimeId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobActivityTimeItem" type="CallJobActivityTimeItem" />
+  <xs:complexType name="CallJobReminder">
+    <xs:sequence>
+      <xs:element name="Address" type="AddressBase" />
+      <xs:element name="Project" type="ProjectInfo" />
+      <xs:element name="User" type="UserInfo" />
+      <xs:element name="Team" type="TeamInfo" />
+      <xs:element name="ReminderDateStart" type="xs:dateTime" />
+      <xs:element name="ReminderDateStop" type="xs:dateTime" />
+      <xs:element name="ReminderTracking" type="CallJobReminderTracking">
+        <xs:annotation>
+          <xs:documentation>
+            Gibt an, ob der Reminder genau an dem Zeitpunkt, an dem Tag, in dieser Woche, etc auftreten soll
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReminderState" type="CallJobReminderState">
+        <xs:annotation>
+          <xs:documentation>Aktueller Status des Reminders</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReminderMode" type="CallJobReminderMode">
+        <xs:annotation>
+          <xs:documentation>
+            Gibt den Modus des Reminders an ..
+            0 = unterbricht das aktuelle Projekt
+            1 = wird nur aktiv, wenn das Aktuelle Projekt mit Projekt übereinstimmt
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CallJobResult" type="CallJobResultInfo" />
+      <xs:element name="DialMode" type="DialMode" />
+      <xs:element name="CallJob" type="CallJob" />
+    </xs:sequence>
+    <xs:attribute name="CallJobReminderId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobReminder" type="CallJobReminder" />
+  <xs:simpleType name="CallJobReminderTracking">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ExactDateAndTime" />
+      <xs:enumeration value="Day" />
+      <xs:enumeration value="Week" />
+      <xs:enumeration value="WeekDay" />
+      <xs:enumeration value="OnlyTimeSpan">
+        <xs:annotation>
+          <xs:documentation>
+            Gibt an, dass sich ReminderDateStart und ReminderDateStop auf eine Zeitspanne beziehen (Bsp. zwischen 14:00 und 17:00 Uhr anrufen)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DateAndTimeSpan">
+        <xs:annotation>
+          <xs:documentation>
+            Gibt an, dass sich ReminderDateStart und ReminderDateStop auf eine Zeitraum beziehen (Bsp. zwischen 03.08.2006 14:00 und 05.08.2006 17:00 Uhr anrufen)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CallJobReminderTracking" type="CallJobReminderTracking" />
+  <xs:simpleType name="CallJobReminderMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DisturbCurrentProject" />
+      <xs:enumeration value="DontDisturbCurrentProject" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CallJobReminderMode" type="CallJobReminderMode" />
+  <xs:simpleType name="UserTyp">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Center" />
+      <xs:enumeration value="Team" />
+      <xs:enumeration value="WithoutCenter" />
+      <xs:enumeration value="Deleted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UserTyp" type="UserTyp" />
+  <xs:simpleType name="CallJobReminderState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Open" />
+      <xs:enumeration value="Finished" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CallJobReminderState" type="CallJobReminderState" />
+  <xs:complexType name="CallJobSponsoringOrder">
+    <xs:sequence>
+      <xs:element name="CallJob" type="CallJob" />
+      <xs:element name="Auftragsnummer" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute name="CallJobSponsoringOrderId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobSponsoringOrder" type="CallJobSponsoringOrder" />
+  <xs:complexType name="CallJobSponsoringCancellation">
+    <xs:sequence>
+      <xs:element name="CallJob" type="CallJob" />
+      <xs:element name="Reason" type="CallJobSponsoringCancellationReason" />
+      <xs:element name="StoreTipAddress" type="xs:boolean" />
+      <xs:element name="StoreSecondCall" type="xs:boolean" />
+    </xs:sequence>
+    <xs:attribute name="CallJobSponsoringCancellationId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobSponsoringCancellation" type="CallJobSponsoringCancellation" />
+  <xs:complexType name="CallJobSponsoringCancellationReason">
+    <xs:sequence>
+      <xs:element name="Reason" type="xs:string" />
+      <xs:element name="Description" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ReasonId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobSponsoringCancellationReason" type="CallJobSponsoringCancellationReason" />
+  <xs:complexType name="CallJobResult">
+    <xs:sequence>
+      <xs:element name="CallJob" type="CallJob" />
+      <xs:element name="User" type="User" />
+      <xs:element name="PhoneNumber" type="xs:string" />
+      <xs:element name="ContactType" type="ContactType" />
+      <xs:element name="Notice" type="xs:string" />
+      <xs:element name="Start" type="xs:dateTime" nillable="true" />
+      <xs:element name="Stop" type="xs:dateTime" nillable="true" />
+      <xs:element name="Branch" type="Branch" />
+      <xs:element name="Category" type="CallJobResultCategory" />
+      <xs:element name="mwUser" type="mwUser" />
+    </xs:sequence>
+    <xs:attribute name="CallJobResultId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobResult" type="CallJobResult" />
+  <xs:complexType name="ContactType">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ContactTypeId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="ContactType" type="ContactType" />
+  <xs:complexType name="ContactTypesParticipation">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ContactTypesParticipationId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="ContactTypesParticipation" type="ContactTypesParticipation" />
+  <xs:complexType name="ContactTypesParticipationCancellation">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ContactTypesParticipationCancellationId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="ContactTypesParticipationCancellation" type="ContactTypesParticipationCancellation" />
+  <xs:complexType name="ContactTypesParticipationUnsuitable">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ContactTypesParticipationUnsuitableId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="ContactTypesParticipationUnsuitable" type="ContactTypesParticipationUnsuitable" />
+  <xs:simpleType name="CallJobState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Invalid" />
+      <xs:enumeration value="FirstCall" />
+      <xs:enumeration value="Waiting" />
+      <xs:enumeration value="Cancelled" />
+      <xs:enumeration value="Ordered" />
+      <xs:enumeration value="ReminderCallJob" />
+      <xs:enumeration value="FurtherCall" />
+      <xs:enumeration value="Unsuitable" />
+      <xs:enumeration value="Durring" />
+      <xs:enumeration value="DurringDone" />
+      <xs:enumeration value="Unseeded" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CallJobState" type="CallJobState" />
+  <xs:complexType name="mwVerein">
+    <xs:sequence>
+      <xs:element name="VereinsNummer" type="xs:int" />
+      <xs:element name="Bezeichnung" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mwVerein" type="mwVerein" />
+  <xs:simpleType name="ProjectState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSet" />
+      <xs:enumeration value="Created" />
+      <xs:enumeration value="AssignedToTeam" />
+      <xs:enumeration value="ReleasedForPhone" />
+      <xs:enumeration value="Unknown4" />
+      <xs:enumeration value="Unknown5" />
+      <xs:enumeration value="Unknown6" />
+      <xs:enumeration value="Unknown7" />
+      <xs:enumeration value="Unknown8" />
+      <xs:enumeration value="Unknown9" />
+      <xs:enumeration value="Finished" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProjectState" type="ProjectState" />
+  <xs:element name="Call" type="Call" />
+  <xs:complexType name="Call">
+    <xs:sequence>
+      <xs:element name="PhoneNumber" type="xs:string" nillable="true" />
+      <xs:element name="CallDate" type="xs:dateTime" nillable="true" />
+      <xs:element name="User" type="UserInfo" />
+      <xs:element name="ExpirationDate" type="xs:dateTime" />
+      <xs:element name="DialMode" type="DialMode" />
+      <xs:element name="CallJob" type="CallJob" />
+      <xs:element name="CallJobGroup" type="CallJobGroup" />
+    </xs:sequence>
+    <xs:attribute name="CallId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ReminderCall">
+    <xs:complexContent mixed="false">
+      <xs:extension base="Call">
+        <xs:sequence>
+          <xs:element name="CallJobReminder" type="CallJobReminder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReminderCall" type="ReminderCall" />
+  <xs:complexType name="ReminderCallRequestMessage">
+    <xs:sequence>
+      <xs:element name="User" type="User" />
+      <xs:element name="Project" type="ProjectInfo" />
+      <xs:element name="ReminderRequestDate" type="xs:dateTime" />
+      <xs:element name="MaxTeamReminders" type="xs:int" />
+      <xs:element name="ExpirationDate" type="xs:dateTime" />
+      <xs:element name="CallJobGroup" type="CallJobGroupInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReminderCallRequestMessage" type="ReminderCallRequestMessage" />
+  <xs:simpleType name="ProjectSponsorAssignState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Invalid" />
+      <xs:enumeration value="Open" />
+      <xs:enumeration value="Finished" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ProjectSponsorAssignState" type="ProjectSponsorAssignState" />
+  <xs:complexType name="mwCenter">
+    <xs:sequence>
+      <xs:element name="CenterNummer" type="xs:int" />
+      <xs:element name="Bezeichnung" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mwCenter" type="mwCenter" />
+  <xs:complexType name="mwProject">
+    <xs:sequence>
+      <xs:element name="Projektnummer" type="xs:int" />
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="ProjektMonat" type="xs:string" />
+      <xs:element name="ProjektJahr" type="xs:string" />
+      <xs:element name="MitgliederVerein" type="xs:int" nillable="true" />
+      <xs:element name="MitgliederAbteilung" type="xs:int" nillable="true" />
+      <xs:element name="AnzahlProjekte" type="xs:int" nillable="true" />
+      <xs:element name="mwVerein" type="mwVerein" />
+      <xs:element name="Language" type="Language" />
+      <xs:element name="BezeichnungRechnung" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mwProject" type="mwProject" />
+  <xs:complexType name="mwUser">
+    <xs:sequence>
+      <xs:element name="PartnerNummer" type="xs:int" />
+      <xs:element name="Vorname" type="xs:string" />
+      <xs:element name="Nachname" type="xs:string" />
+      <xs:element name="MemberId" type="clr:guid" />
+      <xs:element name="MemberName" type="xs:string" />
+      <xs:element name="MwCenter" type="mwCenter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mwUser" type="mwUser" />
+  <xs:complexType name="ContactPerson">
+    <xs:sequence>
+      <xs:element name="Anrede" type="xs:string" nillable="true" />
+      <xs:element name="Titel" type="xs:string" nillable="true" />
+      <xs:element name="Nachname" type="xs:string" nillable="true" />
+      <xs:element name="Vorname" type="xs:string" nillable="true" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactPerson" type="ContactPerson" />
+  <xs:complexType name="AddressReleaseInfo">
+    <xs:sequence>
+      <xs:element name="PreferredUser" type="User" />
+      <xs:element name="PreferredTeam" type="TeamInfo" />
+      <xs:element name="DoRelease" type="xs:boolean" />
+      <xs:element name="StartDate" type="xs:dateTime" />
+      <xs:element name="StopDate" type="xs:dateTime" />
+      <xs:element name="Sponsor" type="Sponsor" />
+      <xs:element name="Project" type="Project" />
+      <xs:element name="CallJobGroup" type="CallJobGroup" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressReleaseInfo" type="AddressReleaseInfo" />
+  <xs:complexType name="Branch">
+    <xs:sequence>
+      <xs:element name="Branchennummer" type="xs:int" />
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="BranchGroup" type="BranchGroup" />
+    </xs:sequence>
+    <xs:attribute name="BranchId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="Branch" type="Branch" />
+  <xs:complexType name="BranchGroup">
+    <xs:sequence>
+      <xs:element name="BranchenGruppenID" type="clr:guid" />
+      <xs:element name="BranchenGruppe" type="xs:string" />
+      <xs:element name="Beschreibung" type="xs:string" />
+      <xs:element name="BranchGroupTimeList" type="BranchGroupTimeList" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BranchGroup" type="BranchGroup" />
+  <xs:complexType name="BranchGroupTimeList">
+    <xs:sequence>
+      <xs:element name="BranchenGruppenTelezeitenID" type="clr:guid" />
+      <xs:element name="BranchenGruppenID" type="clr:guid" />
+      <xs:element name="TelefonTimeStart" type="xs:dateTime" />
+      <xs:element name="TelefonTimeEnd" type="xs:dateTime" />
+      <xs:element name="TelefonWeekDay" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BranchGroupTimeList" type="BranchGroupTimeList" />
+  <xs:complexType name="CallRequestMessage">
+    <xs:sequence>
+      <xs:element name="Project" type="ProjectInfo" />
+      <xs:element name="CurrentUser" type="User" />
+      <xs:element name="NumberOfCallJobs" type="xs:int" />
+      <xs:element name="ExpirationMinutes" type="xs:int" />
+      <xs:element name="CallJobGroup" type="CallJobGroupInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CallRequestMessage" type="CallRequestMessage" />
+  <xs:complexType name="CallJobResultMessage">
+    <xs:sequence>
+      <xs:element name="Call" type="Call" />
+      <xs:element name="CallJobResult" type="CallJobResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CallJobResultMessage" type="CallJobResultMessage" />
+  <xs:simpleType name="DialMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ManualDialing" />
+      <xs:enumeration value="AutoDialingImmediately" />
+      <xs:enumeration value="AutoSoftwareDialing" />
+      <xs:enumeration value="Unseeded" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DialMode" type="DialMode" />
+  <xs:complexType name="CallJobReminderResult">
+    <xs:complexContent>
+      <xs:extension base="CallJobResult">
+        <xs:sequence>
+          <xs:element ref="CallJobReminder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CallJobReminderResult" type="CallJobReminderResult" />
+  <xs:complexType name="CallJobPossibleResult">
+    <xs:complexContent>
+      <xs:extension base="CallJobResult">
+        <xs:sequence>
+          <xs:element name="ContactTypesParticipation" type="ContactTypesParticipation" />
+          <xs:element name="mwProjekt_SponsorPacket" type="mwProjekt_SponsorPacket" />
+          <xs:element name="SponsorPacketCount" type="xs:int" />
+          <xs:element name="ThankingsFormsProject" maxOccurs="unbounded" type="ThankingsFormsProject" />
+          <xs:element name="ContactTypesParticipationCancellation" type="ContactTypesParticipationCancellation" />
+          <xs:element name="Reminder" type="CallJobReminder" />
+          <xs:element name="AdvertisingText" type="xs:string" />
+          <xs:element name="PaymentTarget" type="xs:dateTime" nillable="true" />
+          <xs:element name="SecondCallDesired" type="SecondCallDesiredChoice" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="mwProjekt_ProjektOrderHistorie">
+    <xs:sequence>
+      <xs:element name="AdressenPoolNummer" type="xs:int" />
+      <xs:element name="Projektnummer" type="xs:int" />
+      <xs:element name="UserOID" type="clr:guid" />
+      <xs:element name="Sponsor" type="xs:string" />
+      <xs:element name="Stueckzahl" type="xs:decimal" />
+      <xs:element name="Umsatz" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mwProjekt_ProjektOrderHistorie" type="mwProjekt_ProjektOrderHistorie" />
+  <xs:complexType name="mwProjekt_SponsorOrderHistorie">
+    <xs:sequence>
+      <xs:element name="AdressenPoolNummer" type="xs:int" />
+      <xs:element name="Projektnummer" type="xs:int" />
+      <xs:element name="Projektbezeichnung" type="xs:string" />
+      <xs:element name="Projektjahr" type="xs:int" />
+      <xs:element name="Projektmonat" type="xs:int" />
+      <xs:element name="Stueckzahl" type="xs:decimal" />
+      <xs:element name="Sponsorenpaket" type="xs:string" />
+      <xs:element name="Quelle" type="xs:string" />
+      <xs:element name="OrderDate" type="xs:dateTime" nillable="true" />
+      <xs:element name="Agent" type="xs:string" />
+      <xs:element name="OrderState" type="xs:string" />
+      <xs:element name="Umsatz" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="mwProjekt_SponsorOrderHistorie" type="mwProjekt_SponsorOrderHistorie" />
+  <xs:simpleType name="CallJobResultCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Successfull" />
+      <xs:enumeration value="Unsuccessfull" />
+      <xs:enumeration value="Uncommitted" />
+      <xs:enumeration value="Miscellaneous" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CallJobResultCategory" type="CallJobResultCategory">
+  </xs:element>
+  <xs:complexType name="TeamAssignInfo">
+    <xs:sequence>
+      <xs:element name="Team" type="TeamInfo" />
+      <xs:element name="IsTeamLeiter" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CallJobGroup">
+    <xs:sequence>
+      <xs:element name="CallJobGroupId" type="clr:guid" />
+      <xs:element name="Project" type="ProjectInfo" />
+      <xs:element name="DisplayName" type="xs:string" />
+      <xs:element name="Description" type="xs:string" />
+      <xs:element name="Type" type="CallJobGroupType" />
+      <xs:element name="Ranking" type="xs:int" />
+      <xs:element name="Users" type="UserInfo" maxOccurs="unbounded" />
+      <xs:element name="Teams" type="TeamInfo" maxOccurs="unbounded" />
+      <xs:element name="Key" type="xs:string" />
+      <xs:element name="Count" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CallJobGroupType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ProjectSponsorList" />
+      <xs:enumeration value="CustomerSponsorList" />
+      <xs:enumeration value="CommonSponsorList" />
+      <xs:enumeration value="GeoCodedList" />
+      <xs:enumeration value="ManualList" />
+      <xs:enumeration value="SecondCallList" />
+      <xs:enumeration value="TipAddress" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CallJobGroup" type="CallJobGroup">
+  </xs:element>
+  <xs:element name="CallJobGroupType" type="CallJobGroupType">
+  </xs:element>
+  <xs:complexType name="SponsorOrderInfo">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="xs:int" />
+      <xs:element name="ProjectYear" type="xs:int" />
+      <xs:element name="ProjectMonth" type="xs:int" />
+      <xs:element name="ProjectNumber" type="xs:int" />
+      <xs:element name="OrderState" type="xs:string" />
+      <xs:element name="Ranking" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GeoZone">
+    <xs:sequence>
+      <xs:element name="Zone" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SponsorOrderInfo" type="SponsorOrderInfo">
+  </xs:element>
+  <xs:element name="GeoZone" type="GeoZone">
+  </xs:element>
+  <xs:complexType name="CallJobGroupTypeInfo">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+      <xs:element name="Description" type="xs:string" />
+      <xs:element name="Ranking" type="xs:int" />
+      <xs:element name="DisplayNameTemplate" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="CallJobGroupType" type="CallJobGroupType" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobGroupTypeInfo" type="CallJobGroupTypeInfo">
+  </xs:element>
+  <xs:complexType name="ProjectStateInfo">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ProjectState" type="ProjectState" use="required" />
+  </xs:complexType>
+  <xs:element name="ProjectStateInfo" type="ProjectStateInfo">
+  </xs:element>
+  <xs:complexType name="CallJobStateInfo">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+      <xs:element name="Description" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="CallJobStateId" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobStateInfo" type="CallJobStateInfo">
+  </xs:element>
+  <xs:element name="CallJobPossibleResult" type="CallJobPossibleResult">
+  </xs:element>
+  <xs:simpleType name="Language">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Invalid" />
+      <xs:enumeration value="German" />
+      <xs:enumeration value="SwitzerlandItaly" />
+      <xs:enumeration value="SwitzerlandFrench" />
+      <xs:enumeration value="French" />
+      <xs:enumeration value="Italy" />
+      <xs:enumeration value="Netherland" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Language" type="Language">
+  </xs:element>
+  <xs:complexType name="SponsorAdditions">
+    <xs:sequence>
+      <xs:element name="Phone1" type="xs:string" />
+      <xs:element name="Phone2" type="xs:string" />
+      <xs:element name="Phone3" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Setting">
+    <xs:sequence>
+      <xs:element name="ActivitiesMaxSec" type="xs:int" />
+      <xs:element name="ShutDownCountdownSec" type="xs:int" />
+      <xs:element name="PaymentTargetVisible" type="xs:boolean" />
+      <xs:element name="AddressSafeTime" type="xs:int" />
+      <xs:element name="AddressSafeActiv" type="xs:boolean" />
+      <xs:element name="AbortDialingTime" type="xs:int" />
+      <xs:element name="DomainEmailLogin" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Setting" type="Setting" />
+  <xs:simpleType name="SecondCallDesiredChoice">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unset" />
+      <xs:enumeration value="Yes" />
+      <xs:enumeration value="No" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SecondCallDesiredChoice" type="SecondCallDesiredChoice">
+  </xs:element>
+  <xs:complexType name="CallJobUnsuitableResult">
+    <xs:complexContent>
+      <xs:extension base="CallJobResult">
+        <xs:sequence>
+          <xs:element name="ContactTypesParticipationUnsuitable" type="ContactTypesParticipationUnsuitable" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CallJobUnsuitableResult" type="CallJobUnsuitableResult">
+  </xs:element>
+  <xs:complexType name="CenterInfo">
+    <xs:sequence>
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="mwCenterNummer" type="xs:int" nillable="true" />
+    </xs:sequence>
+    <xs:attribute name="CenterId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="CenterInfo" type="CenterInfo">
+  </xs:element>
+  <xs:complexType name="CallJobGroupInfo">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+      <xs:element name="Type" type="CallJobGroupType" />
+      <xs:element name="Ranking" type="xs:int" />
+    </xs:sequence>
+    <xs:attribute name="CallJobGroupId" type="clr:guid" />
+  </xs:complexType>
+  <xs:element name="CallJobGroupInfo" type="CallJobGroupInfo">
+  </xs:element>
+  <xs:complexType name="CallJobResultInfo">
+    <xs:sequence />
+    <xs:attribute name="CallJobResultId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:complexType name="SponsoringCallJob">
+    <xs:complexContent>
+      <xs:extension base="CallJob">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SponsoringCallJob" type="SponsoringCallJob">
+  </xs:element>
+  <xs:complexType name="DurringCallJob">
+    <xs:complexContent>
+      <xs:extension base="CallJob">
+        <xs:sequence>
+          <xs:element name="Invoice" type="Invoice" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DurringCallJob" type="DurringCallJob">
+  </xs:element>
+  <xs:complexType name="DurringLevelInfo">
+    <xs:sequence>
+      <xs:element name="Mahnstufe2" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DurringLevelInfo" type="DurringLevelInfo" />
+  <xs:complexType name="DurringInfo">
+    <xs:sequence>
+      <xs:element name="Rechnungsnummer" type="xs:int" />
+      <xs:element name="Mahnstufe2" type="xs:int" />
+      <xs:element name="Rechnungsdatum" type="xs:dateTime" />
+      <xs:element name="Mahnungsdatum" type="xs:dateTime" />
+      <xs:element name="Sponsortext" type="xs:string" />
+      <xs:element name="AnsprechpartnerText" type="xs:string" />
+      <xs:element name="Telefonnumer" type="xs:string" />
+      <xs:element name="Stueckzahl" type="xs:decimal" />
+      <xs:element name="Brutto" type="xs:decimal" />
+      <xs:element name="BetragOffen" type="xs:decimal" />
+      <xs:element name="ProjektText" type="xs:string" />
+      <xs:element name="Wiedervorlage" type="xs:dateTime" />
+      <xs:element name="Prio" type="xs:string" />
+      <xs:element name="Aktionsdatum" type="xs:dateTime" />
+      <xs:element name="BemerkungMahnungsaktion" type="xs:string" />
+      <xs:element name="BearbeiterMahnungsaktion" type="xs:string" />
+      <xs:element name="CallJobId" type="clr:guid" />
+    </xs:sequence>
+    <xs:attribute name="ProjekteRechnungsnummer" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:element name="DurringInfo" type="DurringInfo" />
+  <xs:complexType name="Invoice">
+    <xs:sequence>
+      <xs:element name="ProjekteRechnungsnummer" type="xs:int" />
+      <xs:element name="Rechnungsnummer" type="xs:int" />
+      <xs:element name="ThankingsFormsProject" maxOccurs="unbounded" type="ThankingsFormsProject" />
+      <xs:element name="InvoiceItems" type="InvoiceItem" maxOccurs="unbounded" />
+      <xs:element name="InvoicePayments" type="InvoicePayment" maxOccurs="unbounded" />
+      <xs:element name="Rechnungsdatum" type="xs:dateTime" />
+      <xs:element name="Auftragsnummer" type="xs:int" />
+      <xs:element name="Auftragsdatum" type="xs:dateTime" />
+      <xs:element name="Mahnstufe2" type="xs:int" nillable="true" />
+      <xs:element name="FaelligAm" type="xs:dateTime" nillable="true" />
+      <xs:element name="Bemerkung" type="xs:string" />
+      <xs:element name="Werbetext" type="xs:string" />
+      <xs:element name="Verkaeufer" type="xs:string" />
+      <xs:element name="IstBezahlt" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InvoiceItem">
+    <xs:sequence>
+      <xs:element name="ProjekteRechnungenPositionenNummer" type="xs:int" />
+      <xs:element name="Stueckzahl" type="xs:decimal" />
+      <xs:element name="Bezeichnung" type="xs:string" />
+      <xs:element name="Betrag_netto" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InvoicePayment">
+    <xs:sequence>
+      <xs:element name="ProjekteRechnungenZahlungsnummer" type="xs:int" />
+      <xs:element name="Buchungsdatum" type="xs:dateTime" />
+      <xs:element name="Betrag" type="xs:decimal" />
+      <xs:element name="Waehrung" type="xs:string" />
+      <xs:element name="Art" type="xs:string" />
+      <xs:element name="Sachkonto" type="xs:string" />
+      <xs:element name="Bemerkung" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentHistory">
+    <xs:sequence>
+      <xs:element name="DocumentType" type="xs:string" />
+      <xs:element name="DocumentId" type="clr:guid" />
+      <xs:element name="SendOption" type="xs:string" />
+      <xs:element name="SendDate" type="xs:dateTime" />
+      <xs:element name="SendUser" type="UserInfo" />
+      <xs:element name="DataFields" type="xs:string" />
+      <xs:element name="ReferencedId" type="clr:guid" nillable="true" />
+      <xs:element name="ReferencedType" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="DocumentHistoryId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="DocumentHistory" type="DocumentHistory">
+  </xs:element>
+  <xs:complexType name="CallJobReminderInfo">
+    <xs:sequence>
+      <xs:element name="ProjectDisplayName" type="xs:string" />
+      <xs:element name="UserDisplayName" type="xs:string" />
+      <xs:element name="SponsorDisplayName" type="xs:string" />
+      <xs:element name="ReminderArt" type="xs:string" />
+      <xs:element name="ReminderTrackingDisplayName" type="xs:string" />
+      <xs:element name="ReminderDateStart" type="xs:dateTime" />
+      <xs:element name="ReminderDateStop" type="xs:dateTime" />
+      <xs:element name="ReminderStatus" type="xs:string" />
+      <xs:element name="ReminderTracking" type="CallJobReminderTracking" />
+      <xs:element name="TeamDisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="CallJobReminderId" type="clr:guid" use="required" />
+  </xs:complexType>
+  <xs:element name="CallJobReminderInfo" type="CallJobReminderInfo" />
+  <xs:complexType name="CallJobInfo">
+    <xs:sequence>
+      <xs:element name="AddressId" type="clr:guid" />
+      <xs:element name="ProjectId" type="clr:guid" />
+      <xs:element name="StartDate" type="xs:dateTime" />
+      <xs:element name="StopDate" type="xs:dateTime" />
+      <xs:element name="UserId" type="clr:guid" nillable="true" />
+      <xs:element name="TeamId" type="clr:guid" nillable="true" />
+      <xs:element name="State" type="xs:int" />
+      <xs:element name="IterationCounter" type="xs:int" />
+      <xs:element name="DialMode" type="xs:int" />
+      <xs:element name="CallJobGroup" type="clr:guid" />
+      <xs:element name="AddressSafeActiv" type="xs:boolean" />
+      <xs:element name="CallJobId" type="clr:guid" />
+      <xs:element name="ProjectAddressAssignId" type="clr:guid" />
+      <xs:element name="CallJobType" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CallJobInfoExtended">
+    <xs:sequence>
+      <xs:element name="AddressId" type="clr:guid" />
+      <xs:element name="ProjectId" type="clr:guid" />
+      <xs:element name="StartDate" type="xs:dateTime" />
+      <xs:element name="StopDate" type="xs:dateTime" />
+      <xs:element name="UserId" type="clr:guid" nillable="true" />
+      <xs:element name="TeamId" type="clr:guid" nillable="true" />
+      <xs:element name="State" type="xs:int" />
+      <xs:element name="IterationCounter" type="xs:int" />
+      <xs:element name="DialMode" type="xs:int" />
+      <xs:element name="CallJobGroup" type="clr:guid" />
+      <xs:element name="AddressSafeActiv" type="xs:boolean" />
+      <xs:element name="CallJobId" type="clr:guid" />
+      <xs:element name="ProjectAddressAssignId" type="clr:guid" />
+      <xs:element name="CallJobType" type="xs:string" />
+      <xs:element name="Sponsor" type="xs:string" />
+      <xs:element name="Street" type="xs:string" />
+      <xs:element name="City" type="xs:string" />
+      <xs:element name="Fon" type="xs:string" />
+      <xs:element name="StateTerm" type="xs:string" />
+      <xs:element name="LastResultDisplayName" type="xs:string" />
+      <xs:element name="DialModeTerm" type="xs:string" />
+      <xs:element name="CallJobGroupTerm" type="xs:string" />
+      <xs:element name="UserTerm" type="xs:string" />
+      <xs:element name="LastOrderAgent" type="xs:string" />
+      <xs:element name="LastContact" type="xs:dateTime" nillable="true" />
+      <xs:element name="LastContactAgent" type="xs:string" />
+      <xs:element name="QuantityOrders" type="xs:decimal" />
+      <xs:element name="TotalAmountOrders" type="xs:decimal" />
+      <xs:element name="RandomSorter" type="xs:string" />
+      <xs:element name="Text1" type="xs:string" />
+      <xs:element name="CDSource" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CallJobUnsuitableInfo">
+    <xs:sequence>
+      <xs:element name="Nachname" type="xs:string" />
+      <xs:element name="Vorname" type="xs:string" />
+      <xs:element name="Text1" type="xs:string" />
+      <xs:element name="PLZ" type="xs:string" />
+      <xs:element name="Ort" type="xs:string" />
+      <xs:element name="DisplayNameContactType" type="xs:string" />
+      <xs:element name="DisplayNameUnsuitableType" type="xs:string" />
+      <xs:element name="Start" type="xs:dateTime" />
+      <xs:element name="PhoneNumber" type="xs:string" />
+      <xs:element name="Agent" type="xs:string" />
+      <xs:element name="AdresseNichtGeeignet" type="xs:boolean" />
+      <xs:element name="AddressId" type="clr:guid" />
+      <xs:element name="AdressenPoolNummer" type="xs:int" />
+      <xs:element name="ContactTypesParticipationUnsuitableId" type="clr:guid" />
+      <xs:element name="Quelle" type="xs:string" />
+      <xs:element name="UserId" type="clr:guid" />
+    </xs:sequence>
+    <xs:attribute name="CallJobId" type="clr:guid" />
+  </xs:complexType>
+  <xs:complexType name="CallJobUnsuitableInfoUser">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="UserId" type="clr:guid" />
+  </xs:complexType>
+  <xs:complexType name="CallJobUnsuitableInfoReason">
+    <xs:sequence>
+      <xs:element name="DisplayName" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="ContactTypesParticipationUnsuitableId" type="clr:guid" />
+  </xs:complexType>
+  <xs:complexType name="CallJobUnsuitableAddressChanges">
+    <xs:sequence>
+      <xs:element name="AdresseNichtGeeignet" type="xs:boolean" />
+      <xs:element name="ContactTypesParticipationUnsuitableId" type="clr:guid" />
+    </xs:sequence>
+    <xs:attribute name="AdressenPoolNummer" type="xs:int" />
+  </xs:complexType>
+  <xs:complexType name="CallJobPhoneEvent">
+    <xs:sequence>
+      <xs:element name="CallJobId" type="clr:guid" />
+      <xs:element name="UserId" type="clr:guid" />
+      <xs:element name="EventType" type="xs:string" />
+      <xs:element name="EventDate" type="xs:dateTime" />
+      <xs:element name="PhoneNumber" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="CallJobPhoneEventId" type="clr:guid" />
+  </xs:complexType>
+</xs:schema>

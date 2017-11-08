@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Diese Datei wird automatisch vom XML-Schema-Designer generiert. Sie enthält Layoutinformationen für Komponenten auf der Designeroberfläche.-->
+<XSDDesignerLayout Style="LeftRight" layoutVersion="2" viewPortLeft="0" viewPortTop="905" zoom="100">
+    <WorkTimeReportResults_XmlComplexType left="5556" top="1905" width="13997" height="7064" selected="0" zOrder="1" index="1" expanded="1" />
+    <WorkTimeReportResults_XmlElement left="5556" top="9208" width="10293" height="2831" selected="0" zOrder="2" index="2" expanded="1" />
+    <UserCallJobActivityResults_XmlComplexType left="5900" top="11721" width="13044" height="6641" selected="0" zOrder="4" index="3" expanded="1" />
+    <UserCallJobActivityResults_XmlElement left="5636" top="19791" width="5292" height="2831" selected="0" zOrder="6" index="4" expanded="1" />
+    <ContactReport_XmlComplexType left="1317" top="23130" width="5292" height="2831" selected="0" zOrder="7" index="5" expanded="1" />
+    <ContactReport_XmlElement left="1317" top="26601" width="5292" height="2831" selected="0" zOrder="8" index="6" expanded="0" />
+    <ProjectReport_XmlComplexType left="1317" top="30072" width="5292" height="2831" selected="0" zOrder="9" index="7" expanded="1" />
+    <ProjectReport_XmlElement left="1317" top="33543" width="5292" height="2831" selected="0" zOrder="11" index="8" expanded="0" />
+    <SponsoringOrdersDistribution_XmlComplexType left="1323" top="37015" width="5821" height="2831" selected="0" zOrder="13" index="9" expanded="1" />
+    <SponsoringOrdersDistribution_XmlElement left="1323" top="40481" width="5477" height="2831" selected="0" zOrder="15" index="10" expanded="0" />
+    <ProjectReportDetailSummen_XmlComplexType left="8943" top="31830" width="12620" height="6641" selected="0" zOrder="17" index="11" expanded="1" />
+    <ProjectReportDetailSummen_XmlElement left="9023" top="39027" width="10451" height="2832" selected="0" zOrder="19" index="12" expanded="1" />
+    <ProjectReportDetailDaten_XmlComplexType left="8625" top="23415" width="12461" height="4101" selected="0" zOrder="21" index="13" expanded="1" />
+    <ProjectReportDetailDaten_XmlElement left="8757" top="27966" width="10028" height="2831" selected="0" zOrder="22" index="14" expanded="1" />
+    <ProjectReportGeozonen_XmlComplexType left="9234" top="42652" width="12515" height="2832" selected="0" zOrder="23" index="15" expanded="1" />
+    <ProjectReportGeoZonen_XmlElement left="9155" top="45775" width="11298" height="2831" selected="0" zOrder="25" index="16" expanded="1" />
+</XSDDesignerLayout>

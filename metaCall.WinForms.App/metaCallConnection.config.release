@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+  <connectionStrings>
+  <add name="metacallConnection" connectionString="Database=DB;Server=255.255.255.255;Integrated Security=false;User Id=metaCallUser;Password=Keins;"
+    providerName="System.Data.SqlClient" />
+</connectionStrings>

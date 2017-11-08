@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJob" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAEBSAACCCAAEQAQEAAACAAAgAAACAgAEAgABEACIAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Project" />
+      <Property Name="Sponsor" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobResult">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>QAAFAAECQDAAAAAAAAEAQAGAgAAAAAgAIISAgAAAiAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CallJob" />
+      <Property Name="Branch" />
+      <Property Name="ContactType" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="CallJob" Type="metatop.Applications.metaCall.DataObjects.CallJob" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.062" Y="2.955" />
+        <Point X="1.062" Y="4.812" />
+        <Point X="1.062" Y="4.812" />
+        <Point X="1.062" Y="5.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.143" Y="0.635" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Branch" Type="metatop.Applications.metaCall.DataObjects.Branch" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.25" Y="2.955" />
+        <Point X="1.25" Y="5.128" />
+        <Point X="4.25" Y="5.128" />
+        <Point X="4.25" Y="5.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.146" Y="0.101" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ContactType" Type="metatop.Applications.metaCall.DataObjects.ContactType" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.5" Y="2.955" />
+        <Point X="1.5" Y="3.509" />
+        <Point X="1.49" Y="3.509" />
+        <Point X="1.49" Y="4.966" />
+        <Point X="6.5" Y="4.966" />
+        <Point X="6.5" Y="5.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.603" Y="0.654" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="User" Type="metatop.Applications.metaCall.DataObjects.User" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.688" Y="2.955" />
+        <Point X="1.688" Y="4.425" />
+        <Point X="8.5" Y="4.425" />
+        <Point X="8.5" Y="5.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="3.51" Y="1.179" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobReminderResult" Collapsed="true">
+    <Position X="3.25" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CallJobReminder" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Branch" Collapsed="true">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAAAAAAAABAAAAoAAAAAAAAAAAQACEABA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ContactType" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEAAEAACAAAAEAAAAAAAAAAAgACAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.User" Collapsed="true">
+    <Position X="7.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAACAAACAAAAABRBAIAAAQkAgAQAAAAEBUAAAwAIAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Project" Collapsed="true">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAEAAAACCCAAACIQAIAAAQAAhEAAIggBAAAAQAAiEFA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Customer" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Sponsor" Collapsed="true">
+    <Position X="3.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAEAEAAAAAAAAAAhAAAAAAIAAAAAgAEAAAAACAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.Customer" Collapsed="true">
+    <Position X="6.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Customer.Extensions.cs</FileName>
+      <HashCode>AAAAEAAAAAAAAAAAAAAQAAAAAAAAAACAEAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobReminder" Collapsed="true">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAABAEQCACAABAAAgAAQCFACwCIgAAgCEAAABCASIAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.CallJobPossibleResult">
+    <Position X="3.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AQIAAAAAAAAAIAAAAAAAAAAAAEAAIAEAAABAAAAAAIE=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ContactTypesParticipation" />
+      <Property Name="mwProjekt_SponsorPacket" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="ThankingsFormsProject" />
+    </ShowAsCollectionAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="ThankingsFormsProject" Type="metatop.Applications.metaCall.DataObjects.ThankingsFormsProject">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.386" Y="0.032" />
+      </MemberNameLabel>
+    </AssociationLine>
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ContactTypesParticipation" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AEgAEAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAEAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.mwProjekt_SponsorPacket" Collapsed="true">
+    <Position X="7.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAAQAEAAAAAAAAgAAQAAAAAAAAQAAAgBA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="metatop.Applications.metaCall.DataObjects.ThankingsFormsProject" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>DataObjects_Guid.cs</FileName>
+      <HashCode>AAAAAAACAAAAgAAAAACAAQAChAEIAmAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+</ClassDiagram>
