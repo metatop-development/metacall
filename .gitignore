@@ -1,8 +1,4 @@
-metaCallConnection.config
-metaCallConnection.config.beta
-metaCallConnection.config.debug
-metaCallConnection.config.debugonlinedata
-metaCallConnection.config.release
+
 
 AutoBuild/**/*
 
