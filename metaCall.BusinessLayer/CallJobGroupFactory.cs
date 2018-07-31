@@ -139,7 +139,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                     CallJobGroupContainer container = ConvertCallJobGroup(callJobGroup);
                     if (container != null)
-                        this.callJobGroupList.Add(container, new List<Sponsor>());
+                         this.callJobGroupList.Add(container, new List<Sponsor>());
                 }
             }
 

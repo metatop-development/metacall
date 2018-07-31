@@ -946,7 +946,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 if (actionNode != null)
                 {
                     actionNode.ProgressPercentage = progress.ProgressPercentage;
-                    actionNode.Step = progress.Step;
+                     actionNode.Step = progress.Step;
 
                     this.projectsInWork[progress.Project] = progress.ProgressPercentage;
                 }
