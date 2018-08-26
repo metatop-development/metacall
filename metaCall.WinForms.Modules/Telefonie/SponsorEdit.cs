@@ -331,7 +331,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
 
         private void SponsorEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
- 
             if (DialogResult == DialogResult.OK)
             {
                 if (!this.Validate()) 
@@ -481,5 +480,34 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             }
         }
 
+        const int MAX_TEXT_LENGTH_URKUNDEN_TEXT = 35;
+
+        private void sponsorenUrkunde1TextBox_TextChanged(object sender, EventArgs e)
+        {
+            berechneZeichenanzahlSponsorenUrkunde1TextBox();
+        }
+
+        private void sponsorenUrkunde2TextBox_TextChanged(object sender, EventArgs e)
+        {
+            berechneZeichenanzahlSponsorenUrkunde2TextBox();
+        }
+
+        private void berechneZeichenanzahlSponsorenUrkunde1TextBox()
+        {
+            int aktuelleRestZeichenanzahl = MAX_TEXT_LENGTH_URKUNDEN_TEXT - sponsorenUrkunde1TextBox.TextLength;
+            sponsorenUrkunde1ZeichenanzahlTextBox.Text = "(" + aktuelleRestZeichenanzahl.ToString() + ")";
+        }
+
+        private void berechneZeichenanzahlSponsorenUrkunde2TextBox()
+        {
+            int aktuelleRestZeichenanzahl = MAX_TEXT_LENGTH_URKUNDEN_TEXT - sponsorenUrkunde2TextBox.TextLength;
+            sponsorenUrkunde2ZeichenanzahlTextBox.Text = "(" + aktuelleRestZeichenanzahl.ToString() + ")";
+        }
+
+        private void SponsorEdit_Activated(object sender, EventArgs e)
+        {
+            berechneZeichenanzahlSponsorenUrkunde1TextBox();
+            berechneZeichenanzahlSponsorenUrkunde2TextBox();
+        }
     }
 }

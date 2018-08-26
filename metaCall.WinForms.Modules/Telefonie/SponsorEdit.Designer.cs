@@ -88,6 +88,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.zusatzTextBox = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.sponsorenUrkunde2ZeichenanzahlTextBox = new System.Windows.Forms.TextBox();
+            this.sponsorenUrkunde1ZeichenanzahlTextBox = new System.Windows.Forms.TextBox();
             this.sponsorUrkundeButton = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.sponsorenUrkunde2TextBox = new System.Windows.Forms.TextBox();
@@ -652,6 +654,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Honeydew;
+            this.groupBox2.Controls.Add(this.sponsorenUrkunde2ZeichenanzahlTextBox);
+            this.groupBox2.Controls.Add(this.sponsorenUrkunde1ZeichenanzahlTextBox);
             this.groupBox2.Controls.Add(this.sponsorUrkundeButton);
             this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.sponsorenUrkunde2TextBox);
@@ -663,6 +667,22 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.groupBox2.TabIndex = 47;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sponsorenurkunde";
+            // 
+            // sponsorenUrkunde2ZeichenanzahlTextBox
+            // 
+            this.sponsorenUrkunde2ZeichenanzahlTextBox.Location = new System.Drawing.Point(377, 41);
+            this.sponsorenUrkunde2ZeichenanzahlTextBox.MaxLength = 35;
+            this.sponsorenUrkunde2ZeichenanzahlTextBox.Name = "sponsorenUrkunde2ZeichenanzahlTextBox";
+            this.sponsorenUrkunde2ZeichenanzahlTextBox.Size = new System.Drawing.Size(40, 20);
+            this.sponsorenUrkunde2ZeichenanzahlTextBox.TabIndex = 46;
+            // 
+            // sponsorenUrkunde1ZeichenanzahlTextBox
+            // 
+            this.sponsorenUrkunde1ZeichenanzahlTextBox.Location = new System.Drawing.Point(377, 16);
+            this.sponsorenUrkunde1ZeichenanzahlTextBox.MaxLength = 35;
+            this.sponsorenUrkunde1ZeichenanzahlTextBox.Name = "sponsorenUrkunde1ZeichenanzahlTextBox";
+            this.sponsorenUrkunde1ZeichenanzahlTextBox.Size = new System.Drawing.Size(40, 20);
+            this.sponsorenUrkunde1ZeichenanzahlTextBox.TabIndex = 45;
             // 
             // sponsorUrkundeButton
             // 
@@ -686,9 +706,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             // sponsorenUrkunde2TextBox
             // 
             this.sponsorenUrkunde2TextBox.Location = new System.Drawing.Point(104, 41);
+            this.sponsorenUrkunde2TextBox.MaxLength = 35;
             this.sponsorenUrkunde2TextBox.Name = "sponsorenUrkunde2TextBox";
-            this.sponsorenUrkunde2TextBox.Size = new System.Drawing.Size(313, 20);
+            this.sponsorenUrkunde2TextBox.Size = new System.Drawing.Size(270, 20);
             this.sponsorenUrkunde2TextBox.TabIndex = 42;
+            this.sponsorenUrkunde2TextBox.TextChanged += new System.EventHandler(this.sponsorenUrkunde2TextBox_TextChanged);
             // 
             // label21
             // 
@@ -702,9 +724,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             // sponsorenUrkunde1TextBox
             // 
             this.sponsorenUrkunde1TextBox.Location = new System.Drawing.Point(104, 16);
+            this.sponsorenUrkunde1TextBox.MaxLength = 35;
             this.sponsorenUrkunde1TextBox.Name = "sponsorenUrkunde1TextBox";
-            this.sponsorenUrkunde1TextBox.Size = new System.Drawing.Size(313, 20);
+            this.sponsorenUrkunde1TextBox.Size = new System.Drawing.Size(270, 20);
             this.sponsorenUrkunde1TextBox.TabIndex = 40;
+            this.sponsorenUrkunde1TextBox.TextChanged += new System.EventHandler(this.sponsorenUrkunde1TextBox_TextChanged);
             // 
             // SponsorEdit
             // 
@@ -732,6 +756,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sponsordaten bearbeiten";
+            this.Activated += new System.EventHandler(this.SponsorEdit_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SponsorEdit_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SponsorEdit_FormClosed);
             this.groupBoxSponsorData.ResumeLayout(false);
@@ -816,5 +841,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Button sponsorUrkundeButton;
         private System.Windows.Forms.Button webAdresseButton;
+        private System.Windows.Forms.TextBox sponsorenUrkunde2ZeichenanzahlTextBox;
+        private System.Windows.Forms.TextBox sponsorenUrkunde1ZeichenanzahlTextBox;
     }
 }
