@@ -417,7 +417,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
             //Status
             column = this.dataGridView1.Columns[7];
-            column.Visible = false;
+            column.Visible = true;
 
             //Kontaktart
             column = this.dataGridView1.Columns[8];
