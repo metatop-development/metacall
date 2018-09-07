@@ -2,10 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-
-
-
-//using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -15,12 +11,10 @@ using System.Collections;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using Word = Microsoft.Office.Interop.Word;
 
-
 namespace metatop.Applications.metaCall
 {
     public class MSWordAdapter   : IDisposable
     {
-
         Word._Application msWord = null;
         Process msWordProcess = null;
 
@@ -62,10 +56,14 @@ namespace metatop.Applications.metaCall
                 this.msWord = new Word.Application();
 
                 if (this.msWord == null)
+                {
                     LogMsWordAdapterInformation("Cannot instantiate MS Word");
+                }
 
                 if (showWordInstance)
+                {
                     this.msWord.Visible = true;
+                }
 
                 IDictionary<string, object> logInfos = new Dictionary<string,object>();
                 logInfos.Add("Filename", _fileName);
@@ -73,10 +71,7 @@ namespace metatop.Applications.metaCall
                 if (fromTemplate)
                 {
                     this.msWord.Documents.Add(ref _fileName, ref _missing, ref _missing, ref _true);
-
-
                     LogMsWordAdapterInformation("Document successfully opened from Template", logInfos);
-
                 }
                 else
                 {
@@ -87,13 +82,17 @@ namespace metatop.Applications.metaCall
                     LogMsWordAdapterInformation("Document successfully opened as new Document", logInfos);
                 
                 }
+
                 this.msWordProcess = FindWordProcess(this.msWord);
 
                 if (this.msWordProcess == null)
+                {
                     LogMsWordAdapterInformation("no WordProcess found");
+                }
                 else
+                {
                     LogMsWordAdapterInformation(string.Format("WordProcess found {0}", this.msWordProcess.Id));
-
+                }
             }
             catch (COMException ex)
             {
@@ -122,14 +121,12 @@ namespace metatop.Applications.metaCall
             object _missing = System.Reflection.Missing.Value;
             object _true = true;
 
-
             IDictionary<string, object> logInfos = new Dictionary<string, object>();
 
             try
             {
                 Word.Document doc = this.msWord.ActiveDocument;
                 Word._Application word = this.msWord;
-
 
                 LogMsWordAdapterInformation("Processing Datafields:");
 
@@ -148,7 +145,6 @@ namespace metatop.Applications.metaCall
                     else
                     {
                         LogMsWordAdapterInformation(string.Format("unknown dataFieldType {0}", dataField.ToString()));
-
                         continue;
                     }
 
@@ -158,7 +154,6 @@ namespace metatop.Applications.metaCall
                     logInfos.Add("Method to Use", insertMethod.Method.Name);
 
                     LogMsWordAdapterInformation("CurrentDataField", logInfos);
-
 
                     //Das Find-Object initialisieren 
                     Word.Find findObject = InitFindClass(doc, dataField);
@@ -170,17 +165,13 @@ namespace metatop.Applications.metaCall
                         ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing,
                         ref _missing, ref _missing, ref _missing, ref _missing))
                     {
-
                         insertMethod(word, dataField, value);
                     }
 
-
                     foreach (Word.Shape shape in doc.Shapes)
                     {
-
                         if (shape.Type == Microsoft.Office.Core.MsoShapeType.msoTextBox)
                         {
-
                             shape.Select(ref _true);
                             //Startposition auf den Anfang setzen 
 
@@ -188,13 +179,10 @@ namespace metatop.Applications.metaCall
                                                 ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing,
                                                 ref _missing, ref _missing, ref _missing, ref _missing))
                             {
-
                                 insertMethod(word, dataField, value);
                             }
                         }
                     }
-
-
                 }
             }
             catch (COMException ex)
@@ -219,7 +207,6 @@ namespace metatop.Applications.metaCall
 
         public void PrintDocument(string printer, string printerFilename)
         {
-
             object _missing = System.Reflection.Missing.Value;
             object _false = false;
 
@@ -233,8 +220,6 @@ namespace metatop.Applications.metaCall
 
             try
             {
-
-
                 string tempFilename = null;
                 tempFilename = SaveAsTemporaryFile(this.msWord.ActiveDocument, printerFilename);
 
@@ -255,11 +240,9 @@ namespace metatop.Applications.metaCall
                     ref _missing, ref _missing, ref _missing, ref _missing);
 
                 LogMsWordAdapterInformation("MSWord-Printing was successfully");
-
             }
             catch (COMException ex)
             {
-
                 logInfos.Add("Exception", ex);
                 LogMsWordAdapterInformation("An COMException occoured while printing", logInfos);
                 throw new MSWordAdapterException(ex.Message, ex);
@@ -280,7 +263,6 @@ namespace metatop.Applications.metaCall
 
         public void Quit(bool closeWord, bool deleteTempFiles)
         {
-
             object _missing = System.Reflection.Missing.Value;
             object _false = false;
 
@@ -298,19 +280,19 @@ namespace metatop.Applications.metaCall
                     //Wenn der korrekte Prozess gefunden wurde, so wird auf dessen 
                     // Beendigung gewartet
                     if (this.msWordProcess != null)
+                    {
                         this.msWordProcess.WaitForExit(1000);
+                    }
 
                     this.msWordProcess = null;
                 }
                 catch(Exception ex)
                 {
                     LogMsWordAdapterInformation("An System.Exception occoured while printing", ex);
-                }
-               
+                }               
             }
 
-            if (deleteTempFiles && 
-                (this.tempFileName != null))
+            if (deleteTempFiles && (this.tempFileName != null))
             {
                 FileInfo fi = new FileInfo(this.tempFileName);
 
@@ -326,23 +308,35 @@ namespace metatop.Applications.metaCall
                 catch (Exception ex)
                 {
                     LogMsWordAdapterInformation("An System.Exception occoured while printing", ex);
-                }
-               
+                }               
             }
         }
 
         private Process FindWordProcess(Word._Application msWord)
         {
-
             Process[] processes = Process.GetProcessesByName("WINWORD"); // ("WINWORD.EXE");
-
 
             if (processes != null &&
                 processes.Length > 0)
             {
                 return processes[0];
             }
+
             return null;
+        }
+
+        public static string ToSingleChar(string toParsedString, char character)
+        {
+            //char punkt = '.';
+            string find = new string(character, 2);
+            string replaced = new string(character, 1);
+
+            while (toParsedString.IndexOf(find) > -1)
+            {
+                toParsedString = toParsedString.Replace(find, replaced);
+            }
+
+            return toParsedString;
         }
 
         public string SaveAsAndConvertDocumentToPdf(string targetFileName)
@@ -350,6 +344,7 @@ namespace metatop.Applications.metaCall
             Word.Document doc = this.msWord.ActiveDocument;
             string path = Path.GetTempPath();
             object _filename = new object();
+            char punkt = '.';
 
             if (string.IsNullOrEmpty(targetFileName))
             {
@@ -358,16 +353,15 @@ namespace metatop.Applications.metaCall
                 string filename = Path.GetFileNameWithoutExtension(targetFileName);
                 string extension = "pdf";
 
-                _filename = path + filename + "." + extension;
+                _filename = ToSingleChar(path + filename + "." + extension, punkt);
             }
             else
             {
-                _filename = targetFileName;
-            }
+                _filename = ToSingleChar(targetFileName, punkt);
+            }                   
 
             try
             {
-
                 if (File.Exists((string)_filename))
                 {
                     File.Delete((string)_filename);
@@ -377,7 +371,6 @@ namespace metatop.Applications.metaCall
                 doc.SaveAs(_filename, Word.WdSaveFormat.wdFormatPDF);
 
                 return (string) _filename;
-
             }
             catch (COMException ex)
             {
@@ -389,13 +382,11 @@ namespace metatop.Applications.metaCall
                 LogMsWordAdapterInformation("An System.Exception occourred during Quit-Method", ex);
                 throw new MSWordAdapterException(ex.Message, ex);
             }
-
         }
 
         private string SaveAsTemporaryFile(Word.Document doc, string fileName)
         {
             object _missing = System.Reflection.Missing.Value;
-
             string path = Path.GetTempPath(); 
 
             if (string.IsNullOrEmpty(fileName))
@@ -410,6 +401,7 @@ namespace metatop.Applications.metaCall
             try
             {
                 string originFilename = null;
+
                 if (doc.Saved)
                 {
                     originFilename = doc.Name;
@@ -419,12 +411,10 @@ namespace metatop.Applications.metaCall
                 {
                     File.Delete((string)_filename);
                 }
-
  
                 //Speichern des Dokuments, damit der Dokumentname für das Drucken richtig gesetzt ist.
                 doc.SaveAs(ref _filename, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing,
                     ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing);
-
  
                 //Nachdem die Datei unter neuem Namen gespeichert wurde, 
                 // muss die alte datei gelöscht werden
@@ -462,14 +452,11 @@ namespace metatop.Applications.metaCall
         private static void InsertText(Word._Application word, string dataField, object value)
         {
             string text = value as string;
-
-
             //Selecttion ersetzen
             int start = word.Selection.Start;
             int ende = word.Selection.End;
             //word.Selection.MoveRight()
             Console.WriteLine("Variable {0} gefunden : Position {1} bis {2}", dataField, start, ende);
-
 
             if (string.IsNullOrEmpty(text) && (
                 dataField == "$Projekt.Sponsorenpakete1$" || dataField == "$Projekt.Sponsorenpakete2$" || 
@@ -484,6 +471,7 @@ namespace metatop.Applications.metaCall
             }
 
             word.Selection.Cut();
+
             if (!string.IsNullOrEmpty(text))
             {
                 word.Selection.InsertAfter(text);
@@ -503,7 +491,9 @@ namespace metatop.Applications.metaCall
 
             SizeF imageSize;
             if (!CheckDataFieldImageParameters(word, out imageSize))
+            {
                 imageSize = SizeF.Empty;
+            }
 
             word.Selection.Start = start;
 
@@ -516,11 +506,9 @@ namespace metatop.Applications.metaCall
             
             if (imagePath != null)
             {
-            //    Clipboard.SetImage(image);
-
+                // Clipboard.SetImage(image);
                 word.Selection.InlineShapes.AddPicture(imagePath, ref _false, ref _true, ref _missing);
-
-              //  word.Selection.Paste();
+                // word.Selection.Paste();
                 
                 //Bildgröße entsprechend den Parametern setzen
                 if (imageSize != SizeF.Empty)
@@ -534,12 +522,15 @@ namespace metatop.Applications.metaCall
                     {
                         Word.InlineShape shape;
                         if (word.Application.Version == "14.0")
+                        {
                             shape = word.Selection.InlineShapes[1];
+                        }
                         else
+                        {
                             shape = word.Selection.InlineShapes[0];
+                        }
 
-                        shape.Select();
-                        
+                        shape.Select();                        
                         shape.Height = word.CentimetersToPoints(imageSize.Height);
                         shape.Width = word.CentimetersToPoints(imageSize.Width);
                     }
@@ -557,14 +548,14 @@ namespace metatop.Applications.metaCall
             object character = ")";
             word.Selection.Extend(ref character);
 
-
             size = SizeF.Empty;
             //Auslesen der aktuellen Markierung
             string param = word.Selection.Text;
 
             if (param.IndexOf('(') < 0)
+            {
                 return false;
-
+            }
             
             param = param.Substring(param.IndexOf('('));
             float width = 0f;
@@ -577,18 +568,25 @@ namespace metatop.Applications.metaCall
                 string[] dimension = param.Trim('(', ')').Split(';');
 
                 if (dimension.Length < 2)
+                {
                     return false;
+                }
 
                 if (!float.TryParse(dimension[0], out width))
+                {
                     return false;
+                }
 
                 if (!float.TryParse(dimension[1], out height))
+                {
                     return false;
+                }
 
                 size = new SizeF(width, height);
 
                 return true;
             }
+
             return false;
         }
 
@@ -606,11 +604,8 @@ namespace metatop.Applications.metaCall
             object _true = true;
             object _false = false;
 
-
             Word.Application wordApplication = document.Application;
-
             Word.Find findClass = wordApplication.Selection.Find;
-
 
             findClass.ClearFormatting();
             findClass.Text = searchExpression;
@@ -624,12 +619,10 @@ namespace metatop.Applications.metaCall
             findClass.MatchAllWordForms = false;
 
             return findClass;
-
         }
 
         private void IterateText(Word._Document document, Word.Find findClass, Delegate ReplaceMethod, object replaceExpression)
         {
-
             object _missing = System.Reflection.Missing.Value;
 
             while (findClass.Execute(ref _missing, ref _missing, ref _missing, ref _missing,
@@ -649,7 +642,6 @@ namespace metatop.Applications.metaCall
 
             Word.Application wordApplication = document.Application;
 
-
             wordApplication.Selection.Range.Delete(ref _missing, ref _missing);
             wordApplication.Selection.InsertAfter(textToReplace);
 
@@ -658,7 +650,6 @@ namespace metatop.Applications.metaCall
             document.Select();
             object direction = Word.WdCollapseDirection.wdCollapseStart;
             wordApplication.Selection.Collapse(ref direction);
-
 
             findClass.ClearFormatting();
             findClass.Replacement.ClearFormatting();
@@ -681,14 +672,11 @@ namespace metatop.Applications.metaCall
 
             */
 
-
-
             //foreach (Word.Shape shape in document.Shapes)
             //{
 
             //    if (shape.Type == Microsoft.Office.Core.MsoShapeType.msoTextBox)
             //    {
-
             //        shape.Select(ref _true);
             //        findClass.GetValue(ref _missing, ref _missing, ref _missing, ref _missing,
             //        ref _missing, ref _missing, ref _missing, ref _missing, ref _missing,
@@ -717,14 +705,18 @@ namespace metatop.Applications.metaCall
             loginfo.Add("Exception", ex);
             LogMsWordAdapterInformation(message, loginfo);
         }
+
         private void LogMsWordAdapterInformation(string message)
         {
             LogMsWordAdapterInformation(message, (IDictionary<string, object>) null);
         }
+
         private void LogMsWordAdapterInformation(string message, IDictionary<string, object> logInformations)
         {
             if (!Logger.IsLoggingEnabled())
+            {
                 return;
+            }
 
             IDictionary<string, object> logInfos = new Dictionary<string, object>();
             //IDictionary<string, string> sysInfos = metaCallBusiness.GetSystemInformation();
@@ -733,8 +725,7 @@ namespace metatop.Applications.metaCall
             //    logInfos.Add(sysInfo.Key, sysInfo.Value);
             //}
 
-            if ((logInformations != null) &&
-                logInformations.Count > 0)
+            if ((logInformations != null) && logInformations.Count > 0)
             {
                 foreach (KeyValuePair<string, object> logInformation in logInformations)
                 {
@@ -743,9 +734,7 @@ namespace metatop.Applications.metaCall
             }
 
             LogEntry logEntry = new LogEntry(message, "MsWordAdapter", 20, 2001, System.Diagnostics.TraceEventType.Information, "MsWordAdapter", logInfos);
-
             Logger.Write(logEntry);
-
         }
     }
     
@@ -771,7 +760,7 @@ namespace metatop.Applications.metaCall
     public class WordImages 
     {
         private string wordImages;
-
+    
         public WordImages(string value)
         {
             this.wordImages = value;
@@ -781,8 +770,5 @@ namespace metatop.Applications.metaCall
         {
             return this.wordImages;
         }
-
-
-    }
-            
+    }    
 }
