@@ -36,7 +36,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             : this()
         {
             if (callJob == null)
+            {
                 throw new ArgumentNullException("callJob");
+            }
 
             this.callJob = callJob;
             this.category = category;
@@ -55,8 +57,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                  ((this.messageTranferMode == MessageTranferMode.EMail) && (!string.IsNullOrEmpty(this.eMailTextBox.Text))) ||
                  ((this.messageTranferMode == MessageTranferMode.PrintOut) && (this.printersComboBox.SelectedIndex > -1))
                  );
-
-
 
             if (this.SelectedDocument != null)
             {
@@ -78,14 +78,15 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             {
                 this.sponsorPacketGroupBox.Enabled = false;
             }
-            //this.okButton.Enabled = 
-            //    addressFilled && 
-            //    (this.SelectedDocument != null);
 
             if (this.SelectedEmailTemplate == null)
+            {
                 eMailRadioButton.Enabled = false;
+            }
             else
+            {
                 eMailRadioButton.Enabled = true;
+            }
         }
 
         private string GetSalutation(ProjectInfo projectInfo, Sponsor sponsor)
@@ -105,26 +106,33 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             {
                 key = sponsor.ContactPerson.Anrede;
 
-
                 if (!string.IsNullOrEmpty(sponsor.ContactPerson.Titel))
+                {
                     sb.Append(sponsor.ContactPerson.Titel);
+                }
 
-                if (sb.Length > 0) sb.Append(" ");
+                if (sb.Length > 0)
+                {
+                    sb.Append(" ");
+                }
 
                 if (!string.IsNullOrEmpty(sponsor.ContactPerson.Nachname))
+                {
                     sb.Append(sponsor.ContactPerson.Nachname);
+                }
             }
 
             salutation = salutations[key];
 
             return string.Format(salutation, sb.ToString());
-
         }
 
         private void FillControls()
         {
             if (this.callJob == null)
+            {
                 return;
+            }
 
             ProjectInfo project = this.callJob.Project;
             Sponsor sponsor = this.callJob.Sponsor;
@@ -151,10 +159,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         private void SetCountryPhoneNumber()
         {
             if (string.IsNullOrEmpty(this.callJob.Sponsor.Land))
+            {
                 return;
+            }
 
             CountryPhoneNumber countryPhoneNumber = MetaCall.Business.CountryPhoneNumber.GetCountryCodeNumber(this.callJob.Sponsor.Land);
-
             string currentNumber = this.faxNumberTextBox.Text;
 
             if (string.IsNullOrEmpty(currentNumber))
@@ -187,10 +196,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                     }
                 }
             }
+
             this.faxNumberTextBox.Text = currentNumber;
         }
-
-
 
         private void ToggleTransferModeControls()
         {
@@ -228,6 +236,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             int x = this.sponsorPacketGroupBox.Margin.Horizontal;
             int y = x * 3;
             int maxWidth = 100;
+
             for (int i = 0; i < sponsorPackets.Count; i++)
             {
                 if (sponsorPackets[i].FaxText1_de != null)
@@ -241,8 +250,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                     box.TabStop = true;
 
                     y += (box.Height + box.Margin.Horizontal);
-
                     maxWidth = Math.Max(maxWidth, box.Width);
+
                     if ((y + box.Height) > this.sponsorPacketGroupBox.ClientSize.Height)
                     {
                         x += maxWidth + box.Margin.Vertical;
@@ -251,7 +260,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                     }
                 }
             }
-
         }
 
         private void FillFaxTemplateGroupBox()
@@ -263,9 +271,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             int x = this.faxTemplateGroupBox.Margin.Horizontal ;
             int y = x * 3;
             int maxWidth = 100;
+
             for (int i = 0; i < documents.Count; i++)
-            {
-                
+            {                
                 RadioButton button = new RadioButton();
                 button.AutoSize = true;
                 button.Location = new Point(x, y);
@@ -273,12 +281,15 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                 button.Parent = this.faxTemplateGroupBox;
                 button.Tag = documents[i];
                 button.TabStop = true;
+
                 if (i == 0)
+                {
                     button.Select();
+                }
 
                 y += (button.Height + button.Margin.Horizontal);
-
                 maxWidth  = Math.Max(maxWidth , button.Width);
+
                 if ((y + button.Height) > this.faxTemplateGroupBox.ClientSize.Height)
                 {
                     x+= maxWidth + button.Margin.Vertical;
@@ -297,9 +308,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             int x = this.emailTemplateGroupBox.Margin.Horizontal;
             int y = x * 3;
             int maxWidth = 100;
+
             for (int i = 0; i < documents.Count; i++)
             {
-
                 RadioButton button = new RadioButton();
                 button.AutoSize = true;
                 button.Location = new Point(x, y);
@@ -307,12 +318,15 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                 button.Parent = this.emailTemplateGroupBox;
                 button.Tag = documents[i];
                 button.TabStop = true;
-                if (i==0)
+
+                if (i == 0)
+                {
                     button.Select();
+                }
 
                 y += (button.Height + button.Margin.Horizontal);
-
                 maxWidth = Math.Max(maxWidth, button.Width);
+
                 if ((y + button.Height) > this.emailTemplateGroupBox.ClientSize.Height)
                 {
                     x += maxWidth + button.Margin.Vertical;
@@ -337,26 +351,31 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
 
                 // Der ActiveFax-Drucker darf nocht ausgewählt werden 
                 if (string.Compare(printerName, "ActiveFax", true, System.Globalization.CultureInfo.InvariantCulture) == 0)
+                {
                     continue;
-
+                }
 
                 settings.PrinterName = printerName;
 
                 this.printersComboBox.Items.Add(printerName);
 
-                
-
                 if (settings.IsDefaultPrinter)
+                {
                     defaultPrinter = i;
+                }
                 
             }
 
             if (this.printersComboBox.Items.Count > 0 )
             {
                 if (defaultPrinter > -1)
+                {
                     this.printersComboBox.SelectedIndex = defaultPrinter;
+                }
                 else
+                {
                     this.printersComboBox.SelectedIndex = 0;
+                }
             }
         }
 
@@ -468,6 +487,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                             this.faxRadioButton.Checked = true;
                         break;
                 }
+
                 this.messageTranferMode = value;
                 ToggleTransferModeControls();
                 ShowFaxSelectionLabel();
@@ -537,8 +557,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         {
             reminderFaxSelectionLabel.Visible = !reminderFaxSelectionLabel.Visible;
         }
-
- 
     }
 
     public enum MessageTranferMode
