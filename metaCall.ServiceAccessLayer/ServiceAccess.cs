@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Configuration;
 using System.ComponentModel;
-
-
 using System.Data;
-
-
 using metatop.Applications.metaCall.DataObjects;
 using metatop.Applications.metaCall.DataAccessLayer;
 using System.Threading;
-
 
 namespace metatop.Applications.metaCall.ServiceAccessLayer
 {
@@ -40,7 +35,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public User GetUser(UserInfo userInfo)
         {
             if (userInfo == null)
+            {
                 throw new ArgumentNullException("userInfo");
+            }
 
             return UserDAL.GetUser(userInfo.UserId);
         }
@@ -48,7 +45,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public User GetUser(Guid userId)
         {
             if (userId == Guid.Empty)
+            {
                 throw new ArgumentNullException("userId");
+            }
 
             return UserDAL.GetUser(userId);
         }
@@ -56,7 +55,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public User GetUser(string userName)
         {
             if (userName == null)
+            {
                 throw new ArgumentNullException("userName");
+            }
 
             return UserDAL.GetUser(userName);
         }
@@ -78,9 +79,10 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
 
         public UserInfo[] GetUsersByCenter(Guid centerId)
         {
-
             if (centerId == Guid.Empty)
+            {
                 throw new ArgumentNullException("centerId");
+            }
 
             return UserDAL.GetUsersByCenter(centerId);
         }
@@ -107,7 +109,6 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
             return UserDAL.DomainUser_GetLine(domainUser);
         }
         #endregion
-
 
         #region PhoneTimesReport
 
@@ -187,7 +188,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteWorkTimeAddition(WorkTimeAdditions workTimeAdditions)
         {
             if (workTimeAdditions == null)
+            {
                 throw new ArgumentNullException("workTimeAdditions");
+            }
 
             UserDAL.DeleteWorkTimeAddition(workTimeAdditions);
         }
@@ -195,7 +198,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateWorkTimeAddition(WorkTimeAdditions workTimeAdditions)
         {
             if (workTimeAdditions == null)
+            {
                 throw new ArgumentNullException("workTimeAdditions");
+            }
 
             UserDAL.UpdateWorkTimeAddition(workTimeAdditions);
         }
@@ -203,7 +208,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateWorkTimeAddition(WorkTimeAdditions workTimeAdditions)
         {
             if (workTimeAdditions == null)
+            {
                 throw new ArgumentNullException("workTimeAdditions");
+            }
 
             UserDAL.CreateWorkTimeAddition(workTimeAdditions);
         }
@@ -213,7 +220,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateUser(User user, string password)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             UserDAL.CreateUser(user, password);
         }
@@ -221,7 +230,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateUser(User user)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             UserDAL.UpdateUser(user);
         }
@@ -229,7 +240,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteUser(User user)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             UserDAL.DeleteUser(user.UserId);
         }
@@ -237,7 +250,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteUser(UserInfo userInfo)
         {
             if (userInfo == null)
+            {
                 throw new ArgumentNullException("userInfo");
+            }
 
             UserDAL.DeleteUser(userInfo.UserId);
         }
@@ -245,7 +260,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public string GetHashedPassword(Guid userId)
         {
             if (userId == Guid.Empty)
+            {
                 throw new ArgumentNullException("userId");
+            }
 
             return UserDAL.GetHashedPassword(userId);
         }
@@ -257,30 +274,31 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
 
         public TeamMitglied[] GetUsersByTeam(Guid teamId)
         {
-
             if (teamId == Guid.Empty)
+            {
                 throw new ArgumentNullException("teamId");
+            }
 
             return UserDAL.GetUsersByTeam(teamId);
-
         }
 
 
         public void LogOff(User user)
         {
-
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             UserDAL.LogOff(user);
-
         }
 
         public void LogOn(User user)
         {
-
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             UserDAL.LogOnUser(user);
         }
@@ -288,7 +306,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateWorkTimeItem(WorkTimeItem workTimeItem)
         {
             if (workTimeItem == null)
+            {
                 throw new ArgumentNullException("workTimeItem");
+            }
 
             UserDAL.CreateWorkTimeItem(workTimeItem);
         }
@@ -296,41 +316,25 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateWorkTimeItem(WorkTimeItem workTimeItem)
         {
             if (workTimeItem == null)
+            {
                 throw new ArgumentNullException("workTimeItem");
+            }
 
             UserDAL.UpdateWorkTimeItem(workTimeItem);
         }
 
-        public void CreateMetawareArbeitszeit(
-            int partnerNummer,
-            int projektNummer,
-            string bezeichnung,
-            DateTime arbeitsdatum,
-            DateTime arbeitszeitVon,
-            DateTime arbeitszeitBis,
-            ProjectLogOnTimeItem projectLogOnTimeItem)
+        public void CreateMetawareArbeitszeit(int partnerNummer, int projektNummer, string bezeichnung, DateTime arbeitsdatum, DateTime arbeitszeitVon, DateTime arbeitszeitBis, ProjectLogOnTimeItem projectLogOnTimeItem)
         {
-            UserDAL.CreateMetawareArbeitszeit(partnerNummer, projektNummer,
-                bezeichnung, arbeitsdatum, arbeitszeitVon, arbeitszeitBis, projectLogOnTimeItem);
+            UserDAL.CreateMetawareArbeitszeit(partnerNummer, projektNummer, bezeichnung, arbeitsdatum, arbeitszeitVon, arbeitszeitBis, projectLogOnTimeItem);
         }
 
         #region Reporting
-        public WorkTimeReportResults[] GetWorkTimeReportResults(Guid? centerId,
-            Guid? teamId,
-            Guid? userId,
-            Guid? projectId,
-            DateTime start,
-            DateTime stop)
+        public WorkTimeReportResults[] GetWorkTimeReportResults(Guid? centerId, Guid? teamId, Guid? userId, Guid? projectId, DateTime start, DateTime stop)
         {
             return UserDAL.GetWorkTimeReportResults(centerId, teamId, userId, projectId, start, stop);
         }
 
-        public UserCallJobActivityResults[] GetUserCallJobActivityResults(Guid? centerId,
-            Guid? teamId,
-            Guid? userId,
-            Guid? projectId,
-            DateTime start,
-            DateTime stop)
+        public UserCallJobActivityResults[] GetUserCallJobActivityResults(Guid? centerId, Guid? teamId, Guid? userId, Guid? projectId, DateTime start, DateTime stop)
         {
             return UserDAL.GetUserCallJobActivityResults(centerId, teamId, userId, projectId, start, stop);
         }
@@ -340,7 +344,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public UserSignature GetUserSignature(Guid userId)
         {
             if (userId.Equals(Guid.Empty))
+            {
                 throw new ArgumentNullException("userId");
+            }
 
             return UserDAL.GetSignature(userId);
         }
@@ -348,7 +354,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void SetUserSignature(Guid userId, string filename)
         {
             if (userId.Equals(Guid.Empty))
+            {
                 throw new ArgumentNullException("userId");
+            }
 
             UserDAL.SetSignature(userId, filename);
         }
@@ -381,8 +389,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Project GetProject(ProjectInfo projectInfo)
         {
             if (projectInfo == null)
+            {
                 throw new ArgumentNullException("projectinfo");
-
+            }
 
             return ProjectDAL.GetProject(projectInfo.ProjectId);
         }
@@ -390,7 +399,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Project GetProject(Guid projectId)
         {
             if (projectId == null)
+            {
                 throw new ArgumentNullException("projectId");
+            }
 
             return ProjectDAL.GetProject(projectId);
         }
@@ -418,7 +429,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateProject(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             ProjectDAL.CreateProject(project);
         }
@@ -426,7 +439,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateProject(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             ProjectDAL.UpdateProject(project);
         }
@@ -434,7 +449,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteProject(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             ProjectDAL.DeleteProject(project.ProjectId);
         }
@@ -442,7 +459,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteProject(ProjectInfo projectInfo)
         {
             if (projectInfo == null)
+            {
                 throw new ArgumentNullException("projectInfo");
+            }
 
             ProjectDAL.DeleteProject(projectInfo.ProjectId);
         }
@@ -450,7 +469,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateProjectLogOnTimeItem(ProjectLogOnTimeItem projectLogOnTimeItem)
         {
             if (projectLogOnTimeItem == null)
+            {
                 throw new ArgumentNullException("projectLogOnTimeItem");
+            }
 
             ProjectDAL.CreateLogOnTimeItem(projectLogOnTimeItem);
         }
@@ -458,7 +479,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateProjectLogOnTimeItem(ProjectLogOnTimeItem projectLogOnTimeItem)
         {
             if (projectLogOnTimeItem == null)
+            {
                 throw new ArgumentNullException("projectLogOnTimeItem");
+            }
 
             ProjectDAL.UpdateLogOnTimeItem(projectLogOnTimeItem);
         }
@@ -473,7 +496,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void SetLastCall(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("Projekt");
+            }
 
             ProjectDAL.SetLastCall(project);
         }
@@ -514,7 +539,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateProjectDocument(ProjectDocument document)
         {
             if (document == null)
+            {
                 throw new ArgumentNullException("document");
+            }
 
             ProjectDocumentDAL.CreateDocument(document);
         }
@@ -522,7 +549,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateProjectDocument(ProjectDocument document)
         {
             if (document == null)
+            {
                 throw new ArgumentNullException("document");
+            }
 
             ProjectDocumentDAL.UpdateDocument(document);
         }
@@ -530,7 +559,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteProjectDocument(Guid documentId)
         {
             if (documentId == Guid.Empty)
+            {
                 throw new ArgumentNullException("documentId");
+            }
 
             ProjectDocumentDAL.DeleteDocument(documentId);
         }
@@ -538,7 +569,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public ProjectDocument GetProjectDocument(Guid documentId)
         {
             if (documentId == Guid.Empty)
+            {
                 throw new ArgumentNullException("documentId");
+            }
 
             return ProjectDocumentDAL.GetProjectDocument(documentId);
         }
@@ -546,7 +579,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public ProjectDocument[] GetProjectDocumentsByProject(Guid projectid)
         {
             if (projectid == Guid.Empty)
+            {
                 throw new ArgumentNullException("projectId");
+            }
 
             return ProjectDocumentDAL.GetProjectDocumentsByProject(projectid);
         }
@@ -554,7 +589,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public ProjectDocument[] GetProjectDocumentsByProjectAndCategory(Guid projectId, DocumentCategory category)
         {
             if (projectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("projectId");
+            }
 
             return ProjectDocumentDAL.GetProjectDocumentsByProjectAndCategory(projectId, category);
         }
@@ -574,15 +611,19 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCenter(Center center)
         {
             if (center == null)
+            {
                 throw new ArgumentNullException("center");
-            
+            }
+
             CenterDAL.CreateCenter(center);
         }
 
         public void UpdateCenter(Center center)
         {
             if (center == null)
+            {
                 throw new ArgumentNullException("center");
+            }
 
             CenterDAL.UpdateCenter(center);
         }
@@ -590,7 +631,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteCenter(Guid centerId)
         {
             if (centerId == Guid.Empty)
+            {
                 throw new ArgumentNullException("centerId");
+            }
 
             CenterDAL.DeleteCenter(centerId);
         }
@@ -598,7 +641,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Center GetCenter(Guid centerId)
         {
             if (centerId == Guid.Empty)
+            {
                 throw new ArgumentNullException("centerId");
+            }
 
             return CenterDAL.GetCenter(centerId);
         }
@@ -606,7 +651,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Center GetCenter(mwCenter mwCenter)
         {
             if (mwCenter == null)
+            {
                 throw new ArgumentNullException("mwCenter");
+            }
 
             return CenterDAL.GetCenter(mwCenter);
         }
@@ -619,7 +666,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CenterInfo[] GetCentersForUser(User user)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             return CenterDAL.GetCenters(user);
         }
@@ -629,17 +678,20 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         #region Teams
         public void CreateTeam(Team team)
         {
-
             if (team == null)
+            {
                 throw new ArgumentNullException("team");
-            
+            }
+
             TeamDAL.CreateTeam(team);
         }
 
         public void UpdateTeam(Team team)
         {
             if (team == null)
+            {
                 throw new ArgumentNullException("team");
+            }
 
             TeamDAL.UpdateTeam(team);
         }
@@ -655,7 +707,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Team GetTeam(Guid teamId)
         {
             if (teamId == Guid.Empty)
+            {
                 throw new ArgumentNullException("teamId");
+            }
 
             return TeamDAL.GetTeam(teamId);
         }
@@ -678,7 +732,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public TeamInfo[] GetTeamsByCenter(Guid centerId)
         {
             if (centerId == Guid.Empty)
+            {
                 throw new ArgumentNullException("centerId");
+            }
 
             return TeamDAL.GetTeamsByCenter(centerId);
         }
@@ -702,18 +758,20 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         #region mwUsers
         public mwUser GetMwUser(User user)
         {
-
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             return mwUserDAL.GetmwUser(user.UserId);
-
         }
 
         public mwUser GetMwUser(Guid userId)
         {
             if (userId == Guid.Empty)
+            {
                 throw new ArgumentNullException("userId");
+            }
 
             return mwUserDAL.GetmwUser(userId);
         }
@@ -733,27 +791,33 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public mwCenter GetMwCenter(Center center)
         {
             if (center == null)
+            {
                 throw new ArgumentNullException();
+            }
 
             if (center.mwCenter == null)
+            {
                 return null;
+            }
             else
+            {
                 return GetMwCenter(center.mwCenter.CenterNummer);
+            }
         }
 
         public mwCenter[] GetAllActiveMetaWareCenters()
         {
             return mwCenterDAL.GetAllActiveMwCenters();
         }
-
-
         #endregion
 
         #region mwProjects
         public mwProject GetMwProject(int projektNummer)
         {
             if (projektNummer < 1)
+            {
                 throw new ArgumentNullException("projektNummer");
+            }
 
             return mwProjectDAL.GetMwProject(projektNummer);
         }
@@ -761,10 +825,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public mwProject[] GetAllMwProjectsForTransfer(CenterInfo center, int statusKennung)
         {
             if (center == null)
+            {
                 throw new ArgumentNullException("center");
+            }
 
             if (statusKennung < 1)
+            {
                 throw new ArgumentOutOfRangeException("statusKennung must be greather than 0");
+            }
 
             return mwProjectDAL.GetAllProjectsForTransfer(center, statusKennung);
         }
@@ -774,7 +842,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void TransferAddressPool(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             AddressDAL.TransferAddressPool(project);
         }
@@ -782,16 +852,19 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public int GetFailureByProject(ProjectInfo project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return AddressDAL.GetFailureByProject(project);
-
         }
 
         public void DeleteFailureByProject(ProjectInfo project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             AddressDAL.DeleteFailureByProject(project);
         }
@@ -804,25 +877,30 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Sponsor[] GetNewSponsorsForTransfer(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return AddressDAL.GetNewListForTransfer(project);
-
         }
 
         //Aktualisiert einen Sponsor auf dem Server
         public void UpdateSponsor(Sponsor sponsor)
         {
             if (sponsor == null)
+            {
                 throw new ArgumentNullException("sponsor");
+            }
 
             AddressDAL.UpdateSponsor(sponsor);
-
         }
+
         public Sponsor[] GetSponsorsByProject(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return AddressDAL.GetSponsorsByProject(project.ProjectId);
         }
@@ -830,7 +908,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Sponsor[] GetSponsorsByProject(ProjectInfo projectInfo)
         {
             if (projectInfo == null)
+            {
                 throw new ArgumentNullException("projectInfo");
+            }
 
             return AddressDAL.GetSponsorsByProject(projectInfo.ProjectId);
         }
@@ -845,10 +925,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public GeoZone GetGeoZone(Sponsor sponsor, Guid projectId)
         {
             if (sponsor == null)
+            {
                 throw new ArgumentNullException("sponsor");
+            }
 
             if (projectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("projectId");
+            }
 
             return AddressDAL.GetGeoZone(sponsor, projectId);
         }
@@ -856,12 +940,15 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public SponsorOrderInfo[] GetAllSponsorOrderInfos(Sponsor sponsor, Guid projectId)
         {
             if (sponsor == null)
+            {
                 throw new ArgumentNullException("sponsor");
+            }
 
             if (projectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("projectid");
+            }
 
-            
             return AddressDAL.GetAllSponsorOrderInfos(sponsor, projectId);
         }
 
@@ -877,8 +964,6 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         {
             AddressDAL.CreateSponsor(sponsor, project);
         }
-
-
         #endregion
 
         #region Calls & CallJobs
@@ -900,7 +985,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJob GetCallJob(Guid callJobId)
         {
             if (callJobId == Guid.Empty)
+            {
                 throw new ArgumentNullException("callJobId");
+            }
 
             return CallJobDAL.GetCallJob(callJobId);
         }
@@ -914,10 +1001,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJob GetCallJob(Guid addressId, Guid projectId)
         {
             if (addressId == Guid.Empty)
+            {
                 throw new ArgumentNullException("AddressId");
+            }
 
             if (projectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("ProjectId");
+            }
 
             return CallJobDAL.GetCallJob(addressId, projectId);
 
@@ -931,7 +1022,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCallJobsByAddressReleaseInfos(AddressReleaseInfo[] infoList)
         {
             if (infoList == null)
+            {
                 throw new ArgumentNullException("infoList");
+            }
 
             CallJobDAL.CreateCallJobsByAddressReleaseInfos(infoList);
         }
@@ -944,7 +1037,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateCallJob(CallJob callJob)
         {
             if (callJob == null)
+            {
                 throw new ArgumentNullException("callJob");
+            }
 
             CallJobDAL.UpdateCallJob(callJob);
         }
@@ -957,7 +1052,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateCallJobsByProject(Project project, DialMode dialMode)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             CallJobDAL.UpdateCallJobsDialModeByProject(project, dialMode);
         }
@@ -965,7 +1062,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateCallJobsUnsuitableAddressChanges(CallJobUnsuitableAddressChanges[] callJobAddressChanges)
         {
             if (callJobAddressChanges == null)
+            {
                 throw new ArgumentNullException("callJobAddressChanges");
+            }
 
             CallJobUnsuitableInfoDAL.UpdateCallJobsUnsuitableAddressChanges(callJobAddressChanges);
         }
@@ -973,7 +1072,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public double GetUnsuitableAddressPercentageByProject(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return CallJobUnsuitableInfoDAL.GetUnsuitableAddressPercentageByProject(project);
         }
@@ -987,21 +1088,30 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         /// <returns></returns>
         public ReminderCall[] GetNextReminderCalls(ReminderCallRequestMessage message)
         {
-
             if (message == null)
+            {
                 throw new ArgumentNullException("message");
+            }
 
             if (message.User == null)
+            {
                 throw new ArgumentNullException("message.User");
+            }
 
             if (message.Project == null)
+            {
                 throw new ArgumentNullException("message.Project");
+            }
 
             if (message.ReminderRequestDate == DateTime.MinValue)
+            {
                 throw new ArgumentOutOfRangeException("message.ReminderRequestDate");
+            }
 
             if (message.MaxTeamReminders < 1)
+            {
                 throw new ArgumentOutOfRangeException("message.MaxTeamReminders");
+            }
 
             return CallDAL.GetNextReminderCalls(message);
         }
@@ -1014,7 +1124,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Call[] GetNextSponsoringCalls(CallRequestMessage message)
         {
             if (message == null)
+            {
                 throw new ArgumentNullException("message");
+            }
 
             return CallDAL.GetNextSponsoringCalls(message);
         }
@@ -1048,10 +1160,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateCall(Guid callId, CallJobState callJobState)
         {
             if (callId == Guid.Empty)
+            {
                 throw new ArgumentNullException("call");
+            }
 
             if (callJobState == CallJobState.Invalid)
+            {
                 throw new ArgumentException("callJobState cannot be Invalid");
+            }
 
             CallDAL.UpdateCall(callId, callJobState);
         }
@@ -1062,7 +1178,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void ResetAllCallsForUser(User user)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             CallDAL.ResetAllUserCalls(user.UserId);
         }
@@ -1073,7 +1191,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void ReleaseCall(Guid callId)
         {
             if (callId == Guid.Empty)
+            {
                 throw new ArgumentNullException("callId");
+            }
 
             CallDAL.ReleaseCall(callId);
         }
@@ -1081,7 +1201,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void ReleaseCalls(Call[] calls)
         {
             if (calls == null)
+            {
                 throw new ArgumentNullException("calls");
+            }
 
             CallDAL.ReleaseCalls(calls);
         }
@@ -1089,21 +1211,28 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCallJobPhoneEvent(CallJobPhoneEvent phoneEvent)
         {
             if (phoneEvent == null)
+            {
                 throw new ArgumentNullException("callJobPhoneEvent");
+            }
+
             CallJobPhoneEventDAL.CreateCallJobPhoneEvent(phoneEvent);
         }
 
         public void CreateCallJobActivityTimeItem(CallJobActivityTimeItem callJobActivityTimeItem)
         {
             if (callJobActivityTimeItem == null)
+            {
                 throw new ArgumentNullException("callJobActivityTimeItem");
+            }
 
             CallJobDAL.CreateCallJobActivityTimeItem(callJobActivityTimeItem);
         }
         public void UpdateCallJobActivityTimeItem(CallJobActivityTimeItem callJobActivityTimeItem)
         {
             if (callJobActivityTimeItem == null)
+            {
                 throw new ArgumentNullException("callJobActivityTimeItem");
+            }
 
             CallJobDAL.UpdateCallJobActivityTimeItem(callJobActivityTimeItem);
         }
@@ -1115,9 +1244,10 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         /// <returns></returns>
         public SponsoringCallJob[] GetSponsoringCallJobsByProject(Project project)
         {
-
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return CallJobDAL.GetSponsoringCallJobsByProject(project);
         }
@@ -1131,10 +1261,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public Boolean GetTipAddressLastProject(Sponsor sponsor, ProjectInfo projectInfo)
         {
             if (sponsor == null)
+            {
                 throw new ArgumentNullException("Sponsor");
+            }
 
             if (projectInfo == null)
+            {
                 throw new ArgumentNullException("Projektinfo");
+            }
 
             return AddressDAL.GetTipAddressLastProject(sponsor, projectInfo);
         }
@@ -1163,7 +1297,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public DurringCallJob[] GetDurringCallJobsByUser(User user)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("User");
+            }
 
             return CallJobDAL.GetDurringCallJobsByUser(user);
         }
@@ -1176,7 +1312,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public DurringInfo[] GetDurringInfoByUser(User user, int mahnstufe2)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("User");
+            }
 
             return CallJobDAL.GetDurringInfosByUser(user, mahnstufe2);
         }
@@ -1189,7 +1327,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public DurringLevelInfo[] GetDurringLevelInfoByUser(User user)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("User");
+            }
 
             return CallJobDAL.GetDurringLevelInfoByUser(user);
         }
@@ -1201,7 +1341,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DurringCreate(User user)
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("User");
+            }
 
             CallJobDAL.DurringsCreate(user);
         }
@@ -1213,17 +1355,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         /// <param name="asyncOp"></param>
         /// <param name="reportProgressDelegate"></param>
         /// <returns></returns>
-        public SponsoringCallJob[] GetSponsoringCallJobsByProject(
-            Project project,
-            AsyncOperation asyncOp,
-            SendOrPostCallback reportProgressDelegate)
+        public SponsoringCallJob[] GetSponsoringCallJobsByProject(Project project, AsyncOperation asyncOp, SendOrPostCallback reportProgressDelegate)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
-            
             return CallJobDAL.GetSponsoringCallJobsByProject(project, asyncOp, reportProgressDelegate);
-
         }
 
         /// <summary>
@@ -1233,17 +1372,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         /// <param name="asyncOp"></param>
         /// <param name="reportProgressDelegate"></param>
         /// <returns></returns>
-        public CallJobInfoExtended[] GetListCallJobInfoExtendedByProject(
-            Project project,
-            AsyncOperation asyncOp,
-            SendOrPostCallback reportProgressDelegate)
+        public CallJobInfoExtended[] GetListCallJobInfoExtendedByProject(Project project, AsyncOperation asyncOp, SendOrPostCallback reportProgressDelegate)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
-
+            }
 
             return CallJobInfoExtendedDAL.GetListCallJobInfoExtendedByProject(project, asyncOp, reportProgressDelegate);
-
         }
 
         /// <summary>
@@ -1252,14 +1388,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         /// </summary>
         /// <param name="project"></param>
         /// <returns></returns>
-        public CallJobUnsuitableInfo[] GetListCallJobsUnsuitableInfoByProject(Project project,
-            Guid userId, Guid contactTypeParticipationUnsuitableId)
+        public CallJobUnsuitableInfo[] GetListCallJobsUnsuitableInfoByProject(Project project, Guid userId, Guid contactTypeParticipationUnsuitableId)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
-            return CallJobUnsuitableInfoDAL.GetListCallJobsUnsuitableInfoByProject(project, 
-                userId, contactTypeParticipationUnsuitableId);
+            return CallJobUnsuitableInfoDAL.GetListCallJobsUnsuitableInfoByProject(project, userId, contactTypeParticipationUnsuitableId);
         }
 
         /// <summary>
@@ -1271,7 +1407,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobUnsuitableInfoUser[] GetListCallJobsUnsuitableInfoUsersByProject(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return CallJobUnsuitableInfoDAL.GetListCallJobsUnsuitableInfoUsersByProject(project);
         }
@@ -1285,7 +1423,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobUnsuitableInfoReason[] GetListCallJobsUnsuitableInfoReasonsByProject(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return CallJobUnsuitableInfoDAL.GetListCallJobsUnsuitableInfoReasonsByProject(project);
         }
@@ -1297,8 +1437,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         /// <param name="project"></param>
         /// <param name="isAdminMode"></param>
         /// <returns></returns>
-        public CallJob[] GetCallJobsByUserAndProject(
-            UserInfo user, ProjectInfo project, string expression, bool isAdminMode)
+        public CallJob[] GetCallJobsByUserAndProject(UserInfo user, ProjectInfo project, string expression, bool isAdminMode)
         {
             return CallJobDAL.GetCallJobsByUserAndProject(user, project, expression, isAdminMode);
         }
@@ -1310,8 +1449,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         /// <param name="project"></param>
         /// <param name="isAdminMode"></param>
         /// <returns></returns>
-        public CallJob[] GetCallJobsByUserAndProject(
-            UserInfo user, ProjectInfo project, string expression, bool isAdminMode, bool excludeRefusals)
+        public CallJob[] GetCallJobsByUserAndProject(UserInfo user, ProjectInfo project, string expression, bool isAdminMode, bool excludeRefusals)
         {
             return CallJobDAL.GetCallJobsByUserAndProject(user, project, expression, isAdminMode, excludeRefusals);
         }
@@ -1324,8 +1462,10 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobResult[] GetCallJobResultsForCallJob(CallJob callJob)
         {
             if (callJob == null)
+            {
                 throw new ArgumentNullException("callJob");
-            
+            }
+
             return CallJobResultDAL.GetCallJobResultsByCallJobId(callJob.CallJobId);
         }
 
@@ -1337,7 +1477,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobResult GetLastCallJobResultsByCallJobId(CallJob callJob)
         {
             if (callJob == null)
+            {
                 throw new ArgumentNullException("callJob");
+            }
 
             return CallJobResultDAL.GetLastCallJobResultsByCallJobId(callJob.CallJobId);
         }
@@ -1352,21 +1494,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        public SponsoringOrdersDistribution[] GetSponsoringOrdersDistribution(
-                        Guid? centerId,
-                        Guid? teamId,
-                        Guid? userId,
-                        Guid? projectId,
-                        DateTime from,
-                        DateTime to)
+        public SponsoringOrdersDistribution[] GetSponsoringOrdersDistribution(Guid? centerId, Guid? teamId, Guid? userId, Guid? projectId, DateTime from, DateTime to)
         {
-            return CallJobDAL.GetSponsoringOrdersDistribution(
-                        centerId,
-                        teamId,
-                        userId,
-                        projectId,
-                        from,
-                        to);
+            return CallJobDAL.GetSponsoringOrdersDistribution(centerId, teamId, userId, projectId, from, to);
         }
 
         public DateTime? GetLastAddressContact(int adressenPoolNummer, Guid projectId)
@@ -1377,7 +1507,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCallJobResult(CallJobResult result)
         {
             if (result == null)
+            {
                 throw new ArgumentNullException("result");
+            }
 
             CallJobResultDAL.CreateCallJobResult(result);
         }
@@ -1385,7 +1517,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCallJobSponsoringOrder(CallJobPossibleResult result)
         {
             if (result == null)
+            {
                 throw new ArgumentNullException("result");
+            }
 
             CallJobDAL.CreateSponsoringOrder(result);
         }
@@ -1393,16 +1527,19 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCallJobDurring(CallJobPossibleResult result)
         {
             if (result == null)
+            {
                 throw new ArgumentNullException("result");
+            }
 
             CallJobDAL.CreateDurring(result);
-
         }
 
         public void CreateCallJobSponsoringCancellation(CallJobPossibleResult result)
         {
             if (result == null)
+            {
                 throw new ArgumentNullException("result");
+            }
 
             CallJobDAL.CreateSponsoringCancellation(result);
         }
@@ -1410,18 +1547,19 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCallJobAddressUnsuitable(CallJobUnsuitableResult result)
         {
             if (result == null)
+            {
                 throw new ArgumentNullException("result");
-
+            }
 
             CallJobDAL.CreateAddressUnsuitable(result);
         }
 
-
-
         public void UpdateCallJobResult(CallJobResult result)
         {
             if (result == null)
+            {
                 throw new ArgumentNullException("result");
+            }
 
             CallJobResultDAL.UpdateCallJobResult(result);
         }
@@ -1429,7 +1567,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobStatistics GetCallJobStatistics(ProjectInfo projectInfo,Guid? userId, int resultType)
         {
             if (projectInfo == null)
+            {
                 throw new ArgumentNullException("ProjectInfo");
+            }
 
             return StatisticsDAL.GetCallJobStatistics(projectInfo, userId, resultType);
         }
@@ -1437,7 +1577,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobStatistics GetCallJobStatistics(CallJobGroupInfo callJobGroup, Guid? userId, int resultType)
         {
             if (callJobGroup == null)
+            {
                 throw new ArgumentNullException("CallJobGroup");
+            }
 
             return StatisticsDAL.GetCallJobStatistics(callJobGroup, userId, resultType );
         }
@@ -1445,19 +1587,24 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void TransferUnusedCallJobs(Guid sourceProjectId, Guid targetProjectId)
         {
             if (sourceProjectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("sourceProjectId");
+            }
 
             if (targetProjectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("targetProjectId");
+            }
 
-            //System.Windows.Forms.MessageBox.Show(sourceProjectId.ToString() + " /source: " + targetProjectId.ToString());
             CallJobDAL.TransferUnusedCallJobs(sourceProjectId, targetProjectId);
         }
 
         public int TransferUnusedCallJobsCount(Guid sourceProjectId)
         {
             if (sourceProjectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("sourceProjectId");
+            }
 
             return CallJobDAL.TransferUnusedCallJobsCount(sourceProjectId);
         }
@@ -1484,11 +1631,13 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCallJobGroup(CallJobGroup callJobGroup)
         {
             if (callJobGroup == null)
+            {
                 throw new ArgumentNullException("callJobGroup");
-
+            }
 
             CallJobGroupDAL.CreateCallJobGroup(callJobGroup);
         }
+
         /// <summary>
         /// Aktualisiert eine CallJobgruppe auf dem Server
         /// </summary>
@@ -1496,11 +1645,13 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateCallJobGroup(CallJobGroup callJobGroup)
         {
             if (callJobGroup == null)
+            {
                 throw new ArgumentNullException("callJobGroup");
-
+            }
 
             CallJobGroupDAL.UpdateCallJobGroup(callJobGroup);
         }
+
         /// <summary>
         /// Löscht eine CallJobgruppe auf dem Server
         /// </summary>
@@ -1508,11 +1659,13 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteCallJobGroup(Guid callJobGroupId)
         {
             if (callJobGroupId == Guid.Empty)
+            {
                 throw new ArgumentNullException("callJobGroup");
-
+            }
 
             CallJobGroupDAL.DeleteCallJobGroup(callJobGroupId);
         }
+
         /// <summary>
         /// Liefert eine CallJobGruppe mit der angegebenen CallJobGroupId
         /// </summary>
@@ -1521,7 +1674,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobGroup GetCallJobGroup(Guid callJobGroupId)
         {
             if (callJobGroupId == Guid.Empty)
+            {
                 throw new ArgumentNullException("callJobGroupid");
+            }
 
             return CallJobGroupDAL.GetCallJobGroup(callJobGroupId);
         }
@@ -1529,7 +1684,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobGroup[] GetCallJobGroupsByProject(Guid projectId)
         {
             if (projectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("projectId");
+            }
 
             return CallJobGroupDAL.GetCallJobGroupsByProject(projectId);
         }
@@ -1537,7 +1694,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobGroupInfo GetCallJobGroupInfo(Guid callJobGroupId)
         {
             if (callJobGroupId == Guid.Empty)
+            {
                 throw new ArgumentNullException("CallJobGroupId");
+            }
 
             return CallJobGroupDAL.GetCallJobGroupInfo(callJobGroupId);
         }
@@ -1545,7 +1704,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CallJobGroupInfo[] GetCallJobGroupInfosByProject(Guid projectId)
         {
             if (projectId == Guid.Empty)
+            {
                 throw new ArgumentNullException("projectId");
+            }
 
             return CallJobGroupDAL.GetCallJobGroupInfosByProject(projectId);
         }
@@ -1571,10 +1732,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateCallJobReminder(CallJobReminder callJobReminder, User user)
         {
             if (callJobReminder == null)
+            {
                 throw new ArgumentNullException("callJobReminder");
+            }
 
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             CallJobReminderDAL.CreateCallJobReminder(callJobReminder, user);
         }
@@ -1582,31 +1747,24 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateCallJobReminder(CallJobReminder callJobReminder)
         {
             if (callJobReminder == null)
+            {
                 throw new ArgumentNullException("callJobReminder");
+            }
 
             CallJobReminderDAL.UpdateCallJobReminder(callJobReminder);
         }
 
-        public void UpdateCallJobReminders(int evokeUpdateTyp,
-                                           Guid? newTeamId,
-                                           Guid? newUserId,
-                                           Guid? findProjectId,
-                                           Guid? findUserId,
-                                           Guid? findCallJobReminderId)
+        public void UpdateCallJobReminders(int evokeUpdateTyp, Guid? newTeamId, Guid? newUserId, Guid? findProjectId, Guid? findUserId, Guid? findCallJobReminderId)
         {
-
-            CallJobReminderDAL.UpdateCallJobReminders(evokeUpdateTyp,
-                                                      newTeamId,
-                                                      newUserId,
-                                                      findProjectId,
-                                                      findUserId,
-                                                      findCallJobReminderId);
+            CallJobReminderDAL.UpdateCallJobReminders(evokeUpdateTyp, newTeamId, newUserId, findProjectId, findUserId, findCallJobReminderId);
         }
 
         public void DeleteCallJobReminder(CallJobReminder callJobReminder)
         {
             if (callJobReminder == null)
+            {
                 throw new ArgumentNullException("callJobReminder");
+            }
 
             CallJobReminderDAL.DeleteCallJobReminder(callJobReminder.CallJobReminderId);
         }
@@ -1626,15 +1784,16 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
             return CallJobReminderDAL.GetCallJobReminderByCallJob(callJobId);
         }
 
-#endregion
+        #endregion
 
         #region ContactTypes
 
         public void CreateContactType(ContactType contactType)
         {
-
             if (contactType == null)
+            {
                 throw new ArgumentNullException("contactType");
+            }
 
             ContactTypeDAL.CreateContactType(contactType);
         }
@@ -1642,7 +1801,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void UpdateContactType(ContactType contactType)
         {
             if (contactType == null)
+            {
                 throw new ArgumentNullException("contactType");
+            }
 
             ContactTypeDAL.UpdateContactType(contactType);
         }
@@ -1650,7 +1811,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void DeleteContactType(Guid contactTypeId)
         {
             if (contactTypeId == Guid.Empty)
+            {
                 throw new ArgumentNullException("contactTypeId");
+            }
 
             ContactTypeDAL.DeleteContactType(contactTypeId);
         }
@@ -1658,7 +1821,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public ContactType GetContactType(Guid contactTypeId)
         {
             if (contactTypeId == Guid.Empty)
+            {
                 throw new ArgumentNullException("contactTypeId");
+            }
 
             return ContactTypeDAL.GetContactType(contactTypeId);
         }
@@ -1701,7 +1866,6 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         #endregion
-
 
         #region mwProjekt_SponsorPacket
 
@@ -1843,10 +2007,14 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateActivity(MaDaNet.Common.AppFrameWork.Activities.ActivityBase activity, string contextInfo)
         {
             if (activity == null)
+            {
                 throw new ArgumentNullException("activity");
+            }
 
             if (string.IsNullOrEmpty(contextInfo))
+            {
                 throw new ArgumentException("contextInfo musst be set", "contextInfo");
+            }
 
             ActivityDAL.CreateActivity(activity, contextInfo);
         }
@@ -1875,22 +2043,24 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public CenterInfo GetCenterInfo(mwCenter mwCenter)
         {
             if (mwCenter == null)
+            {
                 throw new ArgumentNullException("mwCenter");
+            }
 
             return CenterDAL.GetCenterInfo(mwCenter);
-
         }
 
         public CenterInfo GetCenterInfo(Guid centerId)
         {
             return CenterDAL.GetCenterInfo(centerId);
-
         }
 
         public Customer GetCustomer(ProjectInfo projectInfo)
         {
             if (projectInfo == null)
+            {
                 throw new ArgumentNullException("projectInfo");
+            }
 
             return AddressDAL.GetCustomer(projectInfo.CustomerAdressId);
         }
@@ -1899,7 +2069,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public void CreateDocumentHistoryItem(DocumentHistory documentHistoryItem)
         {
             if (documentHistoryItem == null)
+            {
                 throw new ArgumentNullException("documentHistoryItem");
+            }
 
             DocumentHistoryDAL.CreateDocumentHistoryItem(documentHistoryItem);
         }
@@ -1907,7 +2079,9 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         public DocumentHistory[] GetDocumentHistoryItemsByCallJob(CallJob callJob)
         {
             if (callJob == null)
+            {
                 throw new ArgumentNullException("callJob");
+            }
 
             return DocumentHistoryDAL.GetDocumentHistoryItems(callJob);
         }
@@ -1927,8 +2101,5 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
 
         public LogOnFailedException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
-    #endregion
-
-    
+    #endregion    
 }
-
