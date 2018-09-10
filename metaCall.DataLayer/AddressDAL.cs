@@ -1,14 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 using metatop.Applications.metaCall.DataObjects;
-
 using System.Data;
 using System.Xml;
 using System.ComponentModel;
 using System.Data.SqlTypes;
-
 
 namespace metatop.Applications.metaCall.DataAccessLayer
 {
@@ -21,17 +18,13 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         private const string spAddress_BlockCallJobsWithMissingAddresses = "dbo.Address_BlockCallJobsWithMissingAddresses";
         private const string spAddresses_GetNewListForTransfer = "dbo.Addresses_GetNewListForTransfer";
         private const string spProject_GetSponsors = "dbo.Address_GetListByProject";
-
         private const string spAddresses_GetSingle = "dbo.Addresses_GetSingle";
         //private const string spAddresses_GetSingleByVereinsNummer = "dbo.Addresses_GetSingle";
         private const string spAddress_Sponsor_Update = "dbo.Address_Sponsor_Update";
         private const string spAddress_Sponsor_Create = "dbo.Address_Sponsor_Create";
-
         private const string spAddress_GetHistoryNotice = "dbo.Address_GetHistoryNotice";
-
         private const string spGeoZone_GetByProjectAndSponsor = "dbo.GeoZone_GetByProjectAndSponsor";
         // -> dummy falls GeoZone mal separat gespeichert wird // private const string spGeoZone_GetSingle = "dbo.GeoZone_GetSingle";
-
         private static string spSponsorOrderInfo_GetBySponsorProjectAndCustomer = "dbo.SponsorOrderInfo_GetBySponsorProjectAndCustomer";
         private static string spSponsorTipAddressFromLastProject = "dbo.SponsorTipAddressFromLastProject";
         private static string spAddress_IsTip = "dbo.Address_IsTip";
@@ -44,17 +37,25 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             DataTable dataTable = GetAddressTable(addressId);
 
             if (dataTable.Rows.Count < 1)
+            {
                 return null;
+            }
             else
             {
                 string addressType = (string) dataTable.Rows[0]["AddressType"];
 
                 if (addressType == typeof(Sponsor).FullName)
+                {
                     return ConvertToSponsor(dataTable.Rows[0]);
+                }
                 else if (addressType == typeof(Customer).FullName)
+                {
                     return ConvertToCustomer(dataTable.Rows[0]);
+                }
                 else
+                {
                     return null;
+                }
             }
         }
 
@@ -77,7 +78,9 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             DataTable dataTable = SqlHelper.ExecuteDataTable(spAddress_GetHistoryNotice, parameters);
 
             if (dataTable.Rows.Count < 1)
+            {
                 return null;
+            }
             else
             {
                 historyNotice = (string)SqlHelper.GetNullableDBValue(dataTable.Rows[0]["Notiz"]);
@@ -87,7 +90,6 @@ namespace metatop.Applications.metaCall.DataAccessLayer
 
         private static void FillAddressBase(AddressBase addressBase, DataRow row)
         {
-
             addressBase.AddressId = (Guid)row["AddressId"];
             addressBase.AdressenPoolNummer = (int)row["AdressenPoolNummer"];
             addressBase.Anrede = (string)SqlHelper.GetNullableDBValue(row["Anrede"]);
@@ -110,7 +112,6 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             addressBase.Webadresse = (string) SqlHelper.GetNullableDBValue(row["Webadresse"]);
             
             return;
-
         }
         private static ContactPerson ConvertToContactPerson(DataRow row)
         {
@@ -135,7 +136,6 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         public static void UpdateSponsor(Sponsor sponsor)
         {
             IDictionary<string, object> parameters = GetParameters(sponsor);
-
             SqlHelper.ExecuteStoredProc(spAddress_Sponsor_Update, parameters);
         }
 
@@ -144,6 +144,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             IDictionary<string, object> parameters = GetParameters((AddressBase)sponsor);
             
             int? branchNumber  = null;
+
             if (sponsor.Branch != null)
             {
                 branchNumber = (int?)SqlHelper.GetNullableDBValue(sponsor.Branch.Branchennummer);
@@ -230,10 +231,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         {
             DataTable dataTable = GetAddressTable(addressId);
 
-            if (dataTable.Rows.Count < 1)
-                return null;
-            else
-                return ConvertToSponsor(dataTable.Rows[0]);
+            return dataTable.Rows.Count < 1 ? null : ConvertToSponsor(dataTable.Rows[0]);
         }
 
         public static Sponsor[] GetSponsorsByProject(Guid projectId)
@@ -265,18 +263,15 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             sponsor.Bank = (string)SqlHelper.GetNullableDBValue(row["Bank"]);
             sponsor.BankNumber = (string)SqlHelper.GetNullableDBValue(row["Bankleitzahl"]);
             sponsor.AccountNumber = (string)SqlHelper.GetNullableDBValue(row["KontoNummer"]);
-
             sponsor.Additions = new SponsorAdditions();
             sponsor.Additions.Phone1 = (string) SqlHelper.GetNullableDBValue(row["Phone1"]);
             sponsor.Additions.Phone2 = (string) SqlHelper.GetNullableDBValue(row["Phone2"]);
             sponsor.Additions.Phone3 = (string) SqlHelper.GetNullableDBValue(row["Phone3"]);
-            
             sponsor.SponsorenUrkunde1 = (string) SqlHelper.GetNullableDBValue(row["SponsorUrkunde1"]);
             sponsor.SponsorenUrkunde2 = (string)SqlHelper.GetNullableDBValue(row["SponsorUrkunde2"]);
 
             return sponsor;
         }
-
 
         private static Sponsor[] ConvertToSponsors(DataTable dataTable)
         {
@@ -313,17 +308,14 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         public static Customer GetCustomer(Guid? addressId)
         {
             if (!addressId.HasValue)
+            {
                 return null;
-            
+            }
+
             DataTable dataTable = GetAddressTable(addressId.Value);
 
-            if (dataTable.Rows.Count < 1)
-                return null;
-            else
-                return ConvertToCustomer(dataTable.Rows[0]);
-
+            return dataTable.Rows.Count < 1 ? null : ConvertToCustomer(dataTable.Rows[0]);
         }
-
 
         private static Customer ConvertToCustomer(DataRow row)
         {
@@ -334,9 +326,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             customer.Abteilung = (string) SqlHelper.GetNullableDBValue(row["Abteilung"]);
 
             return customer;
-        }
-
-
+        }    
         #endregion
 
         #region GeoZone Operations
@@ -348,19 +338,21 @@ namespace metatop.Applications.metaCall.DataAccessLayer
 
             DataTable dataTable = SqlHelper.ExecuteDataTable(spGeoZone_GetByProjectAndSponsor, parameters);
 
-            if (dataTable.Rows.Count < 1)
-                return null;
-            else
-                return ConvertToGeoZone(dataTable.Rows[0]);
+            return dataTable.Rows.Count < 1 ? null : ConvertToGeoZone(dataTable.Rows[0]);
         }
 
         public static GeoZone ConvertToGeoZone(DataRow row)
         {
             GeoZone geoZone = new GeoZone();
+
             if (SqlHelper.GetNullableDBValue(row["GeoZone"]) == null)
+            {
                 geoZone.Zone = 99;
+            }
             else
+            {
                 geoZone.Zone = (int)row["GeoZone"];
+            }
 
             return geoZone;
         }
@@ -427,7 +419,9 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             DataTable dataTable =  SqlHelper.ExecuteDataTable(spProject_TransferAdresses, parameters, 0);
 
             if (project.Sponsors == null)
+            {
                 project.Sponsors = new Sponsor[0];
+            }
 
             //sichern der existierenden Sponsoren
             List<Sponsor> sponsors = new List<Sponsor>(project.Sponsors);
@@ -475,8 +469,6 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             return ConvertToSponsors(dataTable);
         }
 
-
-
         /// <summary>
         /// Erstellt einen neuen Sponsor auf dem Server
         /// </summary>
@@ -511,10 +503,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
 
             DataTable dataTable = SqlHelper.ExecuteDataTable(spSponsorTipAddressFromLastProject, parameters);
 
-            if (dataTable.Rows.Count < 1)
-                return false;
-            else
-                return true;
+            return dataTable.Rows.Count < 1 ? false : true;
         }
 
         public static Boolean GetAddress_IsTip(int adressenPoolNummer)
@@ -524,10 +513,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
 
             DataTable dataTable = SqlHelper.ExecuteDataTable(spAddress_IsTip, parameters);
 
-            if (dataTable.Rows.Count < 1)
-                return false;
-            else
-                return true;
+            return dataTable.Rows.Count < 1 ? false : true;
         }
         #endregion
     }
