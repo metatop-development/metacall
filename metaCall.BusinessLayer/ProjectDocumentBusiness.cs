@@ -2,18 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-
-
 using metatop.Applications.metaCall.DataObjects;
 using metatop.Applications.metaCall.ServiceAccessLayer;
 using System.IO;
 using System.Diagnostics;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
-
 using System.Net;
 using System.Net.Mail;
-
 using Microsoft.Exchange.WebServices.Data;
 using Attachment = System.Net.Mail.Attachment;
 
@@ -40,13 +36,19 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public ProjectDocument Create(ProjectInfo project, string displayName, DocumentCategory category, string filename, bool packetSelect)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             if (string.IsNullOrEmpty(displayName))
+            {
                 throw new ArgumentNullException("displayName");
+            }
 
             if (string.IsNullOrEmpty(filename))
+            {
                 throw new ArgumentNullException("filename");
+            }
 
             ProjectDocument document = new ProjectDocument();
             document.DocumentId = Guid.NewGuid();
@@ -60,7 +62,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
             this.metaCallBusiness.ServiceAccess.CreateProjectDocument(document);
 
             return document;
-
         }
 
         /// <summary>
@@ -71,16 +72,24 @@ namespace metatop.Applications.metaCall.BusinessLayer
         {
 
             if (document == null)
+            {
                 throw new ArgumentNullException("document");
+            }
 
             if (document.Project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             if (string.IsNullOrEmpty(document.DisplayName))
+            {
                 throw new ArgumentNullException("displayName");
+            }
 
             if (string.IsNullOrEmpty(document.Filename))
+            {
                 throw new ArgumentNullException("filename");
+            }
 
             this.metaCallBusiness.ServiceAccess.UpdateProjectDocument(document);
         }
@@ -98,7 +107,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
             document.DateCreated = DateTime.MinValue;
             document.Filename = null;
             document.Project = null;
-
         }
 
         /// <summary>
@@ -109,7 +117,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public ProjectDocument GetDocument(Guid documentId)
         {
             if (documentId == Guid.Empty)
+            {
                 throw new ArgumentNullException("documentId");
+            }
 
             return this.metaCallBusiness.ServiceAccess.GetProjectDocument(documentId);
         }
@@ -122,10 +132,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public List<ProjectDocument> GetDocumentsByProject(ProjectInfo project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
-            return new List<ProjectDocument>(
-                this.metaCallBusiness.ServiceAccess.GetProjectDocumentsByProject(project.ProjectId));
+            return new List<ProjectDocument>(this.metaCallBusiness.ServiceAccess.GetProjectDocumentsByProject(project.ProjectId));
         }
 
         /// <summary>
@@ -138,10 +149,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public List<ProjectDocument> GetDocumentsByProjectAndCategory(ProjectInfo project, DocumentCategory category)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
-            return new List<ProjectDocument>(
-                this.metaCallBusiness.ServiceAccess.GetProjectDocumentsByProjectAndCategory(project.ProjectId, category));
+            return new List<ProjectDocument>(this.metaCallBusiness.ServiceAccess.GetProjectDocumentsByProjectAndCategory(project.ProjectId, category));
         }
 
         /// <summary>
@@ -161,8 +173,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         {
             get
             {
-                return new List<DocumentCategoryInfo>(
-                    this.metaCallBusiness.ServiceAccess.GetAllDocumentCategoryInfos());
+                return new List<DocumentCategoryInfo>(this.metaCallBusiness.ServiceAccess.GetAllDocumentCategoryInfos());
             }
         }
 
@@ -190,7 +201,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
             Send(document, callJob, options, null);
         }
 
-
         public void Send(ProjectDocument document, ProjectDocument emailTemplate, CallJob callJob, string betreff, string briefanrede, SendProjectDocumentOptions options)
         {
             ProjectDocumentMailMethod mailMethod = new ProjectDocumentMailMethod(MailAsync);
@@ -205,7 +215,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
         {
             //Debugger.Break();
             if (result.IsCompleted)
+            {
                 LogFaxInformation("Der Mailvorgang wurde abgeschlossen.");
+            }
 
             ProjectDocumentMailMethod method = result.AsyncState as ProjectDocumentMailMethod;
             if (method != null)
@@ -220,28 +232,42 @@ namespace metatop.Applications.metaCall.BusinessLayer
             try
             {
                 if (document == null)
+                {
                     throw new ArgumentNullException("document");
+                }
 
                 if (emailTemplate == null)
+                {
                     throw new ArgumentNullException("emailTemplate");
+                }
 
                 if (callJob == null)
+                {
                     throw new ArgumentNullException("calljob");
+                }
 
                 if (string.IsNullOrEmpty(callJob.Sponsor.EMail))
+                {
                     throw new ArgumentNullException("calljob.Sponsor.Email");
+                }
 
                 if (string.IsNullOrEmpty(betreff))
                     throw new ArgumentNullException("betreff");
 
                 if (string.IsNullOrEmpty(briefanrede))
+                {
                     throw new ArgumentNullException("briefanrede");
+                }
 
                 if (!File.Exists(document.Filename))
+                {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", document.Filename);
+                }
 
                 if (!File.Exists(emailTemplate.Filename))
+                {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", emailTemplate.Filename);
+                }
 
                 IDictionary<string, object> logInfos = new Dictionary<string, object>();
                 logInfos.Add("Document", document);
@@ -249,11 +275,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 logInfos.Add("EmailAdresse", callJob.Sponsor.EMail);
                 LogFaxInformation("Der Asynchrone Emailversand wurde gestartet.");
 
-
                 using (MSWordAdapter wordAdapter = new MSWordAdapter())
                 {
                     wordAdapter.Open(document.Filename, true, false);
-
                     wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
  
                     //Parameter vorbereiten
@@ -279,25 +303,23 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     //*****************************
                     StringBuilder mailBody = new StringBuilder();
 
-
                     using (StreamReader sr = new StreamReader(emailTemplate.Filename))
                     {
                         string lineTmp;
+
                         while (sr.Peek() >= 0)
                         {
                             lineTmp = sr.ReadLine();
+
                             if (!String.IsNullOrEmpty(lineTmp))
                             {
                                 lineTmp = lineTmp.Replace("$Sponsor.Anrede$", briefanrede);
                                 lineTmp = lineTmp.Replace("$Benutzer.Name$", metaCallBusiness.Users.CurrentUser.Vorname + " " + metaCallBusiness.Users.CurrentUser.Nachname);
-                                lineTmp = lineTmp.Replace("$Benutzer.ZusatzInfo1$",
-                                                          metaCallBusiness.Users.CurrentUser.AdditionalInfo1);
-                                lineTmp = lineTmp.Replace("$Benutzer.ZusatzInfo2$",
-                                                          metaCallBusiness.Users.CurrentUser.AdditionalInfo2);
-                                lineTmp = lineTmp.Replace("$Projekt.Bezeichnung$",
-                                                          callJob.Project.BezeichnungRechnung);
-                                
+                                lineTmp = lineTmp.Replace("$Benutzer.ZusatzInfo1$", metaCallBusiness.Users.CurrentUser.AdditionalInfo1);
+                                lineTmp = lineTmp.Replace("$Benutzer.ZusatzInfo2$", metaCallBusiness.Users.CurrentUser.AdditionalInfo2);
+                                lineTmp = lineTmp.Replace("$Projekt.Bezeichnung$", callJob.Project.BezeichnungRechnung);
                             }
+
                             mailBody.Append(lineTmp);
                         }
                     }                    
@@ -308,10 +330,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     setting = metaCallBusiness.Settings.GetSetting();
 
                     login = setting.DomainEmailLogin + "\\" + metaCallBusiness.Users.CurrentUser.AnmeldungEmail;
-                    emailpwd =
-                        metaCallBusiness.EncryptionBusiness.DecryptString(
-                            metaCallBusiness.Users.CurrentUser.PasswordEmail);
-
+                    emailpwd = metaCallBusiness.EncryptionBusiness.DecryptString(metaCallBusiness.Users.CurrentUser.PasswordEmail);
 
                     ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);
                     service.Credentials = new WebCredentials(login, emailpwd);
@@ -320,7 +339,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     service.Timeout = 300000;
 
                     EmailMessage m = new EmailMessage(service);
-
 
                     m.ToRecipients.Add(callJob.Sponsor.EMail);
                     //m.CcRecipients.Add("maier@madanet.de");
@@ -332,7 +350,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     //m.BodyEncoding = System.Text.Encoding.UTF8;
 
                     m.Attachments.AddFileAttachment(project.PraefixMailAttachment + " " + callJob.Project.BezeichnungRechnung + ".pdf", filename);
-
                     m.SendAndSaveCopy();
 
                     //*****************************
@@ -345,9 +362,10 @@ namespace metatop.Applications.metaCall.BusinessLayer
             {
                 bool rethrow = ExceptionPolicy.HandleException(ex, "UI Policy");
                 if (rethrow)
+                {
                     throw;
-            }  
-           
+                }
+            }             
         }
 
         private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
@@ -424,7 +442,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
         {
             //Debugger.Break();
             if (result.IsCompleted)
+            {
                 LogFaxInformation("Der Faxvorgang wurde abgeschlossen.");
+            }
 
             ProjectDocumentSendMethod method = result.AsyncState as ProjectDocumentSendMethod;
             if (method != null)
@@ -446,15 +466,19 @@ namespace metatop.Applications.metaCall.BusinessLayer
             try
             {
                 if (document == null)
+                {
                     throw new ArgumentNullException("document");
+                }
 
                 if (callJob == null)
+                {
                     throw new ArgumentNullException("calljob");
+                }
 
                 if (!File.Exists(document.Filename))
+                {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", document.Filename);
-
-
+                }
 #if DEBUG
                 if (options == SendProjectDocumentOptions.SendFax)
                 {
@@ -471,7 +495,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                 using (MSWordAdapter wordAdapter = new MSWordAdapter())
                 {
-
                     wordAdapter.Open(document.Filename, true, false);
 
                     if (options != SendProjectDocumentOptions.PrintOut)
@@ -491,7 +514,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
                         }
 
                         printer = Properties.Settings.Default.ActiveFaxPrinterName;
-
 #if DEBUG
                         wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
                         printer = "hp LaserJet 1320 PCL 5";
@@ -501,7 +523,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
                             printer = "ActiveFax";
                         }
 #endif
-
                         if (!ActiveFaxAdapter.ValidatePrinterName(printer))
                         {
                             throw new InvalidOperationException("ActiveFax-Drucker kann nicht gefunden werden.");
@@ -533,10 +554,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
             {
                 bool rethrow = ExceptionPolicy.HandleException(ex, "UI Policy");
                 if (rethrow)
+                {
                     throw;
+                }
             }  
         }
-
 
         private void LogFaxInformation(string message)
         {
@@ -546,8 +568,10 @@ namespace metatop.Applications.metaCall.BusinessLayer
         private void LogFaxInformation(string message, IDictionary<string, object> logInformations)
         {
             if (!Logger.IsLoggingEnabled())
+            {
                 return;
-            
+            }
+
             IDictionary<string, object> logInfos = new Dictionary<string, object>();
 
             logInfos.Add("user", metaCallBusiness.Users.CurrentUser);
@@ -559,8 +583,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 logInfos.Add(sysInfo.Key, sysInfo.Value);
             }
             
-            if ((logInformations != null) && 
-                logInformations.Count >0)
+            if ((logInformations != null) && logInformations.Count >0)
             {
                 foreach (KeyValuePair<string, object> logInformation in logInformations)
                 {
@@ -569,12 +592,8 @@ namespace metatop.Applications.metaCall.BusinessLayer
             }
 
             LogEntry logEntry = new LogEntry(message, "Fax", 20, 2001, System.Diagnostics.TraceEventType.Information, "Faxmeldungen", logInfos);
-
             Logger.Write(logEntry);
-        
         }
-
-
     }
 
     public enum SendProjectDocumentOptions
