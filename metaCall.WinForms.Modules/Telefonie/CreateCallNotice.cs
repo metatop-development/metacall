@@ -5,10 +5,8 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-
 using metatop.Applications.metaCall.BusinessLayer;
 using metatop.Applications.metaCall.DataObjects;
-
 using MaDaNet.Common.AppFrameWork.WinUI.Controls;
 
 namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
@@ -40,7 +38,10 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         /// <param name="BranchNumber"></param>
         private void SetSelectedBranch_BranchGroup()
         {
-            if (this.isInitializing) return;
+            if (this.isInitializing)
+            {
+                return;
+            }
 
             //Wenn die Branchennummer null ist wird nichts selektiert
             if (this.selectedBranch == null && this.selectedBranchGroup == null)
@@ -68,6 +69,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                         return;
                     }
                 }
+
                 return;
             }
 
@@ -83,6 +85,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                         return;
                     }
                 }
+
                 return;
             }
 
@@ -96,6 +99,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                     return;
                 }
             }
+
             selectedBranchGroup = selectedBranch.BranchGroup;
         }       
 
@@ -131,7 +135,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         {
             get 
             {
-                    return this.noticeTextBox.Text; 
+                return this.noticeTextBox.Text; 
             }
             set
             {
@@ -146,10 +150,12 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
 
         private void FillBranch_BranchGroupComboBox()
         {
-            if (this.isInitializing) return;
+            if (this.isInitializing)
+            {
+                return;
+            }
 
             this.branchGroupList = MetaCall.Business.BranchGroup.BranchGroups;
-
             this.Branch_BranchGroupComboBox.Items.Clear();
 
             if (this.branchGroupList.Count > 0)
@@ -170,6 +176,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             }
 
             this.branchList = MetaCall.Business.Branch.Branches;
+
             if (this.branchList.Count > 0)
             {
                 this.Branch_BranchGroupComboBox.Items.Add("[ Branche ]");
@@ -180,26 +187,36 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
                     this.Branch_BranchGroupComboBox.Items.Add(branch);
                 }
             }
+
             this.Branch_BranchGroupComboBox.Items.Add(Branch.Unknown);
         }
 
         private void FillNoticeHistory(Call call)
         {
-            if (this.isInitializing) return; 
-            
+            if (this.isInitializing)
+            {
+                return;
+            }
+
             if (call == null)
+            {
                 throw new ArgumentNullException("call");
+            }
 
             if (call.CallJob == null)
+            {
                 throw new ArgumentNullException("call.CallJob");
+            }
 
             this.callJobResultList = MetaCall.Business.CallJobs.GetCallJobResults(call.CallJob);
 
             StringBuilder sb = new StringBuilder();
+
             foreach (CallJobResult result in this.callJobResultList)
             {
                 sb.Append(FormatResultHistory(result));
             }
+
             sb.AppendLine();
             sb.Append(MetaCall.Business.Addresses.GetAddress_HistoryNotice(call.CallJob.Sponsor.AddressId));
 
@@ -209,10 +226,14 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         private string FormatResultHistory(CallJobResult result)
         {
             if (result == null)
+            {
                 return string.Empty;
+            }
 
             if (string.IsNullOrEmpty(result.Notice))
+            {
                 return string.Empty;
+            }
 
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("{0:d} {0:t} {1}:", result.Start, result.User.DisplayName);
@@ -225,8 +246,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
 
         private void CreateCallNotice_Load(object sender, EventArgs e)
         {
-            if (this.isInitializing) return;
-            
+            if (this.isInitializing)
+            {
+                return;
+            }
+
             GroupBox grpBranch;
             grpBranch = new GroupBox();
             grpBranch.Parent = this;
@@ -294,7 +318,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         protected void OnSponsorInfoChange(SponsorInfoChangeEventArgs e)
         {
             if (SponsorInfoChange != null)
+            {
                 SponsorInfoChange(this, e);
+            }
         }
 
         #region IInitializeCall Member
