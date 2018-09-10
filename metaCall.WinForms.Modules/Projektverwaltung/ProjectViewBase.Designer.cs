@@ -68,6 +68,8 @@
             this.addCallJobGroupButton = new System.Windows.Forms.Button();
             this.callJobGroupsListBox = new System.Windows.Forms.ListBox();
             this.documentsTabPage = new System.Windows.Forms.TabPage();
+            this.praefixMailAttachmentTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.projectDocumentsDataGridView = new System.Windows.Forms.DataGridView();
             this.projectDocumentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -97,8 +99,8 @@
             this.textBoxCountCallJobs = new System.Windows.Forms.TextBox();
             this.checkBoxAddressSafeActiv = new System.Windows.Forms.CheckBox();
             this.centerComboBox = new System.Windows.Forms.ComboBox();
-            this.praefixMailAttachmentTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.bezeichnungRechnungTextbox = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.teamBindingSource)).BeginInit();
@@ -263,7 +265,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 495);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 525);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridView1.MinimumSize = new System.Drawing.Size(520, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -305,7 +307,7 @@
             // 
             // loadCallJobsButton
             // 
-            this.loadCallJobsButton.Location = new System.Drawing.Point(10, 465);
+            this.loadCallJobsButton.Location = new System.Drawing.Point(10, 495);
             this.loadCallJobsButton.Name = "loadCallJobsButton";
             this.loadCallJobsButton.Size = new System.Drawing.Size(75, 24);
             this.loadCallJobsButton.TabIndex = 15;
@@ -315,7 +317,7 @@
             // 
             // progressBarCallJobsLoad
             // 
-            this.progressBarCallJobsLoad.Location = new System.Drawing.Point(120, 465);
+            this.progressBarCallJobsLoad.Location = new System.Drawing.Point(120, 495);
             this.progressBarCallJobsLoad.Name = "progressBarCallJobsLoad";
             this.progressBarCallJobsLoad.Size = new System.Drawing.Size(535, 24);
             this.progressBarCallJobsLoad.TabIndex = 16;
@@ -332,7 +334,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(645, 244);
+            this.tabControl1.Size = new System.Drawing.Size(645, 275);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 17;
             // 
@@ -506,6 +508,8 @@
             // 
             // documentsTabPage
             // 
+            this.documentsTabPage.Controls.Add(this.bezeichnungRechnungTextbox);
+            this.documentsTabPage.Controls.Add(this.label15);
             this.documentsTabPage.Controls.Add(this.praefixMailAttachmentTextBox);
             this.documentsTabPage.Controls.Add(this.label13);
             this.documentsTabPage.Controls.Add(this.label12);
@@ -516,10 +520,27 @@
             this.documentsTabPage.Location = new System.Drawing.Point(4, 22);
             this.documentsTabPage.Name = "documentsTabPage";
             this.documentsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.documentsTabPage.Size = new System.Drawing.Size(637, 218);
+            this.documentsTabPage.Size = new System.Drawing.Size(637, 249);
             this.documentsTabPage.TabIndex = 2;
             this.documentsTabPage.Text = "Dokumente";
             this.documentsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // praefixMailAttachmentTextBox
+            // 
+            this.praefixMailAttachmentTextBox.Location = new System.Drawing.Point(109, 191);
+            this.praefixMailAttachmentTextBox.MaxLength = 255;
+            this.praefixMailAttachmentTextBox.Name = "praefixMailAttachmentTextBox";
+            this.praefixMailAttachmentTextBox.Size = new System.Drawing.Size(296, 20);
+            this.praefixMailAttachmentTextBox.TabIndex = 29;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 194);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(97, 13);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Präfix Emailanhang";
             // 
             // label12
             // 
@@ -774,7 +795,7 @@
             // 
             // textBoxCountCallJobs
             // 
-            this.textBoxCountCallJobs.Location = new System.Drawing.Point(463, 467);
+            this.textBoxCountCallJobs.Location = new System.Drawing.Point(463, 497);
             this.textBoxCountCallJobs.MaxLength = 10;
             this.textBoxCountCallJobs.Name = "textBoxCountCallJobs";
             this.textBoxCountCallJobs.ReadOnly = true;
@@ -799,22 +820,22 @@
             this.centerComboBox.Size = new System.Drawing.Size(121, 21);
             this.centerComboBox.TabIndex = 39;
             // 
-            // praefixMailAttachmentTextBox
+            // bezeichnungRechnungTextbox
             // 
-            this.praefixMailAttachmentTextBox.Location = new System.Drawing.Point(109, 191);
-            this.praefixMailAttachmentTextBox.MaxLength = 255;
-            this.praefixMailAttachmentTextBox.Name = "praefixMailAttachmentTextBox";
-            this.praefixMailAttachmentTextBox.Size = new System.Drawing.Size(296, 20);
-            this.praefixMailAttachmentTextBox.TabIndex = 29;
+            this.bezeichnungRechnungTextbox.Location = new System.Drawing.Point(109, 217);
+            this.bezeichnungRechnungTextbox.MaxLength = 255;
+            this.bezeichnungRechnungTextbox.Name = "bezeichnungRechnungTextbox";
+            this.bezeichnungRechnungTextbox.Size = new System.Drawing.Size(296, 20);
+            this.bezeichnungRechnungTextbox.TabIndex = 31;
             // 
-            // label13
+            // label15
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 194);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(97, 13);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "Präfix Emailanhang";
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 220);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(81, 13);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Bez. Rechnung";
             // 
             // ProjectViewBase
             // 
@@ -845,7 +866,7 @@
             this.Controls.Add(this.descriptionLabel);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "ProjectViewBase";
-            this.Size = new System.Drawing.Size(683, 622);
+            this.Size = new System.Drawing.Size(683, 655);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -940,5 +961,7 @@
         private System.Windows.Forms.ComboBox centerComboBox;
         private System.Windows.Forms.TextBox praefixMailAttachmentTextBox;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox bezeichnungRechnungTextbox;
+        private System.Windows.Forms.Label label15;
     }
 }

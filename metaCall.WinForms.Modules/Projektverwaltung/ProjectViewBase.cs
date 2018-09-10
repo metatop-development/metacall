@@ -2067,6 +2067,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             }
 
             this.praefixMailAttachmentTextBox.Text = this.project.PraefixMailAttachment;
+            this.bezeichnungRechnungTextbox.Text = this.project.BezeichnungRechnung;
 
             //this.DateTimePickerReminderMax.Value = (DateTime)this.project.ReminderDateMax;
 
@@ -2144,6 +2145,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             }
 
             this.project.PraefixMailAttachment = string.IsNullOrEmpty(this.praefixMailAttachmentTextBox.Text) ? "Sponsoringangebot" : this.praefixMailAttachmentTextBox.Text;
+            this.project.BezeichnungRechnung = this.bezeichnungRechnungTextbox.Text;
+
             project.Teams = new TeamInfo[this.currentTeams.Count];
 
             this.currentTeams.CopyTo(project.Teams);
@@ -2161,7 +2164,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 {
                     if (project != null)
                     {
-                        MetaCall.Business.CallJobs.UpdateCallJobsDialModeByProject(project,´project.DialMode);
+                        MetaCall.Business.CallJobs.UpdateCallJobsDialModeByProject(project, project.DialMode);
                     }
                 }
 
