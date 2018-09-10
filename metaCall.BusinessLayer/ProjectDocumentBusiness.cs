@@ -349,7 +349,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     //m.Body = "Test Hallo Hallo Gruß";
                     //m.BodyEncoding = System.Text.Encoding.UTF8;
 
-                    m.Attachments.AddFileAttachment(project.PraefixMailAttachment + " " + callJob.Project.BezeichnungRechnung + ".pdf", filename);
+                    string attachmentFilename = project.PraefixMailAttachment + " " + callJob.Project.BezeichnungRechnung + ".pdf";
+                    char punkt = '.';
+                    attachmentFilename = ToSingleChar(attachmentFilename, punkt);
+
+                    m.Attachments.AddFileAttachment(attachmentFilename, filename);
                     m.SendAndSaveCopy();
 
                     //*****************************
@@ -366,6 +370,20 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     throw;
                 }
             }             
+        }
+
+        private static string ToSingleChar(string toParsedString, char character)
+        {
+            //char punkt = '.';
+            string find = new string(character, 2);
+            string replaced = new string(character, 1);
+
+            while (toParsedString.IndexOf(find) > -1)
+            {
+                toParsedString = toParsedString.Replace(find, replaced);
+            }
+
+            return toParsedString;
         }
 
         private static void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)

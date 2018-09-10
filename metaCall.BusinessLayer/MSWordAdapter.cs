@@ -79,8 +79,7 @@ namespace metatop.Applications.metaCall
                         ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing, ref _missing,
                         ref _missing, ref _missing, ref _missing);
 
-                    LogMsWordAdapterInformation("Document successfully opened as new Document", logInfos);
-                
+                    LogMsWordAdapterInformation("Document successfully opened as new Document", logInfos);                
                 }
 
                 this.msWordProcess = FindWordProcess(this.msWord);
