@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
-
 using metatop.Applications.metaCall.DataObjects;
 using metatop.Applications.metaCall.BusinessLayer;
 using System.Globalization;
@@ -18,7 +17,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
     {
         private Project project;
         private DialMode lastDialMode = DialMode.Unseeded;
-
         private Dictionary<string, string> FilterHashTable = new Dictionary<string,string>();
 
         private bool isInWork;
@@ -57,10 +55,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             //Datenbindung für removedTeams-GridView
             this.removedTeamsDataTable.Locale = CultureInfo.CurrentUICulture;
             this.teamBindingSource.DataSource = this.removedTeamsDataTable;
-
             this.callJobsDataTable.Locale = CultureInfo.CurrentUICulture;
             this.callJobBindingSource.DataSource = this.callJobsDataTable;
-
             this.projectDocumentsTable.Locale = CultureInfo.CurrentUICulture;
             this.projectDocumentsBindingSource.DataSource = this.projectDocumentsTable;
 
@@ -75,12 +71,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             SetupRemovedTeamsDataTable();
             SetupAvailableTeamsDataTable();
             SetupTeamAssignDataGridView();
-
             SetupRemovedCallJobGroupsDataTable();
             SetupAvailableCallJobGroupsDataTable();
-
             SetupCallJobsDataTable();
-
             SetupProjectDocumentsDataTable();
 
             BindDialModes();
@@ -105,10 +98,14 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             this.Enabled = (!isInWork);
 
             if (this.isInWork)
+            {
                 return;
+            }
 
             if (this.project == null)
+            {
                 return;
+            }
 
             bool isEditable = this.project.State != ProjectState.Finished;
             
@@ -117,7 +114,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             this.iterationCounterNnumericUpDown.Enabled = isEditable;
             this.dialPrefixNumberTextBox.Enabled = isEditable;
             this.AdditiveInfoTextBox.Enabled = isEditable;
-
             this.addCallJobGroupButton.Enabled = isEditable;
             this.deleteCallJobGroupButton.Enabled = isEditable;
             this.AddTeamAssign.Enabled = isEditable;
@@ -131,6 +127,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         /// Liste mit CalljObGruppen die bereits auf dem Server gespeichert sind
         /// </summary>
         private List<CallJobGroup> storedCallJobGroups = new List<CallJobGroup>();
+
         /// <summary>
         /// Liste der aktuellen CallJobGruppen
         /// </summary>
@@ -141,6 +138,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         /// vom Benutzer entfernt
         /// </summary>
         private DataTable removedCallJobGroupsDatatable = new DataTable();
+
         /// <summary>
         /// DataTable mit CallJobGruppen, die für eine Neuordnung verfügbar sind.
         /// </summary>
@@ -165,7 +163,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             {
                 //Manuelle Gruppen mit einem M kennzeichnen
                 if (callJobGroup.Type == CallJobGroupType.ManualList)
+                {
                     e.Value += " (M)";
+                }
 
                 //neue Gruppen mit einem Sternchen kennzeichnen
                 if (!storedCallJobGroups.Exists(new Predicate<CallJobGroup>(delegate(CallJobGroup callJobGroupItem)
@@ -174,7 +174,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                     }
                     )))
                 {
-
                     e.Value += " *";
                 }
             }
@@ -194,8 +193,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             col3.Caption = "AssignCallJobGroupId";
             col3.ColumnMapping = MappingType.Element;
 
-            this.removedCallJobGroupsDatatable.Columns.AddRange(
-                new DataColumn[] { col1, col2, col3});
+            this.removedCallJobGroupsDatatable.Columns.AddRange(new DataColumn[] { col1, col2, col3});
         }
 
         private void SetupAvailableCallJobGroupsDataTable()
@@ -210,7 +208,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
             this.availableCallJobgroups.Columns.AddRange(new DataColumn[] { col1, col2 });
         }
-
 
         /// <summary>
         /// Fügt der DataTable RemovedTeams ein Team hinzu, wenn dieses 
@@ -235,7 +232,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                     teamInfo.Bezeichnung,
                     string.Empty,
                     teamInfo};
-
                     this.removedTeamsDataTable.Rows.Add(objectData);
                 }
                 finally
@@ -273,6 +269,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                     }
                 }
             }
+
             //Ausblenden des GridViews wenn nicht benötigt
             if (this.removedTeamsDataTable.Rows.Count == 0)
             {
@@ -283,7 +280,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         private void editCallJobGroupButton_Click(object sender, EventArgs e)
         {
             if (this.callJobGroupsListBox.SelectedIndex < 0)
+            {
                 return;
+            }
 
             CallJobGroup callJobGroup = this.callJobGroupsListBox.SelectedItem as CallJobGroup;
 
@@ -475,7 +474,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             column = this.dataGridView1.Columns[19];
             column.Visible = false;
 
-
             //CDSource
             column = this.dataGridView1.Columns[20];
             column.Visible = false;
@@ -499,18 +497,21 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 this.progressBarCallJobsLoad.Value = 0;
                 this.progressBarCallJobsLoad.Visible = true;
 
-
                 //DataTable leeren
                 this.callJobsDataTable.Rows.Clear();
                 // Wen ein Filter gesetzt ist wird dieser beim neuladen entfernt
                 if (this.callJobBindingSource.Filter != null)
+                {
                     this.callJobBindingSource.RemoveFilter();
+                }
 
                 //Arbeit!!!
                 MetaCall.Business.CallJobsInfoExtended.GetCallJobsInfoExtendedProgressChanged +=
                     new CallJobInfoBusiness.GetCallJobInfoExtendedProgressChangedEventHandler(CallJobsInfoExtended_GetCallJobsInfoExtendedProgressChanged);
+
                 MetaCall.Business.CallJobsInfoExtended.GetCallJobsInfoExtendedCompleted += 
                     new CallJobInfoBusiness.GetCallJobInfoExtendedCompletedEventHandler(CallJobsInfoExtended_GetCallJobsInfoExtendedCompleted);
+
                 //CallJobs
                 //MetaCall.Business.CallJobs.GetCallJobsProgressChanged += new GetCallJobsProgressChangedEventHandler(CallJobs_GetCallJobsProgressChanged);
                 //MetaCall.Business.CallJobs.GetCallJobsCompleted += new GetCallJobsCompletedEventHandler(CallJobs_GetCallJobsCompleted);
@@ -561,7 +562,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             dataGridView1_SelectionChanged(null, null);
             this.isInWork = false;
         }
-
         
         private void CallJobs_GetCallJobsCompleted(object sender, GetCallJobsCompletedEventArgs e)
         {
@@ -681,6 +681,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                         getCallJobInfoExtendedProgressChangedEventArgs.ProgressPercentage);
 
             }
+
             this.progressBarCallJobsLoad.Value = e.ProgressPercentage;
         }
 
@@ -688,9 +689,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         {
             if (e is GetCallJobsProgressChangedEventArgs)
             { 
-                GetCallJobsProgressChangedEventArgs getCallJobProgressChangedEventArgs = 
-                    e as GetCallJobsProgressChangedEventArgs;
-
+                GetCallJobsProgressChangedEventArgs getCallJobProgressChangedEventArgs = e as GetCallJobsProgressChangedEventArgs;
                 CallJob callJob = getCallJobProgressChangedEventArgs.CallJob;
                 
                 //DataBinding unterbrechen
@@ -699,33 +698,42 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 try
                 {
                     CallJobStateInfo callJobStateInfo = MetaCall.Business.CallJobs.GetCallJobState(callJob.State);
-
                     CallJobResult callJobResult = MetaCall.Business.CallJobResults.GetLastCallJobResultsByCallJobId(callJob);
-
                     List<mwProjekt_SponsorOrderHistorie> sponsorHistorie = MetaCall.Business.mwProjekt_SponsorOrderHistorie.GetAllmwProjekt_SponsorOrderHistorieLastAgent(callJob.Sponsor.AdressenPoolNummer);
-
                     DateTime? lastContactDate = MetaCall.Business.CallJobs.GetLastAddressContact(callJob.Sponsor.AdressenPoolNummer, this.project.ProjectId);
 
                     string lastContact;
 
                     if (lastContactDate == null)
+                    {
                         lastContact = string.Empty;
+                    }
                     else
+                    {
                         lastContact = string.Format("{0:d}", lastContactDate);
+                    }
 
                     string lastOrderAgent;
 
                     if (sponsorHistorie == null || sponsorHistorie.Count < 1)
+                    {
                         lastOrderAgent = string.Empty;
+                    }
                     else
+                    {
                         lastOrderAgent = sponsorHistorie[0].Agent;
+                    }
                     
                     string resultDisplayName;
-                    
+
                     if (callJobResult == null)
+                    {
                         resultDisplayName = string.Empty;
+                    }
                     else
+                    {
                         resultDisplayName = callJobResult.ContactType.DisplayName;
+                    }
 
                     object[] objectData = new object[]{
                         callJob.Sponsor.DisplaySortName,
@@ -762,6 +770,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                         getCallJobProgressChangedEventArgs.ProgressPercentage);
 
             }
+
             this.progressBarCallJobsLoad.Value = e.ProgressPercentage;
         }
 
@@ -780,7 +789,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 }
                 else if (dataType.IsEnum)
                 {
-                    
                     filter.AppendFormat("{0} = {1}", key,  Convert.ChangeType(Enum.Parse(dataType, this.FilterHashTable[key]), Enum.GetUnderlyingType(dataType)));
                 }
                 else if (dataType == typeof(int))
@@ -797,9 +805,13 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             }
 
             if (filter.Length > 0)
+            {
                 this.callJobBindingSource.Filter = filter.ToString();
+            }
             else
+            {
                 this.callJobBindingSource.RemoveFilter();
+            }
         }
 
         /// <summary>
@@ -831,7 +843,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                         callJob = MetaCall.Business.CallJobs.Get((Guid)rowView.Row["CallJobId"]);
                         rowView.Row["CallJob"] = callJob;
                     }
-
                 }
 
                 List<UserInfo> users = new List<UserInfo>();
@@ -858,8 +869,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                             CallJobStateInfo callJobStateInfo = MetaCall.Business.CallJobs.GetCallJobState(callJob.State);
                             rowView["Status"] = callJobStateInfo.DisplayName;
                             rowView["CallJobGroup"] = callJob.CallJobGroup.DisplayName;
+
                             if (callJob.User.UserId == Guid.Empty)
+                            {
                                 callJob.User = null;
+                            }
 
                             rowView["User"] = callJob.User == null ? null : callJob.User.DisplayName;
                             rowView.EndEdit();
@@ -869,8 +883,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                             foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
                             {
                                 DataRowView rowViewSelected = (DataRowView)row.DataBoundItem;
-                                
                                 CallJob callJobCurrent = rowViewSelected.Row["CallJob"] as CallJob;
+
                                 if (callJobCurrent == null)
                                 {
                                     callJobCurrent = MetaCall.Business.CallJobs.Get((Guid)rowViewSelected.Row["CallJobId"]);
@@ -879,6 +893,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                                 }
 
                                 rowViewSelected.BeginEdit();
+
                                 if (callJob.StartDate.Date != DateTime.MinValue.Date)
                                 {
                                     rowViewSelected["Start"] = callJob.StartDate.ToShortDateString();
@@ -1001,12 +1016,10 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                             filterComboBox.Items.Add(teamMitglied.DisplayName);
                         }
                     }
-
                 }
 
                 //Vorbelegen eines bereits eingegebenen Filters
-                if (this.FilterHashTable.ContainsKey(column.DataPropertyName) &&
-                        this.FilterHashTable[column.DataPropertyName] != null)
+                if (this.FilterHashTable.ContainsKey(column.DataPropertyName) && this.FilterHashTable[column.DataPropertyName] != null)
                 {
                     filterComboBox.SelectedItem = this.FilterHashTable[column.DataPropertyName];
                 }
@@ -1026,8 +1039,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 filterTextBox.KeyDown += new KeyEventHandler(filterTextBox_KeyDown);
 
                 //Vorbelegen eines bereits eingegebenen Filters
-                if (this.FilterHashTable.ContainsKey(column.DataPropertyName) &&
-                        this.FilterHashTable[column.DataPropertyName] != null)
+                if (this.FilterHashTable.ContainsKey(column.DataPropertyName) && this.FilterHashTable[column.DataPropertyName] != null)
                 {
                     filterTextBox.Text = this.FilterHashTable[column.DataPropertyName];
                 }
@@ -1048,25 +1060,30 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             ToolStripComboBox filterComboBox = sender as ToolStripComboBox;
 
             if (filterComboBox == null)
+            {
                 return;
+            }
 
             DataGridViewColumn column = filterComboBox.Tag as DataGridViewColumn;
 
             if (filterComboBox.SelectedItem != null)
             {
                 if (!this.FilterHashTable.ContainsKey(column.DataPropertyName))
+                {
                     this.FilterHashTable.Add(column.DataPropertyName, null);
+                }
 
                 this.FilterHashTable[column.DataPropertyName] = (string)filterComboBox.SelectedItem;
             }
             else
             {
                 if (this.FilterHashTable.ContainsKey(column.DataPropertyName))
+                {
                     this.FilterHashTable.Remove(column.DataPropertyName);
+                }
             }
 
             ApplyCallJobFilter();
-
             this.callJobsContextMenuStrip.Close();
         }
 
@@ -1075,7 +1092,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             ToolStripComboBox filterComboBox = sender as ToolStripComboBox;
 
             if (filterComboBox == null)
+            {
                 return;
+            }
 
             filterComboBox.DroppedDown = true;
         }
@@ -1091,6 +1110,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                     filterTextBox.Text = null;
                     filterTextBox.ForeColor = Control.DefaultForeColor;
                 }
+
                 filterTextBox.GotFocus -= new EventHandler(this.filterTextBox_GotFocus);
             }
         }
@@ -1100,34 +1120,40 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             ToolStripComboBox filterComboBox = sender as ToolStripComboBox;
 
             if (filterComboBox == null)
+            {
                 return;
+            }
 
             this.callJobsContextMenuStrip.Close(ToolStripDropDownCloseReason.ItemClicked);
         }
 
         private void filterTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode == Keys.Enter) ||
-                (e.KeyCode == Keys.Tab))
+            if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Tab))
             {
                 ToolStripTextBox filterTextBox = sender as ToolStripTextBox;
                 if (filterTextBox == null)
+                {
                     return;
+                }
 
                 DataGridViewColumn column = filterTextBox.Tag as DataGridViewColumn;
 
-                if ((filterTextBox.Text != null) &&
-                    (filterTextBox.Text.Length != 0))
+                if ((filterTextBox.Text != null) && (filterTextBox.Text.Length != 0))
                 {
                     if (!this.FilterHashTable.ContainsKey(column.DataPropertyName))
+                    {
                         this.FilterHashTable.Add(column.DataPropertyName, null);
+                    }
 
                     this.FilterHashTable[column.DataPropertyName] = filterTextBox.Text;
                 }
                 else
                 {
                     if (this.FilterHashTable.ContainsKey(column.DataPropertyName))
+                    {
                         this.FilterHashTable.Remove(column.DataPropertyName);
+                    }
                 }
 
                 ApplyCallJobFilter();
@@ -1139,9 +1165,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         private void callJobsContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
             Point mouse = this.dataGridView1.PointToClient(MousePosition);
-
             DataGridView.HitTestInfo hitTestInfo = this.dataGridView1.HitTest(mouse.X, mouse.Y);
-
             bool isEditable = (this.project.State != ProjectState.Finished);
 
             //Zusammenstellen des FilterKontextMenues
@@ -1160,7 +1184,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
             if (this.callJobBindingSource.Filter != null)
             {
-                if (filterItem.DropDownItems.Count > 0) filterItem.DropDownItems.Add("-");
+                if (filterItem.DropDownItems.Count > 0)
+                {
+                    filterItem.DropDownItems.Add("-");
+                }
+
                 ToolStripMenuItem clearButton = new ToolStripMenuItem("Filter löschen", null, this.ClearFilterToolStripMenuItem_Click, "clearFilter");
                 clearButton.AutoSize = true;
                 filterItem.DropDownItems.Add(clearButton);
@@ -1209,6 +1237,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             foreach (TeamInfo teamInfo in this.currentTeams)
             {
                 Team team = MetaCall.Business.Teams.GetTeam(teamInfo);
+
                 foreach (TeamMitglied user in team.TeamMitglieder)
                 {
                     userMenuItem = new ToolStripMenuItem(user.DisplayName);
@@ -1255,13 +1284,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
             ToolStripMenuItem aktivieren = new ToolStripMenuItem("Aktivieren");
             aktivieren.Click += new EventHandler(Adressenschutz_aktivieren_Click);
-
             addressSafeActiv.DropDownItems.Add(aktivieren);
 
             ToolStripMenuItem deaktivieren = new ToolStripMenuItem("Deaktivieren");
             deaktivieren.Click += new EventHandler(Adressenschutz_deaktivieren_Click);
             addressSafeActiv.DropDownItems.Add(deaktivieren);
-            
             this.callJobsContextMenuStrip.Items.Clear();
 
             ToolStripMenuItem selectedAll = new ToolStripMenuItem("Alle auswählen");
@@ -1271,29 +1298,36 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             ToolStripMenuItem selectedNothing = new ToolStripMenuItem("Auswahl aufheben");
             selectedNothing.Click += new EventHandler(auswahlAufhebenToolStripMenuItem_Click);
             this.callJobsContextMenuStrip.Items.Add(selectedNothing);
-
             this.callJobsContextMenuStrip.Items.Add(addressSafeActiv);
 
             //Bearbeiten
             if (this.callJobBindingSource.Current != null)
+            {
                 this.callJobsContextMenuStrip.Items.Insert(0, editCallJob);
+            }
 
             //CallJobGroups
-            if (callJobGroupSelection.DropDownItems.Count > 0 &&
-                this.dataGridView1.SelectedRows.Count > 0)
+            if (callJobGroupSelection.DropDownItems.Count > 0 && this.dataGridView1.SelectedRows.Count > 0)
+            {
                 this.callJobsContextMenuStrip.Items.Add(callJobGroupSelection);
+            }
 
-            if (userSelection.DropDownItems.Count > 0 &&
-                this.dataGridView1.SelectedRows.Count > 0)
+            if (userSelection.DropDownItems.Count > 0 && this.dataGridView1.SelectedRows.Count > 0)
+            {
                 this.callJobsContextMenuStrip.Items.Add(userSelection);
+            }
 
             //Filter
             if (filterItem.DropDownItems.Count > 0)
+            {
                 this.callJobsContextMenuStrip.Items.Add(filterItem);
+            }
 
             //Spaltenauswahl
             if (columnSelection.DropDownItems.Count > 0)
+            {
                 this.callJobsContextMenuStrip.Items.Add(columnSelection);
+            }
 
             this.callJobsContextMenuStrip.AutoClose = true;
             this.callJobsContextMenuStrip.ShowCheckMargin = false;
@@ -1318,11 +1352,13 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
                     dataRow.BeginEdit();
                     CallJob callJob = dataRow["CallJob"] as CallJob;
+
                     if (callJob == null)
                     {
                         callJob = MetaCall.Business.CallJobs.Get((Guid)dataRow["CallJobId"]);
                         dataRow["CallJob"] = callJob;
                     }
+
                     callJob.AddressSafeActiv = true;
                     dataRow["AddressSafeActiv"] = true;
                     dataRow.EndEdit();
@@ -1345,11 +1381,13 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
                     dataRow.BeginEdit();
                     CallJob callJob = dataRow["CallJob"] as CallJob;
+
                     if (callJob == null)
                     {
                         callJob = MetaCall.Business.CallJobs.Get((Guid)dataRow["CallJobId"]);
                         dataRow["CallJob"] = callJob;
                     }
+
                     callJob.AddressSafeActiv = false;
                     dataRow["AddressSafeActiv"] = false;
                     dataRow.EndEdit();
@@ -1362,16 +1400,21 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             ToolStripMenuItem userMenuItem = sender as ToolStripMenuItem;
 
             if (userMenuItem == null)
+            {
                 return;
+            }
 
             UserInfo user = userMenuItem.Tag as UserInfo;
-
             string msg = string.Empty;
 
             if (user == null)
+            {
                 msg = "Möchten Sie die Benutzerzuordnung für die gewählten Anrufaufträge aufheben?";
+            }
             else
+            {
                 msg = string.Format("Möchten Sie den gewählten Aunrufaufträgen den Benutzer {0} zuordnen?", user.DisplayName);
+            }
 
             MessageBoxOptions options = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft ? MessageBoxOptions.RtlReading : 0;
             if (MessageBox.Show(this, msg, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,
@@ -1383,11 +1426,13 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
                     dataRow.BeginEdit();
                     CallJob callJob = dataRow["CallJob"] as CallJob;
+
                     if (callJob == null)
                     {
                         callJob = MetaCall.Business.CallJobs.Get((Guid)dataRow["CallJobId"]);
                         dataRow["CallJob"] = callJob;
                     }
+
                     callJob.User = user;
                     dataRow["user"] = callJob.User == null ? null:  callJob.User.DisplayName;
                     dataRow.EndEdit();
@@ -1400,7 +1445,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             ToolStripMenuItem callJobGroupMenuItem = sender as ToolStripMenuItem;
 
             if (callJobGroupMenuItem == null)
+            {
                 return;
+            }
 
             CallJobGroup callJobGroup = callJobGroupMenuItem.Tag as CallJobGroup;
             
@@ -1416,11 +1463,13 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
                     dataRow.BeginEdit();
                     CallJob callJob = dataRow["CallJob"] as CallJob;
+
                     if (callJob == null)
                     {
                         callJob = MetaCall.Business.CallJobs.Get((Guid)dataRow["CallJobId"]);
                         dataRow["CallJob"] = callJob;
                     }
+
                     callJob.CallJobGroup = MetaCall.Business.CallJobGroups.GetCallJobGroupInfo(callJobGroup.CallJobGroupId);
                     dataRow["CallJobGroup"] = callJob.CallJobGroup.DisplayName;
                     dataRow.EndEdit();
@@ -1431,7 +1480,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         private void editCallJob_Click(object sender, EventArgs e)
         {
             if (this.callJobBindingSource.Current != null)
+            {
                 EditCallJob();
+            }
         }
 
         private void columnChecked_CheckedChanged(object sender, EventArgs e)
@@ -1456,31 +1507,45 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 case 1:
                 case 2:
                     break;
+
                 case 3:
                 case 4:
                     break;
+
                 case 5:
                     DateTime value = DateTime.Parse((string)e.Value);
 
                     if (value.Date == DateTime.MinValue.Date)
+                    {
                         e.Value = "N/A";
+                    }
                     else if (value.Date == DateTime.MaxValue.Date)
+                    {
                         e.Value = "unendlich";
+                    }
                     else
+                    {
                         e.Value = value.ToShortDateString();
+                    }
+
                     break;
+
                 case 6:
                     //CallJobState callJobState = (CallJobState) Enum.ToObject(typeof(CallJobState), (int)e.Value);
                     //CallJobStateInfo info = MetaCall.Business.CallJobs.GetCallJobState(callJobState);
                     //e.Value = info.DisplayName;
                     break;
+
                 case 7:
 
                     break;
+
                 case 8:
                     break;
+
                 case 9:
                     break;
+
                 default:
                     break;
             }
@@ -1952,12 +2017,14 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         protected void FillControl()
         {
             this.descriptionLabel.Text = this.project.Bezeichnung;
+
             if (this.project.mwProject != null)
             {
                 mwProject mwProject = this.project.mwProject;
                 this.projectNumberTextBox.Text = mwProject.Projektnummer.ToString();
                 this.projectMonthYearTextBox.Text = string.Format("{0:00}/{1:0000}", mwProject.ProjektMonat, mwProject.ProjektJahr);
             }
+
             if (this.project.Customer != null)
             {
                 Customer customer = this.project.Customer;
@@ -1974,6 +2041,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             this.iterationCounterNnumericUpDown.Value = this.project.IterationCounter;
             DialModeDescription dialModeDescription = new DialModeDescription();
             string description = dialModeDescription.TranslateToDescription(this.project.DialMode);
+
             if (description == null)
             {
                 this.dialModeComboBox.SelectedItem = dialModeDescription.TranslateToDescription(DialMode.AutoDialingImmediately);
@@ -1982,6 +2050,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             {
                 this.dialModeComboBox.SelectedItem = dialModeDescription.TranslateToDescription(this.project.DialMode);
             }
+
             this.dialPrefixNumberTextBox.Text = this.project.DialingPrefixNumber;
             this.AdditiveInfoTextBox.Text = this.project.Venue;
             this.checkBoxAddressSafeActiv.Checked = this.project.AddressSafeActiv;
@@ -2016,11 +2085,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             this.centerComboBox.Items.Clear();
             this.centerComboBox.DisplayMember = "Bezeichnung";
             List<CenterInfo> centers = MetaCall.Business.Centers.Centers;
+
             foreach (var centerInfo in centers)
             {
                 this.centerComboBox.Items.Add(centerInfo);
             }
-
         }
 
         private void BindDialModes()
@@ -2028,10 +2097,13 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             this.dialModeComboBox.Items.Clear();
             //foreach (string dialMode in Enum.GetNames(typeof(DialMode)))
             DialModeDescription dialModeDescription = new DialModeDescription();
+
             foreach (DialMode dialMode in Enum.GetValues(typeof(DialMode)))
             {
                 if (dialMode != DialMode.Unseeded)
+                {
                     this.dialModeComboBox.Items.Add(dialModeDescription.TranslateToDescription(dialMode));
+                }
             }
         }
 
@@ -2056,20 +2128,25 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             this.project.AddressSafeActiv = this.checkBoxAddressSafeActiv.Checked;
             this.project.IterationCounter = (int) this.iterationCounterNnumericUpDown.Value;
             //this.project.DialMode = (DialMode)Enum.Parse(typeof(DialMode), (string)this.dialModeComboBox.SelectedItem);
+
             DialModeDescription dialModeDescription = new DialModeDescription();
+
             this.project.DialMode = dialModeDescription.TranslateToDialMode((string)this.dialModeComboBox.SelectedItem);
             this.project.DialingPrefixNumber = string.IsNullOrEmpty(this.dialPrefixNumberTextBox.Text) ? null : this.dialPrefixNumberTextBox.Text;
             this.project.Venue = this.AdditiveInfoTextBox.Text;
             if (this.DateTimePickerReminderMax.Checked == true)
+            {
                 this.project.ReminderDateMax = this.DateTimePickerReminderMax.Value.Date;
+            }
             else
+            {
                 this.project.ReminderDateMax = null;
+            }
 
             this.project.PraefixMailAttachment = string.IsNullOrEmpty(this.praefixMailAttachmentTextBox.Text) ? "Sponsoringangebot" : this.praefixMailAttachmentTextBox.Text;
-
             project.Teams = new TeamInfo[this.currentTeams.Count];
-            this.currentTeams.CopyTo(project.Teams);
 
+            this.currentTeams.CopyTo(project.Teams);
             this.project.CallJobGroups = new CallJobGroup[this.currentCallJobGroups.Count];
             this.currentCallJobGroups.CopyTo(project.CallJobGroups);
             
@@ -2083,8 +2160,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 if (project.DialMode != lastDialMode)
                 {
                     if (project != null)
-                        MetaCall.Business.CallJobs.UpdateCallJobsDialModeByProject(project,
-                            project.DialMode);
+                    {
+                        MetaCall.Business.CallJobs.UpdateCallJobsDialModeByProject(project,´project.DialMode);
+                    }
                 }
 
                 if (this.callJobsDataTable.Rows.Count > 0)
@@ -2113,8 +2191,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         {
             if (e.RowIndex > -1)
             {
-                if (Control.ModifierKeys == Keys.None &&
-                !this.dataGridView1.Rows[e.RowIndex].Selected)
+                if (Control.ModifierKeys == Keys.None && !this.dataGridView1.Rows[e.RowIndex].Selected)
                 {
                     this.dataGridView1.ClearSelection();
                     this.dataGridView1.Rows[e.RowIndex].Selected = true;
@@ -2145,6 +2222,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             {
                 DocumentCategory category = (DocumentCategory) e.Value;
                 DocumentCategoryInfo info = MetaCall.Business.ProjectDocuments.GetDocumentCategoryInfo(category);
+
                 if (info != null)
                 {
                     e.Value = info.DisplayName;
@@ -2160,13 +2238,16 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 MessageBox.Show("Sie müssen ein Dokument wählen um es entfernen zu können.");
                 return;
             }
+
             RemoveProjectDocument();
         }
 
         private void projectDocumentsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
+            {
                 EditProjectDocument();
+            }
         }
 
         private void buttonLastProjectCallHelp_Click(object sender, EventArgs e)
@@ -2186,7 +2267,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             {
                 MetaCall.Business.Projects.SetLastCall(this.project);
                 if (this.dataGridView1.RowCount > 0)
+                {
                     loadCallJobsButton_Click(null, null);
+                }
             }
         }
 
@@ -2228,7 +2311,6 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 Project atmProject = MetaCall.Business.Projects.Get(this.project.ProjectId);
                 atmProject.Sponsors = MetaCall.Business.Addresses.GetSponsorsByProject(atmProject).ToArray();
 
-
                 AddressTransferManager aTM = new AddressTransferManager(this);
                 aTM.ProgressChanged += new ProgressChangedEventHandler(aTM_ProgressChanged);
                 aTM.TransferCompleted += new TransferCompletedEventHandler(aTM_TransferCompleted);
@@ -2257,8 +2339,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         {
             if (e is TransferAddressesProgressChangedEventArgs)
             { 
-                TransferAddressesProgressChangedEventArgs transferAddressesProgressChangedEventArgs = 
-                    e as TransferAddressesProgressChangedEventArgs;
+                TransferAddressesProgressChangedEventArgs transferAddressesProgressChangedEventArgs = e as TransferAddressesProgressChangedEventArgs;
 
                 string msg = "Anrufgruppe {0} von {1} ({2}%)";
 
@@ -2282,7 +2363,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
         private void DeleteCallJobGroupAssignsCompletely()
         {
-             foreach (var currentCallJobGroup in currentCallJobGroups)
+            foreach (var currentCallJobGroup in currentCallJobGroups)
             {
                  currentCallJobGroup.Teams = new TeamInfo[0]{};
                  currentCallJobGroup.Users = new UserInfo[0]{};
@@ -2298,18 +2379,18 @@ namespace metatop.Applications.metaCall.WinForms.Modules
 
                 foreach (var teamInfo in project.Teams)
                 {
-                   
                     currentCallJobGroup.Teams[i++] = teamInfo;
 
                     List<UserInfo> users = new List<UserInfo>();
                     Team team = MetaCall.Business.Teams.GetTeam(teamInfo);
+
                     foreach (UserInfo userInfo in team.TeamMitglieder)
                     {
                         users.Add(userInfo);
                     }
+
                     currentCallJobGroup.Users = new UserInfo[users.Count];
                     users.CopyTo(currentCallJobGroup.Users);
-
                 }
             }
         }
@@ -2317,17 +2398,20 @@ namespace metatop.Applications.metaCall.WinForms.Modules
         private void selectCallJobGroupButton_Click(object sender, EventArgs e)
         {
             const string msg = "Möchten Sie für alle Anrufgruppen die Zuordnung aller Teams und Agents setzen?";
-            if (MessageBox.Show(this, msg, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                 MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                    FillCallJobGroupAssignsCompletely();
+
+            if (MessageBox.Show(this, msg, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                FillCallJobGroupAssignsCompletely();
+            }
         }
 
         private void delCallJobGroupsButton_Click(object sender, EventArgs e)
         {
             const string msg = "Möchten Sie die Zuordnung der Teams und Agents für alle Anrufgruppen löschen?";
-            if (MessageBox.Show(this, msg, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                 MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                    DeleteCallJobGroupAssignsCompletely();
+            if (MessageBox.Show(this, msg, Application.ProductName, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                DeleteCallJobGroupAssignsCompletely();
+            }
         }
 
         private void editAllCallJobGroupsButton_Click(object sender, EventArgs e)
@@ -2340,6 +2424,5 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                 }
             }
         }
-
     }
 }
