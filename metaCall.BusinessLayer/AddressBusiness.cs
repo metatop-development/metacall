@@ -25,10 +25,14 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public void UpdateSponsor(Sponsor sponsor)
         {
             if (sponsor == null)
+            {
                 throw new ArgumentNullException("sponsor");
+            }
 
             if (string.IsNullOrEmpty(sponsor.Nachname))
+            {
                 throw new InvalidOperationException("Der Nachname des Sponsors darf nicht leer sein!");
+            }
 
             this.metaCallBusiness.ServiceAccess.UpdateSponsor(sponsor);
         }
@@ -40,7 +44,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public void TransferAddresses(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             this.metaCallBusiness.ServiceAccess.TransferAddressPool(project);
         }
@@ -48,16 +54,19 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public int GetFailureByProject(ProjectInfo project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return this.metaCallBusiness.ServiceAccess.GetFailureByProject(project);
-
         }
 
         public void DeleteFailureByProject(ProjectInfo project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             this.metaCallBusiness.ServiceAccess.DeleteFailureByProject(project);
         }
@@ -70,7 +79,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public List<Sponsor> GetNewSponsorsForTransfer(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return new List<Sponsor>(this.metaCallBusiness.ServiceAccess.GetNewSponsorsForTransfer(project));
         }
@@ -83,7 +94,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public List<Sponsor> GetSponsorsByProject(Project project)
         {
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return new List<Sponsor>(this.metaCallBusiness.ServiceAccess.GetSponsorsByProject(project));
         }
@@ -97,10 +110,14 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public GeoZone GetGeoZoneByProject(Sponsor sponsor, ProjectInfo project)
         {
             if (sponsor == null)
+            {
                 throw new ArgumentNullException("sponsor");
+            }
 
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             return this.metaCallBusiness.ServiceAccess.GetGeoZone(sponsor, project.ProjectId);
         }
@@ -121,24 +138,31 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 case Language.Invalid:
                     salutations = GetSalutationsDe();
                     break;
+
                 case Language.German:
                     salutations = GetSalutationsDe();
                     break;
+
                 case Language.SwitzerlandItaly:
                     salutations = GetSalutaionsIt();
                     break;
+
                 case Language.SwitzerlandFrench:
                     salutations = GetSalutaionsFr();
                     break;
+
                 case Language.French:
                     salutations = GetSalutaionsFr();
                     break;
+
                 case Language.Italy:
                     salutations = GetSalutaionsIt();
                     break;
+
                 case Language.Netherland:
                     salutations = GetSalutaionsNl();
                     break;
+
                 default:
                     break;
             }
@@ -187,10 +211,14 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public void CreateSponsor(Sponsor sponsor, Project project)
         {
             if (sponsor == null)
+            {
                 throw new ArgumentNullException("sponsor");
+            }
 
             if (project == null)
+            {
                 throw new ArgumentNullException("project");
+            }
 
             this.metaCallBusiness.ServiceAccess.CreateSponsor(sponsor, project);
         }
@@ -205,9 +233,13 @@ namespace metatop.Applications.metaCall.BusinessLayer
             Regex eMailRegex = new Regex("^[\\w\\.\\-]+@([\\w\\-]+\\.)*[\\w\\-]{2,63}\\.[a-zA-Z]{2,4}$");
 
             if (eMailRegex.IsMatch(eMail))
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
         #region PhoneNumber von ungültigen Zeichen bereinigen
@@ -266,7 +298,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
             wrongFields = new List<string>();
 
             if (string.IsNullOrEmpty(sponsor.Nachname))
+            {
                 wrongFields.Add("Nachname");
+            }
 
             /*
              * if (string.IsNullOrEmpty(sponsor.Vorname))
@@ -274,46 +308,68 @@ namespace metatop.Applications.metaCall.BusinessLayer
              */
 
             if (string.IsNullOrEmpty(sponsor.Strasse))
+            {
                 wrongFields.Add("Strasse");
+            }
 
             if (string.IsNullOrEmpty(sponsor.Land))
+            {
                 wrongFields.Add("Land");
+            }
 
             if (string.IsNullOrEmpty(sponsor.PLZ))
+            {
                 wrongFields.Add("Postleitzahl");
+            }
 
             if (string.IsNullOrEmpty(sponsor.Ort))
+            {
                 wrongFields.Add("Ort");
+            }
 
             if (string.IsNullOrEmpty(sponsor.TelefonNummer))
+            {
                 wrongFields.Add("Telefonnummer");
+            }
             else
             {
                 if (ClearPhoneNumber(sponsor.TelefonNummer).Length < 4)
+                {
                     wrongFields.Add("Telefonnummer");
+                }
             }
 
             if (string.IsNullOrEmpty(sponsor.SponsorenUrkunde1))
+            {
                 wrongFields.Add("Sponsorurkunde Zeile 1");
+            }
 
             if (string.IsNullOrEmpty(sponsor.EMail))
+            {
                 wrongFields.Add("eMail-Adresse");
+            }
             else
             {
                 if (!sponsor.EMail.Equals("kein eMail vorhanden", StringComparison.CurrentCultureIgnoreCase))
                 {
                     if (CheckEMail(sponsor.EMail) == false)
+                    {
                         wrongFields.Add("eMail-Adresse");
+                    }
                 }
             }
 
             if (sponsor.ContactPerson != null)
             {
                 if (string.IsNullOrEmpty(sponsor.ContactPerson.Anrede))
+                {
                     wrongFields.Add("Ansprechpartner Anrede");
+                }
 
                 if (string.IsNullOrEmpty(sponsor.ContactPerson.Vorname))
+                {
                     wrongFields.Add("Ansprechpartner Vorname");
+                }
                 else
                 {
                     if (sponsor.ContactPerson.Vorname.Length < 3)
@@ -321,20 +377,27 @@ namespace metatop.Applications.metaCall.BusinessLayer
                         if (sponsor.ContactPerson.Vorname.Length > 1)
                         {
                             if (sponsor.ContactPerson.Vorname.Substring(1, 1) != ".")
+                            {
                                 wrongFields.Add("Ansprechpartner Vorname");
+                            }
                         }
                         else
+                        {
                             wrongFields.Add("Ansprechpartner Vorname");
+                        }
                     }
                 }
 
                 if (string.IsNullOrEmpty(sponsor.ContactPerson.Nachname))
+                {
                     wrongFields.Add("Ansprechpartner Nachname");
+                }
             }
             else
             {
                 wrongFields.Add("Ansprechpartner");
             }
+
             return (wrongFields.Count == 0);
         }
 
@@ -346,7 +409,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public Customer GetCustomer(ProjectInfo projectInfo)
         {
             if (projectInfo == null)
+            {
                 throw new ArgumentNullException("projectInfo");
+            }
 
             return this.metaCallBusiness.ServiceAccess.GetCustomer(projectInfo);
         }
@@ -360,10 +425,14 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public Boolean GetTipAddressLastProject(Sponsor sponsor, ProjectInfo projectInfo)
         {
             if (sponsor == null)
+            {
                 throw new ArgumentNullException("Sponsor");
+            }
 
             if (projectInfo == null)
+            {
                 throw new ArgumentNullException("Projektinfo");
+            }
 
             return this.metaCallBusiness.ServiceAccess.GetTipAddressLastProject(sponsor, projectInfo);
         }
