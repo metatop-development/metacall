@@ -1289,6 +1289,11 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
             return AddressDAL.GetAddress_HistoryNotice(addressId);
         }
 
+        public string GetAddress_NoticeAdministration(Guid addressId)
+        {
+            return AddressDAL.GetAddress_NoticeAdministration(addressId);
+        }
+
         /// <summary>
         /// Liefert eine Liste von Mahnungs-CallJobs für den angegebenen User (synchron)
         /// </summary>

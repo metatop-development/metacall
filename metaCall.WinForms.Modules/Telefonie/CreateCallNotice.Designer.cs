@@ -35,9 +35,12 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.noticeHistoryTextBox = new System.Windows.Forms.TextBox();
             this.Branch_BranchGroupComboBox = new MaDaNet.Common.AppFrameWork.WinUI.Controls.ComboBoxAutoComplete();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.noticeAdministrationTextBox = new System.Windows.Forms.TextBox();
             this.noticeTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // noticeTextBox
@@ -52,6 +55,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             // noticeTabControl
             // 
             this.noticeTabControl.Controls.Add(this.tabPage1);
+            this.noticeTabControl.Controls.Add(this.tabPage3);
             this.noticeTabControl.Controls.Add(this.tabPage2);
             this.noticeTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noticeTabControl.HotTrack = true;
@@ -110,6 +114,26 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.Branch_BranchGroupComboBox.NotInList += new System.ComponentModel.CancelEventHandler(this.Branch_BranchGroupComboBox_NotInList);
             this.Branch_BranchGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.Branch_BranchGroupComboBox_SelectedIndexChanged);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.noticeAdministrationTextBox);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(452, 110);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Notiz Verwaltung";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // noticeAdministrationTextBox
+            // 
+            this.noticeAdministrationTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.noticeAdministrationTextBox.Location = new System.Drawing.Point(3, 3);
+            this.noticeAdministrationTextBox.Multiline = true;
+            this.noticeAdministrationTextBox.Name = "noticeAdministrationTextBox";
+            this.noticeAdministrationTextBox.Size = new System.Drawing.Size(446, 104);
+            this.noticeAdministrationTextBox.TabIndex = 9;
+            // 
             // CreateCallNotice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,6 +149,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -137,5 +163,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox noticeHistoryTextBox;
         private ComboBoxAutoComplete Branch_BranchGroupComboBox;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox noticeAdministrationTextBox;
     }
 }

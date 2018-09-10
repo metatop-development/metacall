@@ -23,6 +23,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         private const string spAddress_Sponsor_Update = "dbo.Address_Sponsor_Update";
         private const string spAddress_Sponsor_Create = "dbo.Address_Sponsor_Create";
         private const string spAddress_GetHistoryNotice = "dbo.Address_GetHistoryNotice";
+        private const string spAddresses_GetNoticeAdministration = "dbo.Address_GetNoticeAdministration";
         private const string spGeoZone_GetByProjectAndSponsor = "dbo.GeoZone_GetByProjectAndSponsor";
         // -> dummy falls GeoZone mal separat gespeichert wird // private const string spGeoZone_GetSingle = "dbo.GeoZone_GetSingle";
         private static string spSponsorOrderInfo_GetBySponsorProjectAndCustomer = "dbo.SponsorOrderInfo_GetBySponsorProjectAndCustomer";
@@ -85,6 +86,22 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             {
                 historyNotice = (string)SqlHelper.GetNullableDBValue(dataTable.Rows[0]["Notiz"]);
                 return historyNotice;
+            }
+        }
+
+        public static string GetAddress_NoticeAdministration(Guid addressId)
+        {
+            IDictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@AddressId", addressId);
+            DataTable dataTable = SqlHelper.ExecuteDataTable(spAddresses_GetNoticeAdministration, parameters);
+
+            if (dataTable.Rows.Count < 1)
+            {
+                return null;
+            }
+            else
+            {
+                return (string)SqlHelper.GetNullableDBValue(dataTable.Rows[0]["NotizVerwaltung"]);
             }
         }
 

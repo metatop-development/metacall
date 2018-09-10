@@ -191,6 +191,31 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.Branch_BranchGroupComboBox.Items.Add(Branch.Unknown);
         }
 
+        private void FillNoticeAdministration(Call call)
+        {
+            if (this.isInitializing)
+            {
+                return;
+            }
+
+            if (call == null)
+            {
+                throw new ArgumentNullException("call");
+            }
+
+            if (call.CallJob == null)
+            {
+                throw new ArgumentNullException("call.CallJob");
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(MetaCall.Business.Addresses.GetAddress_NoticeAdministration(call.CallJob.Sponsor.AddressId));
+
+            this.noticeAdministrationTextBox.Text = sb.ToString();
+
+        }
+
         private void FillNoticeHistory(Call call)
         {
             if (this.isInitializing)
@@ -343,6 +368,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             SetSelectedBranch_BranchGroup();
 
             FillNoticeHistory(call);
+            FillNoticeAdministration(call);
+
             foreach (Control ctl in this.Controls)
             {
                 IInitializeCall initializeCallControl = ctl as IInitializeCall;

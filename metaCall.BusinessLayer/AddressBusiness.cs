@@ -446,5 +446,10 @@ namespace metatop.Applications.metaCall.BusinessLayer
         {
             return this.metaCallBusiness.ServiceAccess.GetAddress_HistoryNotice(addressId);
         }
+
+        public string GetAddress_NoticeAdministration(Guid addressId)
+        {
+            return this.metaCallBusiness.ServiceAccess.GetAddress_NoticeAdministration(addressId);
+        }
     }
 }
