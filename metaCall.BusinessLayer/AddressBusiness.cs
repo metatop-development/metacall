@@ -230,7 +230,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         /// <returns></returns>
         private bool CheckEMail(string eMail) 
         {
-            Regex eMailRegex = new Regex("^[\\w\\.\\-]+@([\\w\\-]+\\.)*[\\w\\-]{2,63}\\.[a-zA-Z]{2,4}$");
+            Regex eMailRegex = new Regex("^[\\w\\.\\-]+@([\\w\\-]+\\.)*[\\w\\-]{2,63}\\.[a-zA-Z]{2,30}$");
 
             if (eMailRegex.IsMatch(eMail))
             {
