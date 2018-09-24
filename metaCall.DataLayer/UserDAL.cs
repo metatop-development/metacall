@@ -75,6 +75,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
 
         private const string spDomainUser_UsesDialer = "dbo.DomainUser_UsesDialer";
         private const string spDomainUser_GetLine = "dbo.DomainUser_GetLine";
+        private const string spDomainUser_GetDialingCode = "dbo_DomainUser_GetDialingCode";
         #endregion
 
         #region Password Services
@@ -1294,6 +1295,23 @@ namespace metatop.Applications.metaCall.DataAccessLayer
                 string line;
                 line = (string)SqlHelper.GetNullableDBValue(dataTable.Rows[0][0]);
                 return line;
+            }
+        }
+
+        public static string DomainUser_GetDialingCode(string domainUser)
+        {
+            IDictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@DomainUser", domainUser);
+
+            DataTable dataTable = SqlHelper.ExecuteDataTable(spDomainUser_GetDialingCode, parameters);
+
+            if (dataTable.Rows.Count < 1)
+                return string.Empty;
+            else
+            {
+                string dialingCode;
+                dialingCode = (string)SqlHelper.GetNullableDBValue(dataTable.Rows[0][0]);
+                return dialingCode;
             }
         }
         #endregion

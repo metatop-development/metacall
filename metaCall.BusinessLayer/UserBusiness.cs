@@ -347,8 +347,13 @@ namespace metatop.Applications.metaCall.BusinessLayer
             return this.metaCallBusiness.ServiceAccess.DomainUser_GetLine(domainUser);
         }
 
+        public string DomainUser_GetDialingCode(string domainUser)
+        {
+            return this.metaCallBusiness.ServiceAccess.DomainUser_GetDialingCode(domainUser);
+        }
+
 #endregion
-        
+
         #region Informationen zum aktuellen Benutzer
 
         public List<ProjectInfo> Projects

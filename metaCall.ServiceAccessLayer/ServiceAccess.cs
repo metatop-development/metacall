@@ -108,6 +108,11 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         {
             return UserDAL.DomainUser_GetLine(domainUser);
         }
+
+        public string DomainUser_GetDialingCode(string domainUser)
+        {
+            return UserDAL.DomainUser_GetDialingCode(domainUser);
+        }
         #endregion
 
         #region PhoneTimesReport

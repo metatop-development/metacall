@@ -218,14 +218,12 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 return;
 
             this.call = call;
-
-            //TODO: über Anwendungseinstellungen eine zusätzliche Vorwahl ermöglichen
-            string externVorwahl = "0";
+           
+            string dialingCode = this.metacallBusiness.Users.DomainUser_GetDialingCode(Environment.UserName);
             string dialingPrefixNumber = call.CallJob.Project.DialingPrefixNumber;
 
             this.phoneNumber = phoneNumber;
-            this.phoneNumber = this.metacallBusiness.Addresses.ClearPhoneNumber(externVorwahl + phoneNumber);
-
+            this.phoneNumber = this.metacallBusiness.Addresses.ClearPhoneNumber(dialingCode + phoneNumber);
 
             //Ausführen der Anwahl
             if (!IsVirtualMode &&
