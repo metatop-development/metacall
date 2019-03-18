@@ -13,6 +13,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
     public partial class SendFaxDialog : Form
     {
         private const int blinkFrequency = 500;//1/4 of a second
+        private const string mailBetreff = "Förderaktion";
+        private const string projektBezeichnungListenerMailBetreff = "PluSport";
 
         private MessageTranferMode messageTranferMode = MessageTranferMode.Fax;
         private CallJob callJob;
@@ -137,7 +139,16 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             ProjectInfo project = this.callJob.Project;
             Sponsor sponsor = this.callJob.Sponsor;
 
-            this.ProjektTextBox.Text = "Förderaktion " + project.BezeichnungRechnung; //betreff
+            string betreff = "";
+
+            if (project.BezeichnungRechnung.Contains(projektBezeichnungListenerMailBetreff) == false)
+            {
+                betreff = mailBetreff + " ";
+            }
+
+            betreff += project.BezeichnungRechnung;
+
+            this.ProjektTextBox.Text = betreff;
             this.ProjektTextBox.Enabled = false;
             this.AnredeTextBox.Text = GetSalutation(project, sponsor); //briefanrede
 
