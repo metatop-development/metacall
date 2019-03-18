@@ -75,7 +75,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
 
         private const string spDomainUser_UsesDialer = "dbo.DomainUser_UsesDialer";
         private const string spDomainUser_GetLine = "dbo.DomainUser_GetLine";
-        private const string spDomainUser_GetDialingCode = "dbo_DomainUser_GetDialingCode";
+        private const string spDomainUser_GetDialingCode = "dbo.DomainUser_GetDialingCode";
         #endregion
 
         #region Password Services
