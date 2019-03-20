@@ -1393,10 +1393,26 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert Calljobs eines Projekts die als ungeeignet, Nummer falsch oder Adresse
-        /// doppelt gekennzeichnet sind.
+        /// Liefert eine Liste von CallJobInfoExtended für den angegebenen Suchbegriff
+        /// </summary>
+        /// <param name="adressenSuchbegriff"></param>
+        /// <returns></returns>
+        public CallJobInfoExtended[] GetListCallJobInfoExtendedByAddressSearch(string adressenSuchbegriff)
+        {
+            if (string.IsNullOrWhiteSpace(adressenSuchbegriff) == true)
+            {
+                throw new ArgumentNullException("adressenSuchbegriff");
+            }
+
+            return CallJobDAL.GetListCallJobInfoExtendedByAddressSearch(adressenSuchbegriff);
+        }
+
+        /// <summary>
+        /// Liefert eine Liste von CallJobInfoExtended für das angegebene Projekt (asynchron)
         /// </summary>
         /// <param name="project"></param>
+        /// <param name="asyncOp"></param>
+        /// <param name="reportProgressDelegate"></param>
         /// <returns></returns>
         public CallJobUnsuitableInfo[] GetListCallJobsUnsuitableInfoByProject(Project project, Guid userId, Guid contactTypeParticipationUnsuitableId)
         {

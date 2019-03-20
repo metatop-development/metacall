@@ -20,16 +20,9 @@ namespace metatop.Applications.metaCall.DataAccessLayer
 
         #endregion
 
-        private static CallJobInfoExtended ConvertToCallJobInfoExtended(DataRow row)
+        public static CallJobInfoExtended ConvertToCallJobInfoExtended(DataRow row)
         {
-
             string callJobType = "metatop.Applications.metaCall.DataObjects." + (string)row["CallJobType"];
-            //            callJobType = "metatop.Applications.metaCall.DataObjects." + (string)row["CallJobType"];
-            //string callJobType = "metatop.Applications.metaCall.DataObjects.SponsoringCallJob";
-
-
-            //Type type = typeof(CallJobInfoExtended).Assembly.GetType(callJobType);
-            //CallJobInfoExtended callJobInfoExt = Activator.CreateInstance(type) as CallJobInfoExtended;
 
             CallJobInfoExtended callJobInfoExt = new CallJobInfoExtended();
 
@@ -63,36 +56,10 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             callJobInfoExt.Text1 = (string)SqlHelper.GetNullableDBValue(row["Text1"]);
             callJobInfoExt.CDSource = (string) SqlHelper.GetNullableDBValue(row["CDSource"]);
 
-            /*
-            callJobInfoExt.CallJobId = (Guid)row["CallJobId"];
-            callJobInfoExt.Sponsor = AddressDAL.GetSponsor((Guid)row["AddressId"]);
-            callJobInfoExt.Project = ProjectDAL.GetProjectInfo((Guid)row["ProjectId"]);
-            callJobInfoExt.User = UserDAL.GetUserInfo((Guid?)SqlHelper.GetNullableDBValue(row["UserId"]));
-            callJobInfoExt.Team = TeamDAL.GetTeamInfo((Guid?)SqlHelper.GetNullableDBValue(row["TeamId"]));
-            callJobInfoExt.StartDate = (DateTime)row["StartDate"];
-            callJobInfoExt.StopDate = (DateTime)row["StopDate"];
-            callJobInfoExt.IterationCounter = (int)row["CallJobIterationCounter"];
-            callJobInfoExt.State = (CallJobState)row["State"];
-            callJobInfoExt.DialMode = (DialMode)row["DialMode"];
-            callJobInfoExt.AddressSafeActiv = (Boolean)row["AddressSafeActiv"];
-            if (SqlHelper.GetNullableDBValue(row["CallJobGroupId"]) == null)
-                callJobInfoExt.CallJobGroup = null;
-            else
-                callJobInfoExt.CallJobGroup = CallJobGroupDAL.GetCallJobGroupInfo((Guid)row["CallJobGroupId"]);
-
-            if (callJobInfoExt.GetType() == (typeof(DurringCallJob)))
-            {
-                DurringCallJob durringCallJob = (DurringCallJob)callJobInfoExt;
-
-                durringCallJob.Invoice = InvoiceDAL.GetInvoice((Guid?)SqlHelper.GetNullableDBValue(row["CallJobId"]));
-
-            }
-            */
             ObjectCache.Add(callJobInfoExt.CallJobId, callJobInfoExt, TimeSpan.FromSeconds(20));
 
             return callJobInfoExt;
         }
-
 
         private static CallJobInfoExtended[] ConvertToListCallJobInfoExtended(DataTable dataTable,
         AsyncOperation asyncOp,
@@ -138,9 +105,6 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             DataTable dataTable = SqlHelper.ExecuteDataTable(spCallJobInfoExtended_GetByProject, parameters);
 
             CallJobInfoExtended[] callJobInfoExt = ConvertToListCallJobInfoExtended(dataTable, asyncOp, reportProgressDelegate);
-
-            //SponsoringCallJob[] sponsoringCallJobs = new SponsoringCallJob[callJobs.Length];
-            //Array.Copy(callJobs, sponsoringCallJobs, callJobs.Length);
 
             return callJobInfoExt;
         }

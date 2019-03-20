@@ -137,6 +137,21 @@ namespace metatop.Applications.metaCall.BusinessLayer
         }
 
         /// <summary>
+        /// Liefert eine Liste von CallJobInfoExtended für den angegebenen Suchbegriff
+        /// </summary>
+        /// <param name="adressenSuchbegriff"></param>
+        /// <returns></returns>
+        public CallJobInfoExtended[] GetListCallJobInfoExtendedByAddressSearch(string adressenSuchbegriff)
+        {
+            if (string.IsNullOrWhiteSpace(adressenSuchbegriff) == true)
+            {
+                throw new ArgumentNullException("adressenSuchbegriff");
+            }
+
+            return this.metaCallBusiness.ServiceAccess.GetListCallJobInfoExtendedByAddressSearch(adressenSuchbegriff);
+        }
+
+        /// <summary>
         /// Liefert eine Liste von DurringCallJobs von einem User
         /// </summary>
         /// <param name="project"></param>

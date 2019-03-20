@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="AddressBase.Extension.cs" />
     <Compile Include="Branch.Extension.cs" />
+    <Compile Include="CallJobInfoExtended.Extension.cs" />
     <Compile Include="CallJobPhoneEvents.Extension.cs" />
     <Compile Include="CallJobResultMessage.Extension.cs" />
     <Compile Include="ContactPerson.Extensions.cs" />

@@ -100,6 +100,12 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Adressensuche\Adressensuche.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Adressensuche\Adressensuche.designer.cs">
+      <DependentUpon>Adressensuche.cs</DependentUpon>
+    </Compile>
     <Compile Include="Arbeitszeitverwaltung\Arbeitszeitverwaltung.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -459,6 +465,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\metaCall.DataLayer\metaCall.DataAccessLayer.csproj">
+      <Project>{22E623F8-2AAD-433B-AAEB-B09F99EE77F9}</Project>
+      <Name>metaCall.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\metaCall.ServiceAccessLayer\metaCall.ServiceAccessLayer.csproj">
+      <Project>{AB6FD9BF-B5DA-4D97-8C95-0BC7F69D1989}</Project>
+      <Name>metaCall.ServiceAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\metaCall.WinForms.Common\metaCall.WinForms.Common.csproj">
       <Project>{2F036641-E299-41D9-8000-3BBC6A0FF0CB}</Project>
       <Name>metaCall.WinForms.Common</Name>
@@ -473,6 +487,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Adressensuche\Adressensuche.resx">
+      <DependentUpon>Adressensuche.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Arbeitszeitverwaltung\Arbeitszeitverwaltung.resx">
       <DependentUpon>Arbeitszeitverwaltung.cs</DependentUpon>
       <SubType>Designer</SubType>

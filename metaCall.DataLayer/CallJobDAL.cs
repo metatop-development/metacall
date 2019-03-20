@@ -1,16 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 using metatop.Applications.metaCall.DataObjects;
-
 using System.Data;
 using System.Data.SqlTypes;
 using System.Xml;
 using System.ComponentModel;
 using System.Threading;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
-
 
 namespace metatop.Applications.metaCall.DataAccessLayer
 {
@@ -43,6 +40,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         private const string spCallJobs_SponsoringOrdersCreate = "dbo.CallJobs_SponsoringOrdersCreate";
         private const string spCallJobs_SponsoringCancellationCreate = "dbo.CallJobs_SponsoringCancellationCreate";
         private const string spCallJobs_AddressUnsuitableCreate = "dbo.CallJobs_AddressUnsuitableCreate";
+        private const string spCallJobInfoExtended_GetByAddressSearch = "dbo.CallJobInfoExtended_GetByAddressSearch";
 
         private const string spCallJobState_GetSingle = "dbo.CallJobState_GetSingle";
         private const string spCallJobState_GetAll = "dbo.CallJobState_GetAll";
@@ -57,6 +55,36 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         #endregion
 
         #region CallJobs
+
+        public static CallJobInfoExtended[] GetListCallJobInfoExtendedByAddressSearch(string addressSearch)
+        {
+            IDictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@AddressSearch", addressSearch);
+
+            DataTable dataTable = SqlHelper.ExecuteDataTable(spCallJobInfoExtended_GetByAddressSearch, parameters);
+
+            CallJobInfoExtended[] callJobInfoExt = ConvertToListCallJobInfoExtendedAddress(dataTable);
+
+            return callJobInfoExt;
+        }
+
+        private static CallJobInfoExtended[] ConvertToListCallJobInfoExtendedAddress(DataTable dataTable)
+        {
+            CallJobInfoExtended[] callJobInfoExt = new CallJobInfoExtended[dataTable.Rows.Count];
+
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                DataRow row = dataTable.Rows[i];
+                CallJobInfoExtended callJobInfoExtended = CallJobInfoExtendedDAL.ConvertToCallJobInfoExtended(row);
+                callJobInfoExtended.ProjectTerm = (string)row["ProjectTerm"];
+                callJobInfoExtended.ProjektJahr = (int)row["ProjektJahr"];
+                callJobInfoExtended.ProjektMonat = (int)row["ProjektMonat"];
+                callJobInfoExt[i] = callJobInfoExtended;
+            }
+
+            return callJobInfoExt;
+        }
+
         /// <summary>
         /// Gibt Adressen zum Telefonieren frei und erstellt die 
         /// dafür erforedrlichen CallJobs
