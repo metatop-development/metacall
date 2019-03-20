@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxAdressenSuchfeld = new System.Windows.Forms.TextBox();
             this.labelAdressenSuchfeld = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,20 +43,20 @@
             // 
             // textBoxAdressenSuchfeld
             // 
-            this.textBoxAdressenSuchfeld.Location = new System.Drawing.Point(70, 23);
+            this.textBoxAdressenSuchfeld.Location = new System.Drawing.Point(164, 23);
             this.textBoxAdressenSuchfeld.Name = "textBoxAdressenSuchfeld";
-            this.textBoxAdressenSuchfeld.Size = new System.Drawing.Size(479, 20);
+            this.textBoxAdressenSuchfeld.Size = new System.Drawing.Size(385, 20);
             this.textBoxAdressenSuchfeld.TabIndex = 0;
             this.textBoxAdressenSuchfeld.Leave += new System.EventHandler(this.textBoxAdressenSuchfeld_Leave);
             // 
             // labelAdressenSuchfeld
             // 
             this.labelAdressenSuchfeld.AutoSize = true;
-            this.labelAdressenSuchfeld.Location = new System.Drawing.Point(26, 23);
+            this.labelAdressenSuchfeld.Location = new System.Drawing.Point(26, 26);
             this.labelAdressenSuchfeld.Name = "labelAdressenSuchfeld";
-            this.labelAdressenSuchfeld.Size = new System.Drawing.Size(38, 13);
+            this.labelAdressenSuchfeld.Size = new System.Drawing.Size(132, 13);
             this.labelAdressenSuchfeld.TabIndex = 6;
-            this.labelAdressenSuchfeld.Text = "Suche";
+            this.labelAdressenSuchfeld.Text = "Suche (max. 100 Einträge)";
             // 
             // panel1
             // 
@@ -76,21 +76,21 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(29, 56);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridView1.MinimumSize = new System.Drawing.Size(520, 0);
