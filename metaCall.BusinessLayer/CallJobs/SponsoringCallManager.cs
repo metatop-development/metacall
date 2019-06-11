@@ -444,7 +444,6 @@ namespace metatop.Applications.metaCall.BusinessLayer
         /// <param name="callJobResultMessage"></param>
         public void CallDone(CallJobResultMessage callJobResultMessage)
         {
-
             //Prüfen der Parameter 
             if (callJobResultMessage == null)
                 throw new ArgumentNullException("callJobResultMessage");
@@ -475,6 +474,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             // Bearbeiten des Calls
             Call call = callJobResultMessage.Call;
             CallJobResult result = callJobResultMessage.CallJobResult;
+
             //Ermitteln des CallJobs
             //result.CallJob = metaCallBusiness.ServiceAccess.GetCallJobByProjectAndAddress(call.CallJob.Project.ProjectId, call.CallJob.Sponsor.AddressId);
             result.CallJob = call.CallJob;
@@ -574,6 +574,16 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 // Wichtig -> das SponsorUpdate MUSS vor dem Create-CallJobResult 
                 // durchgeführt werden, für einen neuen Auftrag die Sponsordaten aus dem 
                 // AdressenPool gezogen werden.
+
+                if (result.GetType() == typeof(CallJobPossibleResult))
+                {
+                    CallJobPossibleResult callJobPossibleResult = (CallJobPossibleResult)result;
+                    if (callJobPossibleResult.ContactTypesParticipationCancellation.ContactTypesParticipationCancellationId.Equals(new Guid(ContactTypesParticipationCancellationBusiness.AUF_DIE_VEREINSAUSSCHUSSLISTE)))
+                    {
+                        metaCallBusiness.Addresses.InsertAddressIntoAusschlussliste(result.CallJob.Sponsor.AdressenPoolNummer, (int)result.CallJob.Project.mwProjektNummer);
+                    }
+                }
+
                 metaCallBusiness.Addresses.UpdateSponsor(result.CallJob.Sponsor);
             }
             catch { }

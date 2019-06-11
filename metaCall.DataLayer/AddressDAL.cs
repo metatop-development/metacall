@@ -22,6 +22,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         //private const string spAddresses_GetSingleByVereinsNummer = "dbo.Addresses_GetSingle";
         private const string spAddress_Sponsor_Update = "dbo.Address_Sponsor_Update";
         private const string spAddress_Sponsor_Create = "dbo.Address_Sponsor_Create";
+        private const string spInsert_Address_Into_Ausschlussliste = "dbo.InsertAddressIntoAusschlussliste";
         private const string spAddress_GetHistoryNotice = "dbo.Address_GetHistoryNotice";
         private const string spAddresses_GetNoticeAdministration = "dbo.Address_GetNoticeAdministration";
         private const string spGeoZone_GetByProjectAndSponsor = "dbo.GeoZone_GetByProjectAndSponsor";
@@ -509,6 +510,17 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             parameters.Add("@SponsorUrkunde2", sponsor.SponsorenUrkunde2);
 
             SqlHelper.ExecuteStoredProc(spAddress_Sponsor_Create, parameters);
+        }
+
+        public static void InsertAddressIntoAusschlussliste(int Adressenpoolnummer, int Projektnummer)
+        {
+            IDictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@AusschlussTyp", "V");
+            parameters.Add("@AdressenPoolNummer", Adressenpoolnummer);
+            parameters.Add("@ReferenzNummer", Projektnummer);
+            parameters.Add("@Grund", "metacall - Telefonat");
+
+            SqlHelper.ExecuteStoredProc(spInsert_Address_Into_Ausschlussliste, parameters);
         }
 
         #region Tip-Adresse

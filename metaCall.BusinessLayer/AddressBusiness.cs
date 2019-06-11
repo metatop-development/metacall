@@ -223,6 +223,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
             this.metaCallBusiness.ServiceAccess.CreateSponsor(sponsor, project);
         }
 
+        public void InsertAddressIntoAusschlussliste(int Adressenpoolnummer, int Projektnummer)
+        {
+            this.metaCallBusiness.ServiceAccess.InsertAddressIntoAusschlussliste(Adressenpoolnummer, Projektnummer);
+        }
+
         /// <summary>
         /// Überprüft ob es eine Korrekte eMail-Adresse ist.
         /// </summary>

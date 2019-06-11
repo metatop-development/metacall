@@ -969,6 +969,12 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         {
             AddressDAL.CreateSponsor(sponsor, project);
         }
+
+        public void InsertAddressIntoAusschlussliste(int Adressenpoolnummer, int Projektnummer)
+        {
+            AddressDAL.InsertAddressIntoAusschlussliste(Adressenpoolnummer, Projektnummer);
+        }
+
         #endregion
 
         #region Calls & CallJobs

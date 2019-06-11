@@ -10,6 +10,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
     public class ContactTypesParticipationCancellationBusiness
     {
         MetaCallBusiness metaCallBusiness;
+        public const string AUF_DIE_VEREINSAUSSCHUSSLISTE = "{F7D2E268-2462-47CE-AA57-D294BD66D4FD}";
 
         internal ContactTypesParticipationCancellationBusiness(MetaCallBusiness metaCallBusiness)
         {
@@ -27,6 +28,5 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 return new List<ContactTypesParticipationCancellation>(metaCallBusiness.ServiceAccess.GetAllContactTypesParticipationCancellation());
             }
         }
-
     }
 }
