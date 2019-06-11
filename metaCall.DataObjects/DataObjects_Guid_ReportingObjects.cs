@@ -1993,7 +1993,9 @@ namespace metatop.Applications.metaCall.DataObjects {
         private string text1Field;
         
         private string cDSourceField;
-        
+
+        private string sponsoringCancellationsDisplayName;
+
         /// <remarks/>
         public System.Guid AddressId {
             get {
@@ -2337,7 +2339,18 @@ namespace metatop.Applications.metaCall.DataObjects {
                 this.RaisePropertyChanged("CDSource");
             }
         }
-        
+
+        public string SponsoringCancellationsDisplayName
+        {
+            get { return this.sponsoringCancellationsDisplayName; }
+            set
+            {
+                this.sponsoringCancellationsDisplayName = value;
+                this.RaisePropertyChanged("SponsoringCancellationsDisplayName");
+            }
+        }
+
+
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {

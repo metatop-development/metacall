@@ -374,6 +374,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             DataTableHelper.AddColumn(this.callJobsDataTable, "CDSource", "CD-Quelle", typeof(string));
             DataTableHelper.AddColumn(this.callJobsDataTable, "RandomSorter", "Sorter", typeof(string));
             DataTableHelper.AddColumn(this.callJobsDataTable, "CallJobId", "CallJobId", typeof(Guid), MappingType.Hidden);
+            DataTableHelper.AddColumn(this.callJobsDataTable, "SponsoringCancellationsDisplayName", "Warum keine Teilnahme", typeof(string));
             DataTableHelper.AddColumn(this.callJobsDataTable, "CallJob", "CallJob", typeof(CallJob), MappingType.Hidden);
 
             DataTableHelper.FillGridView(this.callJobsDataTable, this.dataGridView1);
@@ -477,6 +478,11 @@ namespace metatop.Applications.metaCall.WinForms.Modules
             //CDSource
             column = this.dataGridView1.Columns[20];
             column.Visible = false;
+
+            column = this.dataGridView1.Columns[21];
+            column.Visible = true;
+            //column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            column.FillWeight = 800;
 
             foreach (DataGridViewColumn col in this.dataGridView1.Columns)
             {
@@ -662,6 +668,7 @@ namespace metatop.Applications.metaCall.WinForms.Modules
                         callJobInfoExt.CDSource,
                         callJobInfoExt.RandomSorter,
                         callJobInfoExt.CallJobId,
+                        callJobInfoExt.SponsoringCancellationsDisplayName,
                         callJob}; // callJob
 
                     this.callJobsDataTable.Rows.Add(objectData);

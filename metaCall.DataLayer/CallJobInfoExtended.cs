@@ -55,6 +55,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             callJobInfoExt.RandomSorter = (string)SqlHelper.GetNullableDBValue(row["RandomSorter"]);
             callJobInfoExt.Text1 = (string)SqlHelper.GetNullableDBValue(row["Text1"]);
             callJobInfoExt.CDSource = (string) SqlHelper.GetNullableDBValue(row["CDSource"]);
+            callJobInfoExt.SponsoringCancellationsDisplayName = (string)SqlHelper.GetNullableDBValue(row["SponsoringCancellationsDisplayName"]);
 
             ObjectCache.Add(callJobInfoExt.CallJobId, callJobInfoExt, TimeSpan.FromSeconds(20));
 
