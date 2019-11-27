@@ -38,35 +38,41 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::metatop.Applications.metaCall.WinForms.App.Properties.Resources.schulung;
+            this.panel1.BackgroundImage = global::metatop.Applications.metaCall.WinForms.App.Properties.Resources.Schulung_1500x430;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(387, 227);
+            this.panel1.Size = new System.Drawing.Size(863, 349);
             this.panel1.TabIndex = 0;
             // 
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(17, 256);
+            this.label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(26, 394);
+            this.label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(72, 13);
+            this.label.Size = new System.Drawing.Size(118, 25);
             this.label.TabIndex = 16;
             this.label.Text = "Schulungsart:";
             // 
             // comboBoxTrainingGrund
             // 
+            this.comboBoxTrainingGrund.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTrainingGrund.FormattingEnabled = true;
-            this.comboBoxTrainingGrund.Location = new System.Drawing.Point(105, 253);
+            this.comboBoxTrainingGrund.Location = new System.Drawing.Point(158, 389);
+            this.comboBoxTrainingGrund.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxTrainingGrund.Name = "comboBoxTrainingGrund";
-            this.comboBoxTrainingGrund.Size = new System.Drawing.Size(250, 21);
+            this.comboBoxTrainingGrund.Size = new System.Drawing.Size(665, 33);
             this.comboBoxTrainingGrund.TabIndex = 15;
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(292, 394);
+            this.buttonOk.Location = new System.Drawing.Point(729, 616);
+            this.buttonOk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(63, 24);
+            this.buttonOk.Size = new System.Drawing.Size(94, 37);
             this.buttonOk.TabIndex = 17;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -74,28 +80,32 @@
             // 
             // txtNotice
             // 
-            this.txtNotice.Location = new System.Drawing.Point(105, 281);
+            this.txtNotice.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNotice.Location = new System.Drawing.Point(158, 432);
+            this.txtNotice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNotice.Multiline = true;
             this.txtNotice.Name = "txtNotice";
-            this.txtNotice.Size = new System.Drawing.Size(250, 107);
+            this.txtNotice.Size = new System.Drawing.Size(665, 162);
             this.txtNotice.TabIndex = 18;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 284);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 437);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.Size = new System.Drawing.Size(62, 25);
             this.label1.TabIndex = 19;
             this.label1.Text = "Notiz::";
             // 
             // Training
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(385, 458);
+            this.ClientSize = new System.Drawing.Size(864, 705);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNotice);
@@ -105,6 +115,7 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Training";

@@ -49,6 +49,7 @@
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -83,6 +84,7 @@
             // 
             this.toolStrip1.AllowMerge = false;
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonPause,
             this.toolStripButtonTraining});
@@ -98,13 +100,14 @@
             // 
             // toolStripButtonTraining
             // 
-            this.toolStripButtonTraining.Image = global::metatop.Applications.metaCall.WinForms.App.Properties.Resources.schulung;
+            this.toolStripButtonTraining.Image = global::metatop.Applications.metaCall.WinForms.App.Properties.Resources.Schulung_1500x430;
             resources.ApplyResources(this.toolStripButtonTraining, "toolStripButtonTraining");
             this.toolStripButtonTraining.Name = "toolStripButtonTraining";
             this.toolStripButtonTraining.Click += new System.EventHandler(this.toolStripButtonTraining_Click);
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelCountdown,
             this.toolStripStatusLabel1});
@@ -125,6 +128,8 @@
             // 
             // MainMenu
             // 
+            this.MainMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.MainMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.metaCallToolStripMenuItem,
             this.toolStripMenuItem1});
@@ -191,13 +196,14 @@
             this.MainMenuStrip = this.MainMenu;
             this.Name = "MainForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

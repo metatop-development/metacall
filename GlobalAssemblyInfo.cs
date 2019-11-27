@@ -22,8 +22,8 @@ using System.Runtime.InteropServices;
 #else
 [assembly: AssemblyConfiguration("Release")]
 #endif
-[assembly: AssemblyCopyright("seNAsa / MaDaNet 2006-2019")]
+[assembly: AssemblyCopyright("seNAsa / MaDaNet 2006-2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("1.3.10.*")]
+[assembly: AssemblyVersion("2.0.0.*")]

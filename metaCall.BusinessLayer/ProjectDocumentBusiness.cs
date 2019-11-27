@@ -292,7 +292,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
  
                     wordAdapter.ProcessDataFields(param);
 
-                    string filename = null; // "R:\\FaxVorlageTest.pdf";
+                    string filename = null; // "C:\\Users\\Uwe\\Documents\\Sponsorfax ÖBSV+Legi.docx";
                     string login = null;
                     string emailpwd = null;
 

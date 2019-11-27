@@ -23,16 +23,18 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
     
     public partial class LogOnForm : Form
     {
-        #region Class Data
         #region Const Data
+
         public const int MaxLogOnTrys = 3;
         private const string LogOnInfo = "Anmeldung fehlgeschlagen. Sie haben noch {0} Versuche.";
+        
         #endregion
+
+        #region Class Data
 
         private LogOnHandler logOnMethod;
         private int logOnCounter;
 
-       
         #endregion
 
         public LogOnForm()
@@ -44,9 +46,7 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
             this.txtUserName.Enter+=new EventHandler(TextBox_Enter);
             this.txtPwd.Enter += new EventHandler(TextBox_Enter);
 
-
             //Load the Image from Resources
-            
             Bitmap image = Properties.Resources.metaCall64;
             image.MakeTransparent(Color.White);
 
@@ -61,13 +61,6 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
             this.logOnMethod = logOnMethod;
             
         }
-
-
-
- 
-
-
-
 
         protected virtual void OkMethod()
         {
@@ -88,6 +81,7 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
                 }
 
                 bool rethrow = ExceptionPolicy.HandleException(ex, "UI Policy");
+
                 if (rethrow)
                 {
                     throw;
@@ -96,6 +90,7 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
             catch (Exception ex)
             {
                 bool rethrow = ExceptionPolicy.HandleException(ex, "UI Policy");
+
                 if (rethrow)
                 {
                     throw;
@@ -112,7 +107,6 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
                 textbox.SelectionStart = 0;
                 textbox.SelectionLength = textbox.Text.Length;
             }
-
         }
 
         #region Properties
@@ -147,15 +141,13 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
         {
             get { return this.txtPwd.Text; }
         }
-	
-	
+
         #endregion
 
         protected virtual void ObjectsArrange()
         {
             this.btnCancel.Top = 105;
             this.btnLogIn.Top = 105;
-
             this.lblInfo.Top = 75;
             this.Height = 175;
         }
@@ -163,20 +155,22 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
         private void LogOnForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.DialogResult == DialogResult.OK)
+            {
                 try
                 {
                     OkMethod();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     bool rethrow = ExceptionPolicy.HandleException(ex, "UI Policy");
                     if (rethrow)
                     {
                         throw;
                     }
+
                     e.Cancel = true;
                 }
+            }
         }
-
     }
 }

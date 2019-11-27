@@ -33,24 +33,27 @@
             // 
             // labelInfo
             // 
-            this.labelInfo.AutoSize = true;
-            this.labelInfo.Location = new System.Drawing.Point(12, 184);
+            this.labelInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfo.Location = new System.Drawing.Point(200, 32);
+            this.labelInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(190, 13);
+            this.labelInfo.Size = new System.Drawing.Size(500, 45);
             this.labelInfo.TabIndex = 0;
             this.labelInfo.Text = "Doppelklicken Sie um weiterzuarbeiten";
+            this.labelInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelInfo.DoubleClick += new System.EventHandler(this.Pause_DoubleClick);
             // 
             // Pause
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::metatop.Applications.metaCall.WinForms.App.Properties.Resources.sandstrand_100710_0;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(370, 206);
+            this.BackgroundImage = global::metatop.Applications.metaCall.WinForms.App.Properties.Resources.strand;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(900, 400);
             this.ControlBox = false;
             this.Controls.Add(this.labelInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Pause";
@@ -59,7 +62,6 @@
             this.Text = "Pause";
             this.DoubleClick += new System.EventHandler(this.Pause_DoubleClick);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
