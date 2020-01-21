@@ -577,16 +577,21 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                 if (result.GetType() == typeof(CallJobPossibleResult))
                 {
-                    CallJobPossibleResult callJobPossibleResult = (CallJobPossibleResult)result;
-                    if (callJobPossibleResult.ContactTypesParticipationCancellation.ContactTypesParticipationCancellationId.Equals(new Guid(ContactTypesParticipationCancellationBusiness.AUF_DIE_VEREINSAUSSCHUSSLISTE)))
+                    CallJobPossibleResult callJobPossibleResult = (CallJobPossibleResult) result;
+                    if (callJobPossibleResult.ContactTypesParticipationCancellation != null && callJobPossibleResult.ContactTypesParticipationCancellation
+                        .ContactTypesParticipationCancellationId
+                        .Equals(new Guid(ContactTypesParticipationCancellationBusiness.AUF_DIE_VEREINSAUSSCHUSSLISTE)))
                     {
-                        metaCallBusiness.Addresses.InsertAddressIntoAusschlussliste(result.CallJob.Sponsor.AdressenPoolNummer, (int)result.CallJob.Project.mwProjektNummer);
+                        metaCallBusiness.Addresses.InsertAddressIntoAusschlussliste(
+                            result.CallJob.Sponsor.AdressenPoolNummer, (int) result.CallJob.Project.mwProjektNummer);
                     }
                 }
 
                 metaCallBusiness.Addresses.UpdateSponsor(result.CallJob.Sponsor);
             }
-            catch { }
+            catch (Exception exception)
+            {
+            }
 
             try
             {
