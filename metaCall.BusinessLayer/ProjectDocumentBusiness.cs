@@ -258,12 +258,16 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 {
                     throw new ArgumentNullException("briefanrede");
                 }
-
+#if DEBUG
+                document.Filename = "C:\\Users\\Uwe\\Documents\\Sponsorfax ÖBSV+Legi.docx";
+#endif
                 if (!File.Exists(document.Filename))
                 {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", document.Filename);
                 }
-
+#if DEBUG
+                emailTemplate.Filename = "C:\\Users\\Uwe\\Documents\\SponsorfaxTemplate.htm";
+#endif
                 if (!File.Exists(emailTemplate.Filename))
                 {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", emailTemplate.Filename);
@@ -292,7 +296,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
  
                     wordAdapter.ProcessDataFields(param);
 
-                    string filename = null; // "C:\\Users\\Uwe\\Documents\\Sponsorfax ÖBSV+Legi.docx";
+                    string filename = null;
                     string login = null;
                     string emailpwd = null;
 
@@ -493,6 +497,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     throw new ArgumentNullException("calljob");
                 }
 
+#if DEBUG
+                document.Filename = "C:\\Users\\Uwe\\Documents\\Sponsorfax Verein Defibrillator.docx";
+#endif
                 if (!File.Exists(document.Filename))
                 {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", document.Filename);
@@ -500,11 +507,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
 #if DEBUG
                 if (options == SendProjectDocumentOptions.SendFax)
                 {
-                    callJob.Sponsor.FaxNummer = "071188023380";
+                    callJob.Sponsor.FaxNummer = "071156618283";
                 }
                 else if (options == SendProjectDocumentOptions.SendMail)
-                {
-                    // callJob.Sponsor.EMail = "frohna@madanet.de";
+                { 
+                    callJob.Sponsor.EMail = "uwe.frohna@senasa.de";
                 }
 #endif
                 IDictionary<string, object> logInfos = new Dictionary<string, object>();
@@ -534,7 +541,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                         printer = Properties.Settings.Default.ActiveFaxPrinterName;
 #if DEBUG
                         wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
-                        printer = "hp LaserJet 1320 PCL 5";
+                        printer = "Foxit Reader PDF Printer";
 #else
                         if (string.IsNullOrEmpty(printer))
                         {
