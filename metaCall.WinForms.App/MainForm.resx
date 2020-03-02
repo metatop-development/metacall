@@ -169,7 +169,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 786</value>
+    <value>980, 783</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>150</value>
@@ -196,7 +196,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 786</value>
+    <value>980, 783</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -226,7 +226,7 @@
     <value>1</value>
   </data>
   <data name="toolStripContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
+    <value>0, 36</value>
   </data>
   <data name="toolStripContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
@@ -244,7 +244,7 @@
     <value>2</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 820</value>
+    <value>980, 817</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -391,7 +391,7 @@
     <value>Alt+M</value>
   </data>
   <data name="metaCallToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 29</value>
+    <value>96, 30</value>
   </data>
   <data name="metaCallToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;metaCall</value>
@@ -403,7 +403,7 @@
     <value>Über ...</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 29</value>
+    <value>36, 30</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>?</value>
@@ -412,7 +412,7 @@
     <value>0, 0</value>
   </data>
   <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 33</value>
+    <value>980, 36</value>
   </data>
   <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
