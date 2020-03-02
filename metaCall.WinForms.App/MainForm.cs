@@ -77,7 +77,6 @@ namespace metatop.Applications.metaCall.WinForms.App
             this.mouseMoveFilter = new messageFilter();
             this.mouseMoveFilter.GlobalMouseMove += new EventHandler(mouseMoveFilter_GlobalMouseMove);
 
-
             Application.AddMessageFilter(mouseMoveFilter);
 
         }

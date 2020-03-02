@@ -143,9 +143,18 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             }
         }
 
+        public List<string> Diagnosis
+        {
+            set
+            {
+                this.listBoxDiagnosis.DataSource = value;
+            }
+        }
+
         public CreateCallNotice()
         {
             InitializeComponent();
+            this.noticeTabControl.TabPages.RemoveAt(this.noticeTabControl.TabCount - 1);
         }
 
         private void FillBranch_BranchGroupComboBox()

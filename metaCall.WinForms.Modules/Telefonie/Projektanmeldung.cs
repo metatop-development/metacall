@@ -26,7 +26,9 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
         public Projektanmeldung()
         {
             InitializeComponent();
-
+            var listLines = MetaCall.Business.Dialer.GetCTapiLineList();
+            this.textBoxUsername.Text = listLines[0];
+            this.listBoxPhoneLines.DataSource = listLines;
         }
 
         void Business_ProjectChanged(object sender, metatop.Applications.metaCall.BusinessLayer.ProjectChangedEventArgs e)

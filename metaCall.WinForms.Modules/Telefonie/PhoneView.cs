@@ -1301,6 +1301,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
 
         private void dialButton_Click(object sender, EventArgs e)
         {
+            MetaCall.Business.Dialer.ResetDialerStates();
+
             if (MetaCall.Business.Dialer.State == DialStates.Ready)
             {
                 Dial();
@@ -1309,6 +1311,8 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             {
                 this.HangUp();
             }
+
+            createCallNotice1.Diagnosis = MetaCall.Business.Dialer.GetDialerStates();
         }
 
         public Call Call

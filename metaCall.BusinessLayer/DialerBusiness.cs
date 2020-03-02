@@ -21,6 +21,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
     
     public class DialerBusiness: IDisposable
     {
+        private List<string> cTapiLineList = new List<string>();
+        private List<string> dialerStates = new List<string>();
+
         public event DialingEventHandler WantConnect;
         public event DialingEventHandler Connected;
         public event DialingEventHandler HangedUp;
@@ -59,7 +62,9 @@ namespace metatop.Applications.metaCall.BusinessLayer
             //line.NewCall += new EventHandler<NewCallEventArgs>(cTapi_NewCall);
             //line.CallInfoChanged += new EventHandler<CallInfoChangeEventArgs>(cTapi_CallInfoChanged);
 
+            cTapiLineList.Add("Before Open line");
             OpenLine();
+            cTapiLineList.Add("After Open line");
             if (lineIsOpen == true)
             {
                 Thread th = new Thread(new ThreadStart(LineGetMessageLoop));
@@ -67,9 +72,55 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 th.Start();
 
             }
+            cTapiLineList.Add("After isBackground");
         }
 
-        
+        public List<string> GetDialerStates()
+        {
+            return dialerStates;
+        }
+
+        public void ResetDialerStates()
+        {
+            dialerStates = new List<string>();
+        }
+
+        public List<string> GetCTapiLineList()
+        {
+            bool useDialer = this.metacallBusiness.Users.DomainUser_UsesDialer(Environment.UserName);
+
+            string dialerText = "useDialer";
+            if (useDialer == true)
+            {
+                dialerText += "-JA";
+            }
+            else
+            {
+                dialerText += "-NEIN";
+            }
+            cTapiLineList.Add(Environment.UserName);
+            cTapiLineList.Add(dialerText);
+            cTapiLineList.Add("---------------------------------");
+            if (IsVirtualMode == true)
+            {
+                cTapiLineList.Add("Virtual Mode JA");
+            }
+            else
+            {
+                cTapiLineList.Add("Virtual Mode NEIN");
+            }
+
+            if (IsVirtualMode == false)
+            {
+                foreach (CLine line in cTapi.LinesHt.Values)
+                {
+                    cTapiLineList.Add(line.LineName);
+                }
+            }
+
+            return cTapiLineList;
+        }
+
         private void RegisterEvents()
         {
         }
@@ -88,10 +139,12 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     InitializeTapi();
 
                 }
-                catch
+                catch(Exception exception)
                 {
                     // wenn bei der initialisierung ein Fehler auftritt wird 
                     // der virtuelle Modus eingeschaltet
+                    cTapiLineList.Add("Fehler:" + exception.Message);
+                    cTapiLineList.Add("Fehler:" + exception.Source);
                     IsVirtualMode = true;
                 }
                 finally
@@ -100,12 +153,15 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 }
             }
             else
+            {
                 IsVirtualMode = true;
+            }
 
             //Prüfen, ob cTapi oder Line ungültig sind
             //if (this.cTapi == null || this.cLine.hLine == IntPtr.Zero)
-            if (!lineIsOpen)
+            if (lineIsOpen == false)
             {
+                cTapiLineList.Add("Keine Line is open");
                 IsVirtualMode = true;
             }
 
@@ -134,10 +190,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 this.metacallBusiness.Users.CurrentUser.UserId, e.CallState.ToString(),
                 System.DateTime.Now, this.phoneNumber);
             this.metacallBusiness.CallJobPhoneEvents.CreateAsync(phoneEvent);
-                
+            this.dialerStates.Add("State-Original:" + e.CallState);
             /* Anwahlversuch -> Freizeichen */
             if (e.CallState == CTapi.LineCallState.LINECALLSTATE_DIALTONE)
             {
+                this.dialerStates.Add("State:LINECALLSTATE_DIALTONE");
                 this.state = DialStates.DialTone;
                 hCall_PlaceHolder = e.hcall;
                 //OnWantConnect(new DialingEventArgs(e.Call.CalledId, this.call, DialStates.DialTone));
@@ -147,6 +204,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             /* Anwahlversuch -> Beim anderen klingelts */
             if (e.CallState == CTapi.LineCallState.LINECALLSTATE_RINGBACK)
             {
+                this.dialerStates.Add("State:LINECALLSTATE_RINGBACK");
                 this.state = DialStates.RingBack;
                 OnWantConnect(new DialingEventArgs(phoneNumber, this.call, DialStates.RingBack));
                 return;
@@ -155,6 +213,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             /* !!! Anruf !!! -> das gegenüber hat abgenommen */
             if (e.CallState == CTapi.LineCallState.LINECALLSTATE_CONNECTED)
             {
+                this.dialerStates.Add("State:LINECALLSTATE_CONNECTED");
                 this.state = DialStates.Connected;
                 OnConnected(new DialingEventArgs(phoneNumber, this.call, DialStates.Connected));
                 return;
@@ -163,6 +222,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             // Anrufer hat aufgelegt
             if (e.CallState == CTapi.LineCallState.LINECALLSTATE_DISCONNECTED)
             {
+                this.dialerStates.Add("State:LINECALLSTATE_DISCONNECTED");
                 try
                 {
                     if (hCall_PlaceHolder == e.hcall)
@@ -184,6 +244,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             /* Anruf unterbrochen/beendet */
             if (e.CallState == CTapi.LineCallState.LINECALLSTATE_IDLE)
             {
+                this.dialerStates.Add("State:LINECALLSTATE_IDLE");
                 try
                 {
                     if (hCall_PlaceHolder == e.hcall)
@@ -212,7 +273,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
             // Der Dialer muss sich im Zustand "Ready" befinden, damit gewählt werden kann
             this.state = CheckCallState();
-
+            this.dialerStates.Add(this.state.ToString());
 
             if (this.state != DialStates.Ready)
                 return;
@@ -222,20 +283,33 @@ namespace metatop.Applications.metaCall.BusinessLayer
             string dialingCode = this.metacallBusiness.Users.DomainUser_GetDialingCode(Environment.UserName);
             string dialingPrefixNumber = call.CallJob.Project.DialingPrefixNumber;
 
+            this.dialerStates.Add("dialingCode:" + dialingCode);
+            this.dialerStates.Add("dialingPrefixNumber:" + dialingPrefixNumber);
+
             this.phoneNumber = phoneNumber;
+            this.dialerStates.Add("phoneNumerBevor:" + phoneNumber);
             this.phoneNumber = this.metacallBusiness.Addresses.ClearPhoneNumber(dialingCode + phoneNumber);
+            this.dialerStates.Add("phoneNumerAfter:" + phoneNumber);
 
             //Ausführen der Anwahl
             if (!IsVirtualMode &&
                 (MetaCallPrincipal.Current.Identity.User.DialMode == DialMode.AutoSoftwareDialing
                     || MetaCallPrincipal.Current.Identity.User.DialMode == DialMode.AutoDialingImmediately))
             {
+                this.dialerStates.Add("Ausführen der Anwahl1");
+
                 if (this.cTapi == null)
+                {
+                    this.dialerStates.Add("TAPI is not available");
                     throw new InvalidOperationException("TAPI is not available");
+                }
 
                 if (this.cLine.hLine == IntPtr.Zero)
+                {
+                    this.dialerStates.Add("No Line available");
                     throw new InvalidOperationException("No Line available");
-
+                }
+                this.dialerStates.Add("Ausführen der Anwahl2");
                 try
                 {
                     isHangedUp = false;
@@ -245,15 +319,19 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                 catch (ObjectDisposedException exSafeHandle)
                 {
+                    this.dialerStates.Add("exSafeHandle:" + exSafeHandle.Message);
                 }
                 catch (Exception ex)
                 {
+                    this.dialerStates.Add("Exception:" + ex.ToString());
                     throw ex;
                 }
                 finally
                 {
+                    this.dialerStates.Add("finally");
                     if (hCall_PlaceHolder != IntPtr.Zero) //und connected!
                     {
+                        this.dialerStates.Add("OnConnected");
                         OnConnected(new DialingEventArgs(this.phoneNumber, this.call, this.state));
                     }
                 }
@@ -261,6 +339,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             }
             else
             {
+                this.dialerStates.Add("Virtueller Modus");
                 //virtueller Modus
                 this.state = DialStates.DialTone;
                 OnWantConnect(new DialingEventArgs(this.phoneNumber, this.call, this.state));
@@ -289,9 +368,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
         public void HangUp()
         {
             this.state = DialStates.Ready;
+            this.dialerStates.Add("Hangup:" + this.state.ToString());
 
             if (!IsVirtualMode)
             {
+                this.dialerStates.Add("Hangup");
                 if (hCall_PlaceHolder != IntPtr.Zero)
                 {
                     cTapi.HangUp(hCall_PlaceHolder);
@@ -306,6 +387,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             }
             else
             {
+                this.dialerStates.Add("Hangup:Virtueller Modus");
                 //virtueller Modus
                 hCall_PlaceHolder = IntPtr.Zero;
                 if (!isHangedUp)
@@ -336,11 +418,12 @@ namespace metatop.Applications.metaCall.BusinessLayer
             //}
             
             string partOfLineName = this.metacallBusiness.Users.DomainUser_GetLine(Environment.UserName);
+            cTapiLineList.Add("Part of linename:" + partOfLineName);
             if (partOfLineName != null)
             {
                 foreach (CLine line in cTapi.LinesHt.Values)
                 {
-
+                    cTapiLineList.Add(line.LineName);
                     if (line.LineName != null && line.LineName.IndexOf(partOfLineName) > -1)
                     {
 
@@ -379,13 +462,11 @@ namespace metatop.Applications.metaCall.BusinessLayer
             get { return this.state;}
         }
 
-        
         protected void OnWantConnect(DialingEventArgs e)
         {
             if (WantConnect != null)
                 WantConnect(this, e);
         }
-
         
         protected void OnConnected(DialingEventArgs e)
         {
@@ -403,7 +484,8 @@ namespace metatop.Applications.metaCall.BusinessLayer
         
         public void ShutDown()
         {
-            if (!IsVirtualMode)
+            this.dialerStates.Add("ShutDown");
+            if (IsVirtualMode == false)
             {
                 lineIsOpen = false;
                 if (cTapi != null)
@@ -547,7 +629,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         // and
         //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
         //
-
+        
         public LineNotConnectedException() { }
         public LineNotConnectedException(string message) : base(message) { }
         public LineNotConnectedException(string message, Exception inner) : base(message, inner) { }
