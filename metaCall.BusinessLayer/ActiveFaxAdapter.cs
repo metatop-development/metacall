@@ -25,7 +25,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             
             string name = address.DisplayName;
 
-            dataTableFax.Add("@F501 @");
+            dataTableFax.Add("@F501 0@");
 
             //Name des Empfängers (optional)
             if (!string.IsNullOrEmpty(name))
