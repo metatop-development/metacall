@@ -2,6 +2,6 @@
 
 <connectionStrings>
   <add name="metacallConnection"
-       connectionString="Database=metacall;Server=192.168.0.6;Integrated Security=false;User Id=metaCallUser;Password=meta578User;"
+       connectionString="Database=metaCall;Server=MetaSQL2017,56432;Integrated Security=true;User Id=metaCallUser;Password=meta578User;"
        providerName="System.Data.SqlClient" />
 </connectionStrings>

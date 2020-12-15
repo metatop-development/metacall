@@ -258,16 +258,16 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 {
                     throw new ArgumentNullException("briefanrede");
                 }
-#if DEBUG
-                document.Filename = "C:\\Users\\Uwe\\Documents\\Sponsorfax ÖBSV+Legi.docx";
-#endif
+
+                // document.Filename = "C:\\Users\\Uwe\\Documents\\Sponsorfax ÖBSV+Legi.docx";
+
                 if (!File.Exists(document.Filename))
                 {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", document.Filename);
                 }
-#if DEBUG
-                emailTemplate.Filename = "C:\\Users\\Uwe\\Documents\\SponsorfaxTemplate.htm";
-#endif
+                
+                // emailTemplate.Filename = "C:\\Users\\Uwe\\Documents\\SponsorfaxTemplate.htm";
+
                 if (!File.Exists(emailTemplate.Filename))
                 {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", emailTemplate.Filename);
@@ -497,23 +497,22 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     throw new ArgumentNullException("calljob");
                 }
 
-#if DEBUG
-                document.Filename = "C:\\Users\\Uwe\\Documents\\Sponsorfax Verein Defibrillator.docx";
-#endif
+                //document.Filename = "C:\\Users\\Uwe\\Documents\\Sponsorfax Verein Defibrillator.docx";
+
                 if (!File.Exists(document.Filename))
                 {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", document.Filename);
                 }
-#if DEBUG
-                if (options == SendProjectDocumentOptions.SendFax)
-                {
-                    callJob.Sponsor.FaxNummer = "071156618283";
-                }
-                else if (options == SendProjectDocumentOptions.SendMail)
-                { 
-                    callJob.Sponsor.EMail = "uwe.frohna@senasa.de";
-                }
-#endif
+
+                //if (options == SendProjectDocumentOptions.SendFax)
+                //{
+                //    callJob.Sponsor.FaxNummer = "071156618283";
+                //}
+                //else if (options == SendProjectDocumentOptions.SendMail)
+                //{ 
+                //    callJob.Sponsor.EMail = "uwe.frohna@senasa.de";
+                //}
+
                 IDictionary<string, object> logInfos = new Dictionary<string, object>();
                 logInfos.Add("Document", document);
                 LogFaxInformation("Der Asynchrone Faxversand wurde gestartet.");
@@ -539,15 +538,14 @@ namespace metatop.Applications.metaCall.BusinessLayer
                         }
 
                         printer = Properties.Settings.Default.ActiveFaxPrinterName;
-#if DEBUG
-                        wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
-                        printer = "Foxit Reader PDF Printer";
-#else
+
+                        //wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
+                        //printer = "Foxit Reader PDF Printer";
                         if (string.IsNullOrEmpty(printer))
                         {
                             printer = "ActiveFax";
                         }
-#endif
+
                         if (!ActiveFaxAdapter.ValidatePrinterName(printer))
                         {
                             throw new InvalidOperationException("ActiveFax-Drucker kann nicht gefunden werden.");
