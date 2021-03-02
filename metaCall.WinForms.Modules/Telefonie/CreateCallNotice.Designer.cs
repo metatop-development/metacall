@@ -49,11 +49,10 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             // noticeTextBox
             // 
             this.noticeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noticeTextBox.Location = new System.Drawing.Point(5, 5);
-            this.noticeTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.noticeTextBox.Location = new System.Drawing.Point(3, 3);
             this.noticeTextBox.Multiline = true;
             this.noticeTextBox.Name = "noticeTextBox";
-            this.noticeTextBox.Size = new System.Drawing.Size(672, 197);
+            this.noticeTextBox.Size = new System.Drawing.Size(446, 93);
             this.noticeTextBox.TabIndex = 8;
             // 
             // noticeTabControl
@@ -64,22 +63,20 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.noticeTabControl.Controls.Add(this.Diagnose);
             this.noticeTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noticeTabControl.HotTrack = true;
-            this.noticeTabControl.Location = new System.Drawing.Point(15, 107);
-            this.noticeTabControl.Margin = new System.Windows.Forms.Padding(5);
+            this.noticeTabControl.Location = new System.Drawing.Point(10, 70);
             this.noticeTabControl.Name = "noticeTabControl";
             this.noticeTabControl.SelectedIndex = 0;
             this.noticeTabControl.ShowToolTips = true;
-            this.noticeTabControl.Size = new System.Drawing.Size(690, 240);
+            this.noticeTabControl.Size = new System.Drawing.Size(460, 125);
             this.noticeTabControl.TabIndex = 10;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.noticeTextBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(5);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage1.Size = new System.Drawing.Size(682, 207);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(452, 99);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Notiz";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -87,11 +84,10 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.noticeAdministrationTextBox);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(5);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage3.Size = new System.Drawing.Size(682, 207);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Size = new System.Drawing.Size(452, 99);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Notiz Verwaltung";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -99,22 +95,20 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             // noticeAdministrationTextBox
             // 
             this.noticeAdministrationTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.noticeAdministrationTextBox.Location = new System.Drawing.Point(5, 5);
-            this.noticeAdministrationTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.noticeAdministrationTextBox.Location = new System.Drawing.Point(3, 3);
             this.noticeAdministrationTextBox.Multiline = true;
             this.noticeAdministrationTextBox.Name = "noticeAdministrationTextBox";
-            this.noticeAdministrationTextBox.Size = new System.Drawing.Size(672, 197);
+            this.noticeAdministrationTextBox.Size = new System.Drawing.Size(446, 93);
             this.noticeAdministrationTextBox.TabIndex = 9;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.noticeHistoryTextBox);
             this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(5);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage2.Size = new System.Drawing.Size(682, 207);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(452, 99);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Historie";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -124,23 +118,22 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             this.noticeHistoryTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.noticeHistoryTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.noticeHistoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noticeHistoryTextBox.Location = new System.Drawing.Point(5, 5);
-            this.noticeHistoryTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.noticeHistoryTextBox.Location = new System.Drawing.Point(3, 3);
             this.noticeHistoryTextBox.Multiline = true;
             this.noticeHistoryTextBox.Name = "noticeHistoryTextBox";
             this.noticeHistoryTextBox.ReadOnly = true;
             this.noticeHistoryTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.noticeHistoryTextBox.Size = new System.Drawing.Size(672, 197);
+            this.noticeHistoryTextBox.Size = new System.Drawing.Size(446, 93);
             this.noticeHistoryTextBox.TabIndex = 0;
             // 
             // Diagnose
             // 
             this.Diagnose.Controls.Add(this.listBoxDiagnosis);
-            this.Diagnose.Location = new System.Drawing.Point(4, 29);
-            this.Diagnose.Margin = new System.Windows.Forms.Padding(2);
+            this.Diagnose.Location = new System.Drawing.Point(4, 22);
+            this.Diagnose.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Diagnose.Name = "Diagnose";
-            this.Diagnose.Padding = new System.Windows.Forms.Padding(2);
-            this.Diagnose.Size = new System.Drawing.Size(682, 207);
+            this.Diagnose.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Diagnose.Size = new System.Drawing.Size(452, 99);
             this.Diagnose.TabIndex = 3;
             this.Diagnose.Text = "Diagnose";
             this.Diagnose.UseVisualStyleBackColor = true;
@@ -148,37 +141,35 @@ namespace metatop.Applications.metaCall.WinForms.Modules.Telefonie
             // listBoxDiagnosis
             // 
             this.listBoxDiagnosis.FormattingEnabled = true;
-            this.listBoxDiagnosis.ItemHeight = 20;
-            this.listBoxDiagnosis.Location = new System.Drawing.Point(5, 7);
-            this.listBoxDiagnosis.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxDiagnosis.Location = new System.Drawing.Point(3, 5);
+            this.listBoxDiagnosis.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.listBoxDiagnosis.Name = "listBoxDiagnosis";
             this.listBoxDiagnosis.ScrollAlwaysVisible = true;
-            this.listBoxDiagnosis.Size = new System.Drawing.Size(669, 204);
+            this.listBoxDiagnosis.Size = new System.Drawing.Size(447, 134);
             this.listBoxDiagnosis.TabIndex = 0;
             // 
             // Branch_BranchGroupComboBox
             // 
             this.Branch_BranchGroupComboBox.FormattingEnabled = true;
             this.Branch_BranchGroupComboBox.LimitToList = true;
-            this.Branch_BranchGroupComboBox.Location = new System.Drawing.Point(30, 38);
-            this.Branch_BranchGroupComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.Branch_BranchGroupComboBox.Location = new System.Drawing.Point(20, 25);
             this.Branch_BranchGroupComboBox.MaxDropDownItems = 40;
             this.Branch_BranchGroupComboBox.Name = "Branch_BranchGroupComboBox";
-            this.Branch_BranchGroupComboBox.Size = new System.Drawing.Size(388, 28);
+            this.Branch_BranchGroupComboBox.Size = new System.Drawing.Size(260, 21);
             this.Branch_BranchGroupComboBox.TabIndex = 12;
             this.Branch_BranchGroupComboBox.NotInList += new System.ComponentModel.CancelEventHandler(this.Branch_BranchGroupComboBox_NotInList);
             this.Branch_BranchGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.Branch_BranchGroupComboBox_SelectedIndexChanged);
             // 
             // CreateCallNotice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.Controls.Add(this.Branch_BranchGroupComboBox);
             this.Controls.Add(this.noticeTabControl);
-            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "CreateCallNotice";
-            this.Size = new System.Drawing.Size(720, 375);
+            this.Size = new System.Drawing.Size(480, 200);
             this.Load += new System.EventHandler(this.CreateCallNotice_Load);
             this.noticeTabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
