@@ -358,6 +358,10 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     attachmentFilename = ToSingleChar(attachmentFilename, punkt);
 
                     m.Attachments.AddFileAttachment(attachmentFilename, filename);
+                    if(callJob.Project.mwProjektNummer == 1)
+                    {
+                        m.Attachments.AddFileAttachment(attachmentFilename, filename);
+                    }
                     m.SendAndSaveCopy();
 
                     //*****************************
