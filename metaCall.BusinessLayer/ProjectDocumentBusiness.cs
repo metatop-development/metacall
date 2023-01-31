@@ -358,10 +358,16 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     attachmentFilename = ToSingleChar(attachmentFilename, punkt);
 
                     m.Attachments.AddFileAttachment(attachmentFilename, filename);
-                    if(callJob.Project.mwProjektNummer == 1)
+
+                    /*
+                     Sonder-Angebot für die virtus wm. 31.01.2023 wieder entfernt.
+                    if(callJob.Project.mwProjektNummer == 15903)
                     {
-                        m.Attachments.AddFileAttachment(attachmentFilename, filename);
+                        string virtusAttachmentFilename = "sponsoring-mappe-virtus-ski-wm-2023.pdf";
+                        string virtusFilename = "R:\\Bregenz\\Center-Verwaltung\\Fax Vorlagen\\sponsoring-mappe-virtus-ski-wm-2023.pdf";
+                        m.Attachments.AddFileAttachment(virtusAttachmentFilename, virtusFilename);
                     }
+                    */
                     m.SendAndSaveCopy();
 
                     //*****************************
