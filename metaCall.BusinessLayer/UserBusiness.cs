@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -128,10 +128,12 @@ namespace metatop.Applications.metaCall.BusinessLayer
         /// <param name="user"></param>
         /// <param name="oldPassword"></param>
         /// <param name="newPassword"></param>
-        public void ChangePassword(User user, string oldPassword, string newPassword)
+        public void ChangePassword(User user, string oldPassword, string newPassword, string eMailPassword = "", string eMailPasswortWiederholung = "")
         {
             if (user == null)
+            {
                 throw new ArgumentNullException("user");
+            }
 
             MetaCallPrincipal principal = System.Threading.Thread.CurrentPrincipal as MetaCallPrincipal;
             if (!principal.IsInRole(MetaCallPrincipal.AdminRoleName))
@@ -144,7 +146,18 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     return;
                 }
             }
-            metaCallBusiness.ServiceAccess.SetHashedPassword(user.UserId, HashPassword(newPassword));
+
+            if (newPassword != "")
+            {
+                metaCallBusiness.ServiceAccess.SetHashedPassword(user.UserId, HashPassword(newPassword));
+            }
+
+            if(eMailPassword != "")
+            {
+                var newEMailPassword = metaCallBusiness.EncryptionBusiness.EncryptString(eMailPassword);
+                metaCallBusiness.ServiceAccess.SetEMailPassword(user.UserId, newEMailPassword);
+            }
+
         }
 
         private string HashPassword(string password)

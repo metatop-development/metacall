@@ -277,6 +277,11 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
             UserDAL.SetHashedPassword(userId, hashedPassword);
         }
 
+        public void SetEMailPassword(Guid userId, string eMailPassword)
+        {
+            UserDAL.SetEMailPassword(userId, eMailPassword);
+        }
+
         public TeamMitglied[] GetUsersByTeam(Guid teamId)
         {
             if (teamId == Guid.Empty)

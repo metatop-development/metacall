@@ -20,6 +20,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         #region Stored Procedures
         private const string spUser_GetHashedPassword = "dbo.User_GetPassword";
         private const string spUser_SetHashedPassword = "dbo.User_SetPassword";
+        private const string spUser_SetEMailPasswort = "User_SetEmailPassword";
 
         private const string spUser_Create = "dbo.User_Create";
         private const string spUser_Update = "dbo.User_Update";
@@ -98,9 +99,18 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             parameters.Add("@password", password);
 
             SqlHelper.ExecuteStoredProc(spUser_SetHashedPassword, parameters);
-
-
         }
+
+        public static void SetEMailPassword(Guid userId, string eMailPassword)
+        {
+
+            IDictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@UserId", userId);
+            parameters.Add("@eMailPassword", eMailPassword);
+
+            SqlHelper.ExecuteStoredProc(spUser_SetEMailPasswort, parameters);
+        }
+        
         #endregion
 
         #region CRUD operations

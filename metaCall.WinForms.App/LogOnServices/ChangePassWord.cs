@@ -13,7 +13,7 @@ using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 
 namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
 {
-    public delegate void ChangePassHandler(User user, string oldPassword, string newPassword);
+    public delegate void ChangePassHandler(User user, string oldPassword, string newPassword, string eMailPassword, string eMailPasswordWiederholung);
 
     public partial class ChangePassWord : metatop.Applications.metaCall.WinForms.App.LogOnServices.LogOnForm
     {
@@ -33,10 +33,8 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
         }
 
         public void ViewAsPassWordEdit()
-        {
-            
-            this.Height = 215;
-
+        {            
+            this.Height = 310;
 
             this.txtPwEditConfirm.Left = 210;
             this.txtPwEdit.Left = 210;
@@ -52,35 +50,41 @@ namespace metatop.Applications.metaCall.WinForms.App.LogOnServices
 
             this.txtPwEdit.Visible = true;
             this.txtPwEditConfirm.Visible = true;
-            
+
+            this.lblEMailPasswortUeberschrift.Left = 100;
+            this.lblEmailPasswortEdit.Left = 100;
+            this.lblEMailPasswortWiederholung.Left = 100;
+
             base.UserName = MetaCall.Business.Users.CurrentUser.UserName;
             base.txtUserName.Enabled = false;
-
         }
 
         protected override void OkMethod()
-        {
-            
+        {            
             if (this.txtPwEdit.Text.Equals(this.txtPwEditConfirm.Text))
             {
-                
-                changePasswordMethod(MetaCall.Business.Users.CurrentUser, this.PassWord, this.txtPwEdit.Text);
-                
+
+                if (this.txtEmailPasswort.Text.Equals(this.txtEmailPasswortWiederholung.Text))
+                {
+                    changePasswordMethod(MetaCall.Business.Users.CurrentUser, this.PassWord, this.txtPwEdit.Text, this.txtEmailPasswort.Text, this.txtEmailPasswortWiederholung.Text);
+                }
+                else
+                {
+                    throw new LogOnFailedException("E-Mail-Passwörter sind nicht gleich!");
+                }
             }
             else
             {
-                throw new LogOnFailedException("Passwörter sind nicht gleich!");
+                throw new LogOnFailedException("Anmelde-Passwörter sind nicht gleich!");
             }
-
         }
 
         protected override void ObjectsArrange()
         {
-            base.btnCancel.Top = 155;
-            base.btnLogIn.Top = 155;
+            base.btnCancel.Top = 240;
+            base.btnLogIn.Top = 240;
 
             base.lblInfo.Top = 125;
-            this.Height = 225;
         }
     }
 }
