@@ -277,15 +277,9 @@
     <None Include="Resources\schulung.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="metaCallConnection.config.beta" />
     <None Include="metaCallConnection.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="metaCallConnection.config.debugonlinedata">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="metaCallConnection.config.release" />
-    <None Include="metaCallConnection.config.debug" />
     <None Include="PostBuildAction.cmd" />
     <None Include="Resources\zzz2.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
