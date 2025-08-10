@@ -38,7 +38,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         }
 
         /// <summary>
-        /// Überträgt die Adressen zu einem Projekt aus Metaware nach metaCall
+        /// ÃœbertrÃ¤gt die Adressen zu einem Projekt aus Metaware nach metaCall
         /// </summary>
         /// <param name="project"></param>
         public void TransferAddresses(Project project)
@@ -173,7 +173,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         private IDictionary<string, string> GetSalutaionsFr()
         {
             IDictionary<string, string> salutations = new Dictionary<string, string>();
-            salutations.Add("Frau", "Chère Madame {0}");
+            salutations.Add("Frau", "ChÃ¨re Madame {0}");
             salutations.Add("Herr", "Cher Monsieur {0}");
             salutations.Add("", "Mesdames, Messieurs");
 
@@ -229,7 +229,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         }
 
         /// <summary>
-        /// Überprüft ob es eine Korrekte eMail-Adresse ist.
+        /// ÃœberprÃ¼ft ob es eine Korrekte eMail-Adresse ist.
         /// </summary>
         /// <param name="eMail"></param>
         /// <returns></returns>
@@ -247,10 +247,10 @@ namespace metatop.Applications.metaCall.BusinessLayer
             }
         }
 
-        #region PhoneNumber von ungültigen Zeichen bereinigen
+        #region PhoneNumber von ungÃ¼ltigen Zeichen bereinigen
         /// <summary>
-        /// Extrahiert nur Zahlen aus einen String, fügt diese zusammen und gibt einen
-        /// String zurück.
+        /// Extrahiert nur Zahlen aus einen String, fÃ¼gt diese zusammen und gibt einen
+        /// String zurÃ¼ck.
         /// "+" wird in 00 umgewandelt
         /// </summary>
         /// <param name="pn"></param>
@@ -292,7 +292,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         #endregion
 
         /// <summary>
-        /// Prüft einen Sponsor, ob für diesen alle Angaben vorhanden sind, 
+        /// PrÃ¼ft einen Sponsor, ob fÃ¼r diesen alle Angaben vorhanden sind, 
         /// um einen Auftrag zu erstellen.
         /// </summary>
         /// <param name="sponsor"></param>
@@ -407,7 +407,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         }
 
         /// <summary>
-        /// Liefert den Customer des Projektes zurück
+        /// Liefert den Customer des Projektes zurÃ¼ck
         /// </summary>
         /// <param name="projectInfo"></param>
         /// <returns></returns>
@@ -422,7 +422,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         }
 
         /// <summary>
-        /// Liefert true zurück wenn der Sponsor im Vorgängerprojekt ausgewählt hat das er dieses mal mitmachen würde.
+        /// Liefert true zurÃ¼ck wenn der Sponsor im VorgÃ¤ngerprojekt ausgewÃ¤hlt hat das er dieses mal mitmachen wÃ¼rde.
         /// </summary>
         /// <param name="sponsor"></param>
         /// <param name="projectInfo"></param>
@@ -440,6 +440,21 @@ namespace metatop.Applications.metaCall.BusinessLayer
             }
 
             return this.metaCallBusiness.ServiceAccess.GetTipAddressLastProject(sponsor, projectInfo);
+        }
+
+        /// <summary>
+        /// Liefert true zurÃ¼ck wenn die Adresse in der Vergangenheit auf nicht geeignet gesetzt wurde.
+        /// </summary>
+        /// <param name="sponsor"></param>
+        /// <returns></returns>
+        public Boolean GetIsAddressUnsuitable(Sponsor sponsor)
+        {
+            if (sponsor == null)
+            {
+                throw new ArgumentNullException("Sponsor");
+            }
+
+            return this.metaCallBusiness.ServiceAccess.GetIsAddressUnsuitable(sponsor);
         }
 
         public Boolean GetAddress_IsTip(int adressenPoolNummer)

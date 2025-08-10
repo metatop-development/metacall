@@ -497,7 +497,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Bereitet das Projekt für die letzte Anrufrunde vor
+        /// Bereitet das Projekt fÃ¼r die letzte Anrufrunde vor
         /// Setzten der Team-Reminder auf erledigt
         /// Setzten der CallJobIterationsCounter auf Projektmax - 1
         /// Setzten der CallJobart auf weiterer Anruf wenn Reminder war
@@ -1031,7 +1031,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Erstellt die CallJobs für ein Project anhand
+        /// Erstellt die CallJobs fÃ¼r ein Project anhand
         /// der AdressReleaseInfo-Liste
         /// </summary>
         /// <param name="infoList"></param>
@@ -1046,7 +1046,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
         /// <summary>
         /// Aktualisiert einen CallJob auf dem Server
-        /// Die Calls werden für den Benutzer reserviert und können nicht durch einen 
+        /// Die Calls werden fÃ¼r den Benutzer reserviert und kÃ¶nnen nicht durch einen 
         /// anderen Benutzer angefordert werden
         /// </summary>
         /// <param name="callJob"></param>
@@ -1097,7 +1097,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
 
         /// <summary>
         /// Liefert die anstehenden ReminderCalls (Wiedervorlagen)
-        /// Die Calls werden für den Benutzer reserviert und können nicht durch einen 
+        /// Die Calls werden fÃ¼r den Benutzer reserviert und kÃ¶nnen nicht durch einen 
         /// anderen Benutzer angefordert werden
         /// </summary>
         /// <param name="message"></param>
@@ -1188,7 +1188,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
             CallDAL.UpdateCall(callId, callJobState);
         }
         /// <summary>
-        /// Setzt die Call's für einen Benutzer zurück
+        /// Setzt die Call's fÃ¼r einen Benutzer zurÃ¼ck
         /// </summary>
         /// <param name="user"></param>
         public void ResetAllCallsForUser(User user)
@@ -1254,7 +1254,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
         
         /// <summary>
-        /// Liefert eine Liste von CallJobs für das angegebene Projekt (synchron)
+        /// Liefert eine Liste von CallJobs fÃ¼r das angegebene Projekt (synchron)
         /// </summary>
         /// <param name="project"></param>
         /// <returns></returns>
@@ -1269,7 +1269,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert true zurück wenn der Sponsor im Vorgängerprojekt ausgewählt hat das er dieses mal mitmachen würde.
+        /// Liefert true zurÃ¼ck wenn der Sponsor im VorgÃ¤ngerprojekt ausgewÃ¤hlt hat das er dieses mal mitmachen wÃ¼rde.
         /// </summary>
         /// <param name="sponsor"></param>
         /// <param name="projectInfo"></param>
@@ -1289,9 +1289,23 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
             return AddressDAL.GetTipAddressLastProject(sponsor, projectInfo);
         }
 
+        /// <summary>
+        /// Liefert true zurÃ¼ck wenn die Adresse in der Vergangenheit auf nicht geeignet gesetzt wurde.
+        /// </summary>
+        /// <param name="sponsor"></param>
+        /// <returns></returns>
+        public Boolean GetIsAddressUnsuitable(Sponsor sponsor)
+        {
+            if (sponsor == null)
+            {
+                throw new ArgumentNullException("Sponsor");
+            }
+
+            return AddressDAL.GetIsAddressUnsuitable(sponsor);
+        }       
 
         /// <summary>
-        /// Liefert true zurück wenn der Sponsor im AdressenPool als Tip-Adresse gekennzeichnet ist.
+        /// Liefert true zurÃ¼ck wenn der Sponsor im AdressenPool als Tip-Adresse gekennzeichnet ist.
         /// </summary>
         /// <param name="AdressenPoolNummer"></param>
         /// <returns></returns>
@@ -1311,7 +1325,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert eine Liste von Mahnungs-CallJobs für den angegebenen User (synchron)
+        /// Liefert eine Liste von Mahnungs-CallJobs fÃ¼r den angegebenen User (synchron)
         /// </summary>
         /// <param name="project"></param>
         /// <returns></returns>
@@ -1370,7 +1384,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert eine Liste von CallJobs für das angegebene Projekt (asynchron)
+        /// Liefert eine Liste von CallJobs fÃ¼r das angegebene Projekt (asynchron)
         /// </summary>
         /// <param name="project"></param>
         /// <param name="asyncOp"></param>
@@ -1387,7 +1401,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert eine Liste von CallJobInfoExtended für das angegebene Projekt (asynchron)
+        /// Liefert eine Liste von CallJobInfoExtended fÃ¼r das angegebene Projekt (asynchron)
         /// </summary>
         /// <param name="project"></param>
         /// <param name="asyncOp"></param>
@@ -1404,7 +1418,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert eine Liste von CallJobInfoExtended für den angegebenen Suchbegriff
+        /// Liefert eine Liste von CallJobInfoExtended fÃ¼r den angegebenen Suchbegriff
         /// </summary>
         /// <param name="adressenSuchbegriff"></param>
         /// <returns></returns>
@@ -1419,7 +1433,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert eine Liste von CallJobInfoExtended für das angegebene Projekt (asynchron)
+        /// Liefert eine Liste von CallJobInfoExtended fÃ¼r das angegebene Projekt (asynchron)
         /// </summary>
         /// <param name="project"></param>
         /// <param name="asyncOp"></param>
@@ -1436,7 +1450,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert UserIds eines Projekts für User die eine Adresse als ungeeignet gekennzeichnet
+        /// Liefert UserIds eines Projekts fÃ¼r User die eine Adresse als ungeeignet gekennzeichnet
         /// haben
         /// </summary>
         /// <param name="project"></param>
@@ -1452,7 +1466,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Liefert contactTypeParticipationUnsuitableIds für Gründe die bei ungeeigneten Adressen des 
+        /// Liefert contactTypeParticipationUnsuitableIds fÃ¼r GrÃ¼nde die bei ungeeigneten Adressen des 
         /// Projekts angegeben wurden.
         /// </summary>
         /// <param name="project"></param>
@@ -1690,7 +1704,7 @@ namespace metatop.Applications.metaCall.ServiceAccessLayer
         }
 
         /// <summary>
-        /// Löscht eine CallJobgruppe auf dem Server
+        /// LÃ¶scht eine CallJobgruppe auf dem Server
         /// </summary>
         /// <param name="callJobGroup"></param>
         public void DeleteCallJobGroup(Guid callJobGroupId)

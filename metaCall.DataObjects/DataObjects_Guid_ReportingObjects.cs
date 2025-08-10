@@ -4563,6 +4563,9 @@ namespace metatop.Applications.metaCall.DataObjects {
         
         /// <remarks/>
         TipAddress,
+
+        /// <remarks/>
+        UnsuitableAddress,
     }
     
     /// <remarks/>

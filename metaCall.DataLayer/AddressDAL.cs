@@ -29,6 +29,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         // -> dummy falls GeoZone mal separat gespeichert wird // private const string spGeoZone_GetSingle = "dbo.GeoZone_GetSingle";
         private static string spSponsorOrderInfo_GetBySponsorProjectAndCustomer = "dbo.SponsorOrderInfo_GetBySponsorProjectAndCustomer";
         private static string spSponsorTipAddressFromLastProject = "dbo.SponsorTipAddressFromLastProject";
+        private static string spIsAddressUnsuitable = "IsAddressUnsuitable";
         private static string spAddress_IsTip = "dbo.Address_IsTip";
         #endregion
 
@@ -309,7 +310,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
 
         #region CustomerOperations
         /// <summary>
-        /// Liefert ein Customer-Objekt zurück
+        /// Liefert ein Customer-Objekt zurÃ¼ck
         /// </summary>
         /// <param name="Vereinsnummer">Vereinsnumer aus der Metaware-Anwendung</param>
         /// <returns></returns>
@@ -319,7 +320,7 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         }
 
         /// <summary>
-        /// Liefert ein Customer-Objekt zurück
+        /// Liefert ein Customer-Objekt zurÃ¼ck
         /// </summary>
         /// <param name="addressId">AddressId aus der metaCall-Anwendung</param>
         /// <returns></returns>
@@ -521,6 +522,16 @@ namespace metatop.Applications.metaCall.DataAccessLayer
             parameters.Add("@Grund", "metacall - Telefonat");
 
             SqlHelper.ExecuteStoredProc(spInsert_Address_Into_Ausschlussliste, parameters);
+        }
+
+        public static Boolean GetIsAddressUnsuitable(Sponsor sponsor)
+        {
+            IDictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("@AddressId", sponsor.AddressId);
+
+            DataTable dataTable = SqlHelper.ExecuteDataTable(spIsAddressUnsuitable, parameters);
+
+            return dataTable.Rows.Count < 1 ? false : true;
         }
 
         #region Tip-Adresse

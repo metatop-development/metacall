@@ -10,12 +10,12 @@ namespace metatop.Applications.metaCall.BusinessLayer
     public class CallJobGroupFactory
     {
         /// <summary>
-        /// Wird ausgelöst, wenn eine neue Anrufgruppe ermittelt wurde
+        /// Wird ausgelï¿½st, wenn eine neue Anrufgruppe ermittelt wurde
         /// </summary>
         public event CallJobGroupCreatedEventHandler CallJobGroupCreated;
 
         /// <summary>
-        /// Wird ausgelöst, wenn die Methode Analyse einen weiteren Sponsor bearbeitet
+        /// Wird ausgelï¿½st, wenn die Methode Analyse einen weiteren Sponsor bearbeitet
         /// </summary>
         public event AnalyseSponsorProgressChangedEventHandler AnalyseSponsorProgressChanged;
 
@@ -23,7 +23,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
         private MetaCallBusiness metaCallBusiness;
         /// <summary>
         /// speichert die CallJobGruppen zusammen mit den Sponsoren
-        /// Die CallJobGruppe wird in einem Container-Element gehalten und die zugehörigen Sponsoren in 
+        /// Die CallJobGruppe wird in einem Container-Element gehalten und die zugehï¿½rigen Sponsoren in 
         /// einer Liste
         /// </summary>
         private SortedDictionary<CallJobGroupContainer, List<Sponsor>> callJobGroupList;
@@ -124,6 +124,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
             bool secondCallListExists = false;
             bool tipAddressExists = false;
+            bool unsuitableAddressExists = false;
 
             this.callJobGroupList = new SortedDictionary<CallJobGroupContainer, List<Sponsor>>(new CallJobGroupComparer());
             if ((project.CallJobGroups != null) &&
@@ -137,23 +138,34 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     if (callJobGroup.Type == CallJobGroupType.TipAddress)
                         tipAddressExists = true;
 
+                    if (callJobGroup.Type == CallJobGroupType.UnsuitableAddress)
+                        unsuitableAddressExists = true;
+
                     CallJobGroupContainer container = ConvertCallJobGroup(callJobGroup);
                     if (container != null)
                          this.callJobGroupList.Add(container, new List<Sponsor>());
                 }
             }
 
-            //Anrufgruppe "Zweitanrufe" hinzufügen
+            //Anrufgruppe "Zweitanrufe" hinzufï¿½gen
             if (!secondCallListExists)
             {
                 this.callJobGroupList.Add(CreateSecondCallList(project), new List<Sponsor>());
             }
 
-            //Anrufgruppe "Tipadresse" hinzufügen
+            //Anrufgruppe "Tipadresse" hinzufï¿½gen
             if (!tipAddressExists)
             {
                 this.callJobGroupList.Add(CreateTipAddress(project), new List<Sponsor>());
             }
+
+            if(!unsuitableAddressExists)
+            {
+                this.callJobGroupList.Add(CreateUnsuitableAddress(project), new List<Sponsor>());
+            }
+
+            ProjectInfo projectInfo = new ProjectInfo();
+            projectInfo.ProjectId = project.ProjectId;
 
             foreach (Sponsor sponsor in sponsors)
             {
@@ -179,10 +191,26 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 else
                 {
                     //Abfragen ob Tip-Adresse
-
-                    if (metaCallBusiness.Addresses.GetAddress_IsTip(sponsor.AdressenPoolNummer))
+                    if (metaCallBusiness.Addresses.GetAddress_IsTip(sponsor.AdressenPoolNummer) || 
+                        metaCallBusiness.Addresses.GetTipAddressLastProject(sponsor, projectInfo))
                     {
                         CallJobGroupTypeInfo typeInfo = this.callJobGroupTypeInfos[CallJobGroupType.TipAddress];
+
+                        string key = Enum.GetName(typeof(CallJobGroupType), typeInfo.CallJobGroupType);
+
+                        foreach (CallJobGroupContainer callJobGroupContainer in this.callJobGroupList.Keys)
+                        {
+                            if (callJobGroupContainer.Key.Equals(key))
+                            {
+                                List<Sponsor> sponsorList = this.callJobGroupList[callJobGroupContainer];
+                                sponsorList.Add(sponsor);
+                                callJobGroup = callJobGroupContainer;
+                            }
+                        }
+                    }
+                    else if (metaCallBusiness.Addresses.GetIsAddressUnsuitable(sponsor))
+                    {
+                        CallJobGroupTypeInfo typeInfo = this.callJobGroupTypeInfos[CallJobGroupType.UnsuitableAddress];
 
                         string key = Enum.GetName(typeof(CallJobGroupType), typeInfo.CallJobGroupType);
 
@@ -227,6 +255,27 @@ namespace metatop.Applications.metaCall.BusinessLayer
         private CallJobGroupContainer CreateTipAddress(Project project)
         {
             CallJobGroupTypeInfo typeInfo = this.callJobGroupTypeInfos[CallJobGroupType.TipAddress];
+
+            string key = Enum.GetName(typeof(CallJobGroupType), typeInfo.CallJobGroupType);
+
+            CallJobGroup callJobGroup = new CallJobGroup();
+            callJobGroup.CallJobGroupId = Guid.NewGuid();
+            callJobGroup.DisplayName = typeInfo.DisplayNameTemplate;
+            callJobGroup.Description = typeInfo.Description;
+            callJobGroup.Key = key;
+            callJobGroup.Project = this.metaCallBusiness.Projects.Get(project);
+            callJobGroup.Type = typeInfo.CallJobGroupType;
+            callJobGroup.Teams = new TeamInfo[0];
+            callJobGroup.Users = new UserInfo[0];
+            callJobGroup.Ranking = typeInfo.Ranking;
+
+            OnCallJobGroupCreated(new CallJobGroupCreatedEventArgs(callJobGroup, project));
+            return new CallJobGroupContainer(callJobGroup, key, -1, -1);
+        }
+
+        private CallJobGroupContainer CreateUnsuitableAddress(Project project)
+        {
+            CallJobGroupTypeInfo typeInfo = this.callJobGroupTypeInfos[CallJobGroupType.UnsuitableAddress];
 
             string key = Enum.GetName(typeof(CallJobGroupType), typeInfo.CallJobGroupType);
 
@@ -607,6 +656,20 @@ namespace metatop.Applications.metaCall.BusinessLayer
                             return 1;
 
                         if (y.CallJobGroupType == CallJobGroupType.TipAddress)
+                            return x.Key.CompareTo(y.Key);
+
+                        return -1;
+                    case CallJobGroupType.UnsuitableAddress:
+                        if ((y.CallJobGroupType == CallJobGroupType.ProjectSponsorList) ||
+                            (y.CallJobGroupType == CallJobGroupType.CustomerSponsorList) ||
+                            (y.CallJobGroupType == CallJobGroupType.CommonSponsorList) ||
+                            (y.CallJobGroupType == CallJobGroupType.GeoCodedList) ||
+                            (y.CallJobGroupType == CallJobGroupType.SecondCallList) ||
+                            (y.CallJobGroupType == CallJobGroupType.ManualList) ||
+                            (y.CallJobGroupType == CallJobGroupType.TipAddress))
+                            return 1;
+
+                        if (y.CallJobGroupType == CallJobGroupType.UnsuitableAddress)
                             return x.Key.CompareTo(y.Key);
 
                         return -1;
