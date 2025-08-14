@@ -6,10 +6,12 @@ using metatop.Applications.metaCall.DataObjects;
 using metatop.Applications.metaCall.ServiceAccessLayer;
 using System.IO;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 using System.Net;
 using System.Net.Mail;
+using GemBox.Document;
 using Microsoft.Exchange.WebServices.Data;
 using Attachment = System.Net.Mail.Attachment;
 
@@ -281,6 +283,16 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                 using (MSWordAdapter wordAdapter = new MSWordAdapter())
                 {
+                    ComponentInfo.SetLicense("FREE-LIMITED-KEY");
+                    var gemDocument = DocumentModel.Load(@document.Filename);
+                    string outputFilename = Guid.NewGuid().ToString() + ".pdf";
+                    var outputPath = Path.Combine(Path.GetTempPath(), outputFilename);
+
+                    var placeholder = gemDocument.Content.Find("$Sponsor.Anschrift$").FirstOrDefault();
+                    gemDocument.Content.Replace("$Sponsor.Anschrift$", callJob.Project.BezeichnungRechnung);
+                    // gemDocument.Save(outputPath);
+                    gemDocument.Save(@outputFilename);
+
                     wordAdapter.Open(document.Filename, true, false);
                     wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
  
