@@ -1,19 +1,22 @@
+using GemBox.Document;
+using GemBox.Document.Drawing;
+using metatop.Applications.metaCall.DataObjects;
+using metatop.Applications.metaCall.ServiceAccessLayer;
+using Microsoft.Exchange.WebServices.Data;
+using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
-using metatop.Applications.metaCall.DataObjects;
-using metatop.Applications.metaCall.ServiceAccessLayer;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using Microsoft.Practices.EnterpriseLibrary.Logging;
-using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 using System.Net;
 using System.Net.Mail;
-using GemBox.Document;
-using Microsoft.Exchange.WebServices.Data;
+using System.Text;
+using System.Windows.Controls;
 using Attachment = System.Net.Mail.Attachment;
+using TextBox = GemBox.Document.TextBox;
 
 namespace metatop.Applications.metaCall.BusinessLayer
 {
@@ -226,7 +229,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             {
                 method.EndInvoke(result);
             }
-        }        
+        }
 
         private void MailAsync(ProjectDocument document, ProjectDocument emailTemplate, CallJob callJob, string betreff, string briefanrede,
             SendProjectDocumentOptions options)
@@ -267,7 +270,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 {
                     throw new FileNotFoundException("metacall kann die angegebene Datei nicht finden.", document.Filename);
                 }
-                
+
                 // emailTemplate.Filename = "C:\\Users\\Uwe\\Documents\\SponsorfaxTemplate.htm";
 
                 if (!File.Exists(emailTemplate.Filename))
@@ -283,19 +286,20 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                 using (MSWordAdapter wordAdapter = new MSWordAdapter())
                 {
-                    ComponentInfo.SetLicense("FREE-LIMITED-KEY");
-                    var gemDocument = DocumentModel.Load(@document.Filename);
+                    ComponentInfo.SetLicense("DN-2025Jan01-3fbaP1XghrfWD2D4jvdXsTc6lWwm1/SDMCmhxT8RUAxqt8y2ZnGNtBdF4J1LVTB1Ujecak8I/wqWhBGWFCkYI/s4Pfg==A");
+                  //  var testPath = Path.Combine(Path.GetTempPath(), "6e09b021-e17f-4747-965f-8637f08cfbb3.pdf.docx");
+                  //  var testDocument = DocumentModel.Load(testPath);
+                  //  testDocument.Save(testPath + ".pdf");
+                    var gemDocument = DocumentModel.Load(@document.Filename + "x");
                     string outputFilename = Guid.NewGuid().ToString() + ".pdf";
                     var outputPath = Path.Combine(Path.GetTempPath(), outputFilename);
 
-                    var placeholder = gemDocument.Content.Find("$Sponsor.Anschrift$").FirstOrDefault();
-                    gemDocument.Content.Replace("$Sponsor.Anschrift$", callJob.Project.BezeichnungRechnung);
-                    // gemDocument.Save(outputPath);
-                    gemDocument.Save(@outputFilename);
+
+                    //gemDocument.Save(@outputFilename);
 
                     wordAdapter.Open(document.Filename, true, false);
                     wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
- 
+
                     //Parameter vorbereiten
                     Project project = this.metaCallBusiness.Projects.Get(callJob.Project);
 
@@ -305,8 +309,50 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     param.Parameters.Add("Customer", project.Customer);
                     param.Parameters.Add("User", this.metaCallBusiness.Users.CurrentUser);
                     param.Parameters.Add("ArrayList", wordAdapter.DataFieldTable);
- 
+
                     wordAdapter.ProcessDataFields(param);
+
+                    DataFieldManager dataFieldManager = new DataFieldManager();
+                    foreach (string dataField in DataFieldManager.AvailableDataFields)
+                    {
+                        object value = dataFieldManager.GetValue(dataField, param);
+
+                        foreach (var textbox in gemDocument.GetChildElements(true).OfType<TextBox>())
+                        {
+                            if (value != null && value.GetType() == typeof(string))
+                            {
+
+                                // Im Inhalt der TextBox ersetzen
+                                textbox.Content.Replace(dataField, value.ToString());
+                            }
+                            else if (value != null && value.GetType() == typeof(WordImages))
+                            {                                
+                                var matches = textbox.Content.Find(dataField).ToList();
+
+                                foreach (var range in matches)
+                                {
+                                    
+                                    var picture = new Picture(gemDocument, value.ToString());
+
+                                    Element parent = range.Start.Parent;
+                                    Paragraph para = null;
+                                    while (parent != null && para == null)
+                                    {
+                                        para = parent as Paragraph;
+                                        parent = parent.Parent;
+                                    }
+
+                                    if (para != null)
+                                    {                                        
+                                        para.Content.Set(picture.Content);
+                                    }
+                                    
+                                }                                
+                            }
+                        }
+                    }
+                    gemDocument.Save(outputPath);
+                    gemDocument.Save(outputPath + ".docx");
 
                     string filename = null;
                     string login = null;
@@ -338,8 +384,8 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                             mailBody.Append(lineTmp);
                         }
-                    }                    
-                    
+                    }
+
                     ServicePointManager.ServerCertificateValidationCallback = CertificateValidationCallBack;
 
                     Setting setting = new Setting();
@@ -380,7 +426,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                         m.Attachments.AddFileAttachment(virtusAttachmentFilename, virtusFilename);
                     }
                     */
-                    m.SendAndSaveCopy();
+                    //  m.SendAndSaveCopy();
 
                     //*****************************
                     this.metaCallBusiness.DocumentHistory.Create("ProjectDocument", document.DocumentId,
@@ -395,7 +441,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 {
                     throw;
                 }
-            }             
+            }
         }
 
         private static string ToSingleChar(string toParsedString, char character)
@@ -495,7 +541,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
             {
                 method.EndInvoke(result);
             }
-        }        
+        }
 
 
         /// <summary>
@@ -550,7 +596,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                             string projectName;
                             projectName = callJob.Project.BezeichnungRechnung.ToString();
                             //filename = ActiveFaxAdapter.BuildEmailFileName(callJob.Sponsor, "Angebot metatop", "Anbei das gewünschte Angebot");
-                            wordAdapter.DataFieldTable = ActiveFaxAdapter.BuildEmailFileName(callJob.Sponsor, "Unterstützung / " 
+                            wordAdapter.DataFieldTable = ActiveFaxAdapter.BuildEmailFileName(callJob.Sponsor, "Unterstützung / "
                                 + projectName, "Anbei das gewünschte Angebot für " + projectName);
                         }
                         else if (options == SendProjectDocumentOptions.SendFax)
@@ -602,7 +648,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 {
                     throw;
                 }
-            }  
+            }
         }
 
         private void LogFaxInformation(string message)
@@ -627,8 +673,8 @@ namespace metatop.Applications.metaCall.BusinessLayer
             {
                 logInfos.Add(sysInfo.Key, sysInfo.Value);
             }
-            
-            if ((logInformations != null) && logInformations.Count >0)
+
+            if ((logInformations != null) && logInformations.Count > 0)
             {
                 foreach (KeyValuePair<string, object> logInformation in logInformations)
                 {
@@ -643,7 +689,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
     public enum SendProjectDocumentOptions
     {
-        SendMail, 
+        SendMail,
         SendFax,
         PrintOut,
     }
