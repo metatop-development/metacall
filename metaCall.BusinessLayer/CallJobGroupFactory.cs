@@ -463,21 +463,28 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
             if (callJobGroup.Type == CallJobGroupType.GeoCodedList)
                 return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, int.Parse(keys[1]));
-            else if (callJobGroup.Type == CallJobGroupType.ProjectSponsorList)
+            
+            if (callJobGroup.Type == CallJobGroupType.ProjectSponsorList)
                 return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, int.Parse(keys[1]), int.Parse(keys[2]));
-            else if (callJobGroup.Type == CallJobGroupType.CommonSponsorList)
+            
+            if (callJobGroup.Type == CallJobGroupType.CommonSponsorList)
                 return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, -1, -1);
-            else if (callJobGroup.Type == CallJobGroupType.CustomerSponsorList)
+            
+            if (callJobGroup.Type == CallJobGroupType.CustomerSponsorList)
                 return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, int.Parse(keys[1]), int.Parse(keys[2]));
-            else if (callJobGroup.Type == CallJobGroupType.TipAddress)
+            
+            if (callJobGroup.Type == CallJobGroupType.TipAddress)
                 return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, -1, -1);
-            else if (callJobGroup.Type == CallJobGroupType.SecondCallList)
+            if (callJobGroup.Type == CallJobGroupType.SecondCallList)
                 return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, -1, -1);
-            else if (callJobGroup.Type == CallJobGroupType.ManualList)
-                return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, -1, -1);
-            else
-                return null;
 
+            if (callJobGroup.Type == CallJobGroupType.ManualList)
+                return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, -1, -1);
+            
+            if (callJobGroup.Type == CallJobGroupType.UnsuitableAddress)
+                return new CallJobGroupContainer(callJobGroup, callJobGroup.Key, -1, -1);
+            
+            return null;
         }
 
         /// <summary>
