@@ -9,8 +9,9 @@ using System.Security.Permissions;
 // die mit einer Assembly verknüpft sind.
 [assembly: AssemblyTitle("metaCallBusinessLayer")]
 [assembly: AssemblyDescription("")]
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, Execution=true)]
-[assembly: PermissionSet(SecurityAction.RequestMinimum, Name="LocalIntranet")]
+// folgende Zeile gelöscht weil keine Funktion mehr.
+//[assembly: SecurityPermission(SecurityAction.RequestMinimum, Execution=true)]
+//[assembly: PermissionSet(SecurityAction.RequestMinimum, Name="LocalIntranet")]
 
 // Durch Festlegen von ComVisible auf "false" werden die Typen in dieser Assembly unsichtbar 
 // für COM-Komponenten. Wenn Sie auf einen Typ in dieser Assembly von 
