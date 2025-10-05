@@ -337,18 +337,15 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                     if (setting.UseMicrosoftGraphEmail == true)
                     {
-                        string subject = betreff;
-                        string body = mailBody.ToString();
-
                         try
                         {
                             string token = GraphMailSender.GetAccessTokenAsync(setting.TenantId, setting.ClientId, setting.ClientSecret).GetAwaiter().GetResult();
                             GraphMailSender.SendMailWithAttachmentAsync(
                                 token, 
                                 metaCallBusiness.Users.CurrentUser.AnmeldungEmail, 
-                                callJob.Sponsor.EMail, 
-                                subject, 
-                                body,
+                                callJob.Sponsor.EMail,
+                                betreff,
+                                mailBody.ToString(),
                                 filename,
                                 attachmentFilename).GetAwaiter().GetResult();
                         }
@@ -392,7 +389,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                             m.Attachments.AddFileAttachment(virtusAttachmentFilename, virtusFilename);
                         }
                         */
-                      //  m.SendAndSaveCopy();
+                        m.SendAndSaveCopy();
                     }
 
                     //*****************************
