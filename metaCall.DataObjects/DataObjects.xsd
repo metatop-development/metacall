@@ -958,6 +958,10 @@
       <xs:element name="AddressSafeActiv" type="xs:boolean" />
       <xs:element name="AbortDialingTime" type="xs:int" />
       <xs:element name="DomainEmailLogin" type="xs:string" />
+      <xs:element name="UseMicrosoftGraphEmail" type="xs:boolean" />
+      <xs:element name="TenantId" type="xs:string" />
+      <xs:element name="ClientId" type="xs:string" />
+      <xs:element name="ClientSecret" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Setting" type="Setting" />

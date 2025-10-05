@@ -10200,6 +10200,14 @@ namespace metatop.Applications.metaCall.DataObjects {
         private int abortDialingTimeField;
         
         private string domainEmailLoginField;
+
+        private bool useMicrosoftGraphEmail;
+
+        private string tenantId;
+
+        private string clientId;
+
+        private string clientSecret;
         
         /// <remarks/>
         public int ActivitiesMaxSec {
@@ -10233,7 +10241,63 @@ namespace metatop.Applications.metaCall.DataObjects {
                 this.RaisePropertyChanged("PaymentTargetVisible");
             }
         }
-        
+
+        /// <remarks/>
+        public bool UseMicrosoftGraphEmail
+        {
+            get
+            {
+                return this.useMicrosoftGraphEmail;
+            }
+            set
+            {
+                this.useMicrosoftGraphEmail = value;
+                this.RaisePropertyChanged("UseMicrosoftGraphEmail");
+            }
+        }
+
+        /// <remarks/>
+        public string TenantId
+        {
+            get
+            {
+                return this.tenantId;
+            }
+            set
+            {
+                this.tenantId = value;
+                this.RaisePropertyChanged("TenantId");
+            }
+        }
+
+        /// <remarks/>
+        public string ClientId
+        {
+            get
+            {
+                return this.clientId;
+            }
+            set
+            {
+                this.clientId = value;
+                this.RaisePropertyChanged("ClientId");
+            }
+        }
+
+        /// <remarks/>
+        public string ClientSecret
+        {
+            get
+            {
+                return this.clientSecret;
+            }
+            set
+            {
+                this.clientSecret = value;
+                this.RaisePropertyChanged("ClientSecret");
+            }
+        }
+              
         /// <remarks/>
         public int AddressSafeTime {
             get {
