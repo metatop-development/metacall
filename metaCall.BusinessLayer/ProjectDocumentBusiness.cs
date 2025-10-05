@@ -326,49 +326,74 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                             mailBody.Append(lineTmp);
                         }
-                    }                    
-                    
-                    ServicePointManager.ServerCertificateValidationCallback = CertificateValidationCallBack;
+                    }
 
                     Setting setting = new Setting();
                     setting = metaCallBusiness.Settings.GetSetting();
-
-                    login = setting.DomainEmailLogin + "\\" + metaCallBusiness.Users.CurrentUser.AnmeldungEmail;
-                    emailpwd = metaCallBusiness.EncryptionBusiness.DecryptString(metaCallBusiness.Users.CurrentUser.PasswordEmail);
-
-                    ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);
-                    service.Credentials = new WebCredentials(login, emailpwd);
-                    //service.Url = new Uri("https:/ /MTEXCHANGE01.metatop.local/EWS/Exchange.asmx");
-                    service.Url = new Uri("https://mail.metatop.de/EWS/Exchange.asmx");
-                    service.Timeout = 300000;
-
-                    EmailMessage m = new EmailMessage(service);
-
-                    m.ToRecipients.Add(callJob.Sponsor.EMail);
-                    //m.CcRecipients.Add("maier@madanet.de");
-                    m.Subject = betreff;
-                    //m.SubjectEncoding = System.Text.Encoding.UTF8;
-                    //m.IsBodyHtml = true;
-                    m.Body = mailBody.ToString();
-                    //m.Body = "Test Hallo Hallo Gruß";
-                    //m.BodyEncoding = System.Text.Encoding.UTF8;
 
                     string attachmentFilename = project.PraefixMailAttachment + " " + callJob.Project.BezeichnungRechnung + ".pdf";
                     char punkt = '.';
                     attachmentFilename = ToSingleChar(attachmentFilename, punkt);
 
-                    m.Attachments.AddFileAttachment(attachmentFilename, filename);
-
-                    /*
-                     Sonder-Angebot für die virtus wm. 31.01.2023 wieder entfernt.
-                    if(callJob.Project.mwProjektNummer == 15903)
+                    if (setting.UseMicrosoftGraphEmail == true)
                     {
-                        string virtusAttachmentFilename = "sponsoring-mappe-virtus-ski-wm-2023.pdf";
-                        string virtusFilename = "R:\\Bregenz\\Center-Verwaltung\\Fax Vorlagen\\sponsoring-mappe-virtus-ski-wm-2023.pdf";
-                        m.Attachments.AddFileAttachment(virtusAttachmentFilename, virtusFilename);
+                        string subject = betreff;
+                        string body = mailBody.ToString();
+
+                        try
+                        {
+                            string token = GraphMailSender.GetAccessTokenAsync(setting.TenantId, setting.ClientId, setting.ClientSecret).GetAwaiter().GetResult();
+                            GraphMailSender.SendMailWithAttachmentAsync(
+                                token, 
+                                metaCallBusiness.Users.CurrentUser.AnmeldungEmail, 
+                                callJob.Sponsor.EMail, 
+                                subject, 
+                                body,
+                                filename,
+                                attachmentFilename).GetAwaiter().GetResult();
+                        }
+                        catch (Exception exception)
+                        {
+                            throw new InvalidOperationException("Fehler beim E-Mail-Versand mit MS Graph. " + exception.Message);
+                        }
                     }
-                    */
-                    m.SendAndSaveCopy();
+                    else
+                    { 
+                        ServicePointManager.ServerCertificateValidationCallback = CertificateValidationCallBack;
+
+                        login = setting.DomainEmailLogin + "\\" + metaCallBusiness.Users.CurrentUser.AnmeldungEmail;
+                        emailpwd = metaCallBusiness.EncryptionBusiness.DecryptString(metaCallBusiness.Users.CurrentUser.PasswordEmail);
+
+                        ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2007_SP1);
+                        service.Credentials = new WebCredentials(login, emailpwd);
+                        //service.Url = new Uri("https:/ /MTEXCHANGE01.metatop.local/EWS/Exchange.asmx");
+                        service.Url = new Uri("https://mail.metatop.de/EWS/Exchange.asmx");
+                        service.Timeout = 300000;
+
+                        EmailMessage m = new EmailMessage(service);
+
+                        m.ToRecipients.Add(callJob.Sponsor.EMail);
+                        //m.CcRecipients.Add("maier@madanet.de");
+                        m.Subject = betreff;
+                        //m.SubjectEncoding = System.Text.Encoding.UTF8;
+                        //m.IsBodyHtml = true;
+                        m.Body = mailBody.ToString();
+                        //m.Body = "Test Hallo Hallo Gruß";
+                        //m.BodyEncoding = System.Text.Encoding.UTF8;
+
+                        m.Attachments.AddFileAttachment(attachmentFilename, filename);
+
+                        /*
+                         Sonder-Angebot für die virtus wm. 31.01.2023 wieder entfernt.
+                        if(callJob.Project.mwProjektNummer == 15903)
+                        {
+                            string virtusAttachmentFilename = "sponsoring-mappe-virtus-ski-wm-2023.pdf";
+                            string virtusFilename = "R:\\Bregenz\\Center-Verwaltung\\Fax Vorlagen\\sponsoring-mappe-virtus-ski-wm-2023.pdf";
+                            m.Attachments.AddFileAttachment(virtusAttachmentFilename, virtusFilename);
+                        }
+                        */
+                      //  m.SendAndSaveCopy();
+                    }
 
                     //*****************************
                     this.metaCallBusiness.DocumentHistory.Create("ProjectDocument", document.DocumentId,
