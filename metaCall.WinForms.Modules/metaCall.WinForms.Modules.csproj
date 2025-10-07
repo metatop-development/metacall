@@ -249,7 +249,9 @@
     <Compile Include="DateTimePickerExt.Designer.cs">
       <DependentUpon>DateTimePickerExt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mitarbeiterstatistik.cs" />
+    <Compile Include="Mitarbeiterstatistik.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Mitarbeiterstatistik.Designer.cs">
       <DependentUpon>Mitarbeiterstatistik.cs</DependentUpon>
     </Compile>
