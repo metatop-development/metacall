@@ -23,14 +23,18 @@ namespace metatop.Applications.metaCall.DataAccessLayer
         #endregion
 
 		private static readonly SettingConfiguration[] settingConfigurations = new SettingConfiguration[]{
-															 new SettingConfiguration("ActivitiesMaxSec", "ActivitiesMaxSec", typeof(int), 60),
-															 new SettingConfiguration("ShutDownCountdownSec", "ShutDownCountdownSec", typeof(int), 20),
-                                                             new SettingConfiguration("PaymentTargetVisible", "PaymentTargetVisible", typeof(Boolean), false),
-                                                             new SettingConfiguration("AddressSafeTime","AddressSafeTime",  typeof(int), 180),
-                                                             new SettingConfiguration("AddressSafeActiv","AddressSafeActiv", typeof(Boolean),false),
-                                                             new SettingConfiguration("AbortDialingTime","AbortDialingTime", typeof(int), 30),
-                                                             new SettingConfiguration("DomainEmailLogin", "DomainEmailLogin", typeof(string), "metatop"), 
-														 };
+			new SettingConfiguration("ActivitiesMaxSec", "ActivitiesMaxSec", typeof(int), 60),
+			new SettingConfiguration("ShutDownCountdownSec", "ShutDownCountdownSec", typeof(int), 20),
+            new SettingConfiguration("PaymentTargetVisible", "PaymentTargetVisible", typeof(Boolean), false),
+            new SettingConfiguration("AddressSafeTime","AddressSafeTime",  typeof(int), 180),
+            new SettingConfiguration("AddressSafeActiv","AddressSafeActiv", typeof(Boolean),false),
+            new SettingConfiguration("AbortDialingTime","AbortDialingTime", typeof(int), 30),
+            new SettingConfiguration("DomainEmailLogin", "DomainEmailLogin", typeof(string), "metatop"),
+            new SettingConfiguration("TenantId", "TenantId", typeof(string), ""),
+            new SettingConfiguration("ClientId", "ClientId", typeof(string), ""),
+            new SettingConfiguration("ClientSecret", "ClientSecret", typeof(string), ""),
+            new SettingConfiguration("UseMicrosoftGraphEmail", "UseMicrosoftGraphEmail", typeof(Boolean), false),
+		};
 		
         private class SettingConfiguration
 		{

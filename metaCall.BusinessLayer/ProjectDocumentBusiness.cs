@@ -6,9 +6,11 @@ using Microsoft.Exchange.WebServices.Data;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -284,8 +286,8 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 logInfos.Add("EmailAdresse", callJob.Sponsor.EMail);
                 LogFaxInformation("Der Asynchrone Emailversand wurde gestartet.");
 
-                using (MSWordAdapter wordAdapter = new MSWordAdapter())
-                {
+                //using (MSWordAdapter wordAdapter = new MSWordAdapter())
+                //{
                     ComponentInfo.SetLicense("DN-2025Jan01-3fbaP1XghrfWD2D4jvdXsTc6lWwm1/SDMCmhxT8RUAxqt8y2ZnGNtBdF4J1LVTB1Ujecak8I/wqWhBGWFCkYI/s4Pfg==A");
                   //  var testPath = Path.Combine(Path.GetTempPath(), "6e09b021-e17f-4747-965f-8637f08cfbb3.pdf.docx");
                   //  var testDocument = DocumentModel.Load(testPath);
@@ -297,8 +299,8 @@ namespace metatop.Applications.metaCall.BusinessLayer
 
                     //gemDocument.Save(@outputFilename);
 
-                    wordAdapter.Open(document.Filename, true, false);
-                    wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
+                    //wordAdapter.Open(document.Filename, true, false);
+                    //wordAdapter.DataFieldTable = ActiveFaxAdapter.GetEmptySponsorFaxDatenField();
 
                     //Parameter vorbereiten
                     Project project = this.metaCallBusiness.Projects.Get(callJob.Project);
@@ -308,11 +310,12 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     param.Parameters.Add("project", project);
                     param.Parameters.Add("Customer", project.Customer);
                     param.Parameters.Add("User", this.metaCallBusiness.Users.CurrentUser);
-                    param.Parameters.Add("ArrayList", wordAdapter.DataFieldTable);
+                    //param.Parameters.Add("ArrayList", wordAdapter.DataFieldTable);
+                    param.Parameters.Add("ArrayList", new ArrayList());
 
-                    wordAdapter.ProcessDataFields(param);
+                //wordAdapter.ProcessDataFields(param);
 
-                    DataFieldManager dataFieldManager = new DataFieldManager();
+                DataFieldManager dataFieldManager = new DataFieldManager();
                     foreach (string dataField in DataFieldManager.AvailableDataFields)
                     {
                         object value = dataFieldManager.GetValue(dataField, param);
@@ -358,7 +361,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     string login = null;
                     string emailpwd = null;
 
-                    filename = wordAdapter.SaveAsAndConvertDocumentToPdf(filename);
+                  //  filename = wordAdapter.SaveAsAndConvertDocumentToPdf(filename);
 
                     //wordAdapter.Dispose();
 
@@ -432,7 +435,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     this.metaCallBusiness.DocumentHistory.Create("ProjectDocument", document.DocumentId,
                         options.ToString(), metaCallBusiness.Users.GetUserInfo(metaCallBusiness.Users.CurrentUser),
                         param, "CallJob", callJob.CallJobId);
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -585,24 +588,27 @@ namespace metatop.Applications.metaCall.BusinessLayer
                 logInfos.Add("Document", document);
                 LogFaxInformation("Der Asynchrone Faxversand wurde gestartet.");
 
-                using (MSWordAdapter wordAdapter = new MSWordAdapter())
-                {
-                    wordAdapter.Open(document.Filename, true, false);
+                //using (MSWordAdapter wordAdapter = new MSWordAdapter())
+                //{
+                //    wordAdapter.Open(document.Filename, true, false);
 
-                    if (options != SendProjectDocumentOptions.PrintOut)
+                var gemDocument = DocumentModel.Load(@document.Filename + "x");
+                string outputFilename = Guid.NewGuid().ToString() + ".pdf";
+                var outputPath = Path.Combine(Path.GetTempPath(), outputFilename);
+
+                if (options != SendProjectDocumentOptions.PrintOut)
                     {
                         if (options == SendProjectDocumentOptions.SendMail)
                         {
                             string projectName;
                             projectName = callJob.Project.BezeichnungRechnung.ToString();
                             //filename = ActiveFaxAdapter.BuildEmailFileName(callJob.Sponsor, "Angebot metatop", "Anbei das gewünschte Angebot");
-                            wordAdapter.DataFieldTable = ActiveFaxAdapter.BuildEmailFileName(callJob.Sponsor, "Unterstützung / "
-                                + projectName, "Anbei das gewünschte Angebot für " + projectName);
+//                            wordAdapter.DataFieldTable = ActiveFaxAdapter.BuildEmailFileName(callJob.Sponsor, "Unterstützung / " + projectName, "Anbei das gewünschte Angebot für " + projectName);
                         }
                         else if (options == SendProjectDocumentOptions.SendFax)
                         {
                             //filename = ActiveFaxAdapter.BuildFaxFileName(callJob.Sponsor);
-                            wordAdapter.DataFieldTable = ActiveFaxAdapter.BuildFaxFileName(callJob.Sponsor);
+//                            wordAdapter.DataFieldTable = ActiveFaxAdapter.BuildFaxFileName(callJob.Sponsor);
                         }
 
                         printer = Properties.Settings.Default.ActiveFaxPrinterName;
@@ -628,18 +634,62 @@ namespace metatop.Applications.metaCall.BusinessLayer
                     param.Parameters.Add("project", project);
                     param.Parameters.Add("Customer", project.Customer);
                     param.Parameters.Add("User", this.metaCallBusiness.Users.CurrentUser);
-                    param.Parameters.Add("ArrayList", wordAdapter.DataFieldTable);
+                    //param.Parameters.Add("ArrayList", wordAdapter.DataFieldTable);
+                    param.Parameters.Add("ArrayList", new ArrayList());
 
-                    wordAdapter.ProcessDataFields(param);
+                 //   wordAdapter.ProcessDataFields(param);
+                DataFieldManager dataFieldManager = new DataFieldManager();
+                foreach (string dataField in DataFieldManager.AvailableDataFields)
+                {
+                    object value = dataFieldManager.GetValue(dataField, param);
 
-                    string filename = null;
+                    foreach (var textbox in gemDocument.GetChildElements(true).OfType<TextBox>())
+                    {
+                        if (value != null && value.GetType() == typeof(string))
+                        {
 
-                    wordAdapter.PrintDocument(printer, filename);
+                            // Im Inhalt der TextBox ersetzen
+                            textbox.Content.Replace(dataField, value.ToString());
+                        }
+                        else if (value != null && value.GetType() == typeof(WordImages))
+                        {
+                            var matches = textbox.Content.Find(dataField).ToList();
+
+                            foreach (var range in matches)
+                            {
+
+                                var picture = new Picture(gemDocument, value.ToString());
+
+                                Element parent = range.Start.Parent;
+                                Paragraph para = null;
+                                while (parent != null && para == null)
+                                {
+                                    para = parent as Paragraph;
+                                    parent = parent.Parent;
+                                }
+
+                                if (para != null)
+                                {
+                                    para.Content.Set(picture.Content);
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                string filename = null;
+
+                //    wordAdapter.PrintDocument(printer, filename);
+
+                  //  var ps = new PrinterSettings { PrinterName = printer };
+
+                gemDocument.Print(printer);
 
                     this.metaCallBusiness.DocumentHistory.Create("ProjectDocument", document.DocumentId,
                         options.ToString(), metaCallBusiness.Users.GetUserInfo(metaCallBusiness.Users.CurrentUser),
                         param, "CallJob", callJob.CallJobId);
-                }
+                //}
             }
             catch (Exception ex)
             {
