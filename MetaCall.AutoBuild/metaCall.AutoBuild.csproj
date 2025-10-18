@@ -86,10 +86,6 @@
       <Link>Microsoft.Exchange.WebServices.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\metaCall.3rdParty\Microsoft.Office.Interop.Word.dll">
-      <Link>Microsoft.Office.Interop.Word.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\metaCall.3rdParty\Microsoft.Practices.EnterpriseLibrary.Common.dll">
       <Link>Microsoft.Practices.EnterpriseLibrary.Common.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -116,10 +112,6 @@
     </Content>
     <Content Include="..\metaCall.3rdParty\Microsoft.Practices.ObjectBuilder.dll">
       <Link>Microsoft.Practices.ObjectBuilder.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\metaCall.3rdParty\OFFICE.DLL">
-      <Link>OFFICE.DLL</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\metaCall.3rdParty\Tapi2Lib.dll">
@@ -191,14 +183,6 @@
     <PostBuildEvent>del *.AutoBuild.*</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="..\metaCall.3rdParty\Interop.Microsoft.Office.Core.dll">
-      <Link>Interop.Microsoft.Office.Core.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\metaCall.3rdParty\Microsoft.Vbe.Interop.dll">
-      <Link>Microsoft.Vbe.Interop.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\metaCall.Auswertungen\bin\Release\metaCall.Auswertungen.pdb">
       <Link>metaCall.Auswertungen.pdb</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

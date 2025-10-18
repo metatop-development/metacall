@@ -429,7 +429,7 @@ namespace metatop.Applications.metaCall.BusinessLayer
                         m.Attachments.AddFileAttachment(virtusAttachmentFilename, virtusFilename);
                     }
                     */
-                    //  m.SendAndSaveCopy();
+                    m.SendAndSaveCopy();
 
                     //*****************************
                     this.metaCallBusiness.DocumentHistory.Create("ProjectDocument", document.DocumentId,
