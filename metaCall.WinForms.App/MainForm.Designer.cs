@@ -100,8 +100,8 @@
             // 
             // toolStripButtonTraining
             // 
-            this.toolStripButtonTraining.Image = global::metatop.Applications.metaCall.WinForms.App.Properties.Resources.Schulung_1500x430;
             resources.ApplyResources(this.toolStripButtonTraining, "toolStripButtonTraining");
+            this.toolStripButtonTraining.Image = global::metatop.Applications.metaCall.WinForms.App.Properties.Resources.Schulung_1500x430;
             this.toolStripButtonTraining.Name = "toolStripButtonTraining";
             this.toolStripButtonTraining.Click += new System.EventHandler(this.toolStripButtonTraining_Click);
             // 
@@ -128,7 +128,6 @@
             // 
             // MainMenu
             // 
-            this.MainMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.MainMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.metaCallToolStripMenuItem,

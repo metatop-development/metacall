@@ -141,9 +141,6 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
-  </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
@@ -169,13 +166,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 783</value>
+    <value>653, 492</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>150</value>
-  </data>
-  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
-    <value>6</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -192,11 +186,8 @@
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="toolStripContainer1.ContentPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
-  </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 783</value>
+    <value>653, 492</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -226,10 +217,7 @@
     <value>1</value>
   </data>
   <data name="toolStripContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 36</value>
-  </data>
-  <data name="toolStripContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+    <value>0, 24</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.RightToolStripPanel</value>
@@ -244,7 +232,7 @@
     <value>2</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 817</value>
+    <value>653, 523</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -262,25 +250,31 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonPause.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 29</value>
+    <value>66, 28</value>
   </data>
   <data name="toolStripButtonPause.Text" xml:space="preserve">
     <value>Pause</value>
+  </data>
+  <data name="toolStripButtonTraining.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="toolStripButtonTraining.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonTraining.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 29</value>
+    <value>85, 28</value>
   </data>
   <data name="toolStripButtonTraining.Text" xml:space="preserve">
     <value>Schulung</value>
   </data>
+  <data name="toolStripButtonTraining.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 0</value>
+    <value>3, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 34</value>
+    <value>183, 31</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -328,19 +322,16 @@
     <value>0, 547</value>
   </metadata>
   <data name="toolStripStatusLabelCountdown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 15</value>
+    <value>0, 17</value>
   </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>957, 15</value>
+    <value>638, 17</value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 853</value>
-  </data>
-  <data name="statusStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 0, 21, 0</value>
+    <value>0, 547</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 22</value>
+    <value>653, 22</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -367,13 +358,13 @@
     <value>Strg+L</value>
   </data>
   <data name="mnuAnmeldung.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 34</value>
+    <value>171, 22</value>
   </data>
   <data name="mnuAnmeldung.Text" xml:space="preserve">
     <value>&amp;Anmelden</value>
   </data>
   <data name="changePasswordToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 34</value>
+    <value>171, 22</value>
   </data>
   <data name="changePasswordToolStripMenuItem.Text" xml:space="preserve">
     <value>Passwort ändern</value>
@@ -382,7 +373,7 @@
     <value>Alt+F4</value>
   </data>
   <data name="mnuQuit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 34</value>
+    <value>171, 22</value>
   </data>
   <data name="mnuQuit.Text" xml:space="preserve">
     <value>&amp;Beenden</value>
@@ -391,19 +382,19 @@
     <value>Alt+M</value>
   </data>
   <data name="metaCallToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 30</value>
+    <value>66, 22</value>
   </data>
   <data name="metaCallToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;metaCall</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 34</value>
+    <value>111, 22</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>Über ...</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 30</value>
+    <value>24, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>?</value>
@@ -411,8 +402,11 @@
   <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="MainMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 1, 0, 1</value>
+  </data>
   <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>980, 36</value>
+    <value>653, 24</value>
   </data>
   <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -439,10 +433,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>9, 20</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>980, 875</value>
+    <value>653, 569</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -673,9 +667,6 @@
         MA7AYGhhjAMwGFoY4wAMhhbGOACDoYUxDsBgaGGMAzAYWhjjAAyGFsY4AIOhhfl/i5oRXstf8poAAAAA
         SUVORK5CYII=
 </value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>MainForm</value>
