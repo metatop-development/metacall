@@ -84,6 +84,7 @@
     <Content Include="Microsoft.Practices.EnterpriseLibrary.Logging.dll" />
     <Content Include="Microsoft.Practices.ObjectBuilder.dll" />
     <Content Include="Microsoft.Vbe.Interop.dll" />
+    <Content Include="Newtonsoft.Json.dll" />
     <Content Include="OFFICE.DLL" />
     <Content Include="Tapi2Lib.dll" />
   </ItemGroup>
